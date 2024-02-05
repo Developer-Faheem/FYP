@@ -1,63 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:stylesage/utils/constants/colors.dart';
 
 class TTextTheme {
   ///light theme text
   static TextTheme lightTextTheme = TextTheme(
-    headlineLarge: const TextStyle().copyWith(
-        fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
-    headlineMedium: const TextStyle().copyWith(
-        fontSize: 24, fontWeight: FontWeight.w600, color: Colors.black),
-    headlineSmall: const TextStyle().copyWith(
-        fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black),
-    titleLarge: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
-    titleMedium: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black),
-    titleSmall: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
-    bodyLarge: const TextStyle().copyWith(
-        fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black),
-    bodyMedium: const TextStyle().copyWith(
-        fontSize: 14, fontWeight: FontWeight.normal, color: Colors.black),
-    bodySmall: const TextStyle().copyWith(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: Colors.black.withOpacity(0.5)),
-    labelLarge: const TextStyle().copyWith(
-        fontSize: 12, fontWeight: FontWeight.normal, color: Colors.black),
-    labelMedium: const TextStyle().copyWith(
-        fontSize: 12,
-        fontWeight: FontWeight.normal,
-        color: Colors.black.withOpacity(0.5)),
+    //Used for on onboarding screens
+    displayLarge: GoogleFonts.tiroTelugu(
+        //final
+        fontSize: 29,
+        height: 40,
+        color: SColors.textPrimary),
+
+    headlineLarge: GoogleFonts.manrope(
+        fontSize: 22,
+        height: 30.1,
+        color: SColors.textPrimary,
+        fontWeight: FontWeight.bold),
+    headlineMedium: GoogleFonts.manrope(
+        fontSize: 17,
+        height: 23.2,
+        fontWeight: FontWeight.w600,
+        color: SColors.textPrimary),
+    headlineSmall: GoogleFonts.manrope(
+        fontSize: 16,
+        height: 21.9,
+        fontWeight: FontWeight.w600,
+        color: SColors.textPrimary),
+
+    bodyLarge: GoogleFonts.manrope(fontSize: 14, height: 19.1), //body 1
+    bodyMedium: GoogleFonts.manrope(
+        fontSize: 13, height: 17.8, color: SColors.textSecondary), //body 2
+    bodySmall: GoogleFonts.manrope(
+        fontSize: 12, height: 16.4, color: SColors.textPrimary), //final
+
+    labelLarge: GoogleFonts.manrope(fontSize: 13, height: 16.9),
+    labelMedium: GoogleFonts.manrope(fontSize: 12, height: 16.4),
   );
 
   ///dark theme text
-  static TextTheme darkTextTheme = TextTheme(
-    headlineLarge: const TextStyle().copyWith(
-        fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
-    headlineMedium: const TextStyle().copyWith(
-        fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
-    headlineSmall: const TextStyle().copyWith(
-        fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),
-    titleLarge: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
-    titleMedium: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
-    titleSmall: const TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
-    bodyLarge: const TextStyle().copyWith(
-        fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
-    bodyMedium: const TextStyle().copyWith(
-        fontSize: 14, fontWeight: FontWeight.normal, color: Colors.white),
-    bodySmall: const TextStyle().copyWith(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: Colors.black.withOpacity(0.5)),
-    labelLarge: const TextStyle().copyWith(
-        fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white),
-    labelMedium: const TextStyle().copyWith(
-        fontSize: 12,
-        fontWeight: FontWeight.normal,
-        color: Colors.black.withOpacity(0.5)),
-  );
+  static TextTheme darkTextTheme = const TextTheme();
 }
