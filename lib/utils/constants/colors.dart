@@ -9,10 +9,33 @@ class SColors {
   static const Color tertiary = Color(0XFF1BD4CA);
 
 //gradient Colors
-  // static const Gradient linearGradient = LinearGradient(
-  //     begin: Alignment(0.0, 0.0),
-  //     end: Alignment(0.707, -0.707),
-  //     colors: [Colors.black, Colors.red, Colors.grey]);
+  static Gradient MainOutlinedButtonGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Colors.white.withOpacity(0.6), // Lighter shade of white
+      SColors.primary.withOpacity(0.2), // Lighter shade of primary color
+    ],
+    stops: [0.6, 1.0],
+  );
+
+  static Gradient smallOutlinedButtonGradient = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    colors: [
+      Colors.white.withOpacity(0.8), // Lighter shade of white
+      SColors.secondary.withOpacity(0.3), // Lighter shade of primary color
+    ],
+    stops: [0.05, 0.2],
+  );
+
+  //box shadows
+  static BoxShadow cardShadow = BoxShadow(
+    color: SColors.primary.withOpacity(0.3),
+    spreadRadius: 4,
+    blurRadius: 7,
+    offset: const Offset(0, 3),
+  );
 
 //Text Colors
   static const Color textPrimary =
@@ -21,10 +44,12 @@ class SColors {
       Color(0XFF694D75); //used mainly for sub heading / price tage etc
   static const Color textTertiary =
       Color(0XFFA9A7A7); //used for lighter shade text
-  static const Color textForButtons =
+  static const Color textWhite =
       Color(0XFFFFFFFF); //text color for the primary color buttons
   //primary color also used as heading
-  //pinkish color used for authentication pages 
+  static const Color textPurple = Color(0XFF4D2C5A);
+  //pinkish color used for authentication pages
+  static const Color textPink = Color(0XFFFE8C8C);
 
 //Effects
   static const Color pinkishEffectColor = Color(0XFFFDE7E5);
@@ -37,7 +62,7 @@ class SColors {
 
   //e.g => light ,dark
 
-//dividers color 
+//dividers color
   static const Color dividersColor =
       Color(0XFFA9A7A7); //used for lighter shade text
 
@@ -46,7 +71,6 @@ class SColors {
 //button Colors
 
 //border Colors
-
 
 //error and validation colors
   //error , success, warning , info
