@@ -29,7 +29,9 @@ class TTextTheme {
         color: SColors.textPurple,
         fontWeight: FontWeight.w700), //body 1 height: 19.1,
     bodyMedium: GoogleFonts.manrope(
-        fontSize: 14, color: SColors.textSecondary), //body 2 height: 17.8,
+        fontSize: 16, //updated for skip
+        color: SColors.textSecondary,
+        fontWeight: FontWeight.w600), //body 2 height: 17.8,
     bodySmall:
         GoogleFonts.manrope(fontSize: 13, color: SColors.textSecondary), //final
 

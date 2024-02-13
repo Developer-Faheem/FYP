@@ -157,6 +157,7 @@ class ServiceCard extends StatelessWidget {
                           width: SSizes.defaultSpaceLarge,
                         ),
                         CustomButton(
+                            onPressedCallback: () {},
                             buttonText: "View",
                             height: 28,
                             width: 0.23,

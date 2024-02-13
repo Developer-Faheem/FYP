@@ -8,6 +8,7 @@ class CustomOutlinedButton extends StatelessWidget {
   final double width; //must be in percent 0-0 - 0.5 - 1.0
   final double height; //in px
   final Gradient gradient;
+  final VoidCallback onPressedCallback;
   final TextStyle textStyle;
 
   CustomOutlinedButton(
@@ -15,12 +16,13 @@ class CustomOutlinedButton extends StatelessWidget {
       required this.height,
       required this.width,
       required this.gradient,
-      required this.textStyle});
+      required this.textStyle,
+      required this.onPressedCallback});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressedCallback,
       child: Container(
         height: height,
         width: SDeviceUtils.getScreenWidth() * width,

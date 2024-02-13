@@ -30,7 +30,7 @@ class SaloonCard extends StatelessWidget {
                   "Bell curls , Salon",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                RatingsWidget(
+                const RatingsWidget(
                   rating: "3.5k",
                 ),
               ],
@@ -160,6 +160,7 @@ class SaloonCard extends StatelessWidget {
                       ),
                       Center(
                         child: CustomButton(
+                            onPressedCallback: () {},
                             buttonText: "Book Now",
                             height: 28,
                             width: 0.23,

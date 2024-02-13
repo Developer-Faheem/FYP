@@ -186,6 +186,7 @@ class FaviouriteCard extends StatelessWidget {
                               width: SSizes.defaultSpaceLarge,
                             ),
                             CustomButton(
+                                onPressedCallback: () {},
                                 buttonText: "Book Now",
                                 height: 28,
                                 width: 0.23,

@@ -8,17 +8,19 @@ class CustomButton extends StatelessWidget {
   final double width; //must be in percent 0-0 - 0.5 - 1.0
   final double height; //in px
   final TextStyle textStyle;
+  final VoidCallback onPressedCallback;
 
   CustomButton(
       {required this.buttonText,
       required this.height,
       required this.width,
-      required this.textStyle});
+      required this.textStyle,
+      required this.onPressedCallback});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressedCallback,
       child: Container(
         height: height,
         width: SDeviceUtils.getScreenWidth() * width,

@@ -32,7 +32,7 @@ class SSizes {
   static const double defaultSpacemedium = 6.0;
   static const double defaultSpaceLarge = 12.0;
 
-  static const double spaceBtwItems = 24.0;
+  static const double spaceBtwItems = 16.0;
   static const double spaceBtwSections = 24.0;
 
   //border radius sm,md, lg
