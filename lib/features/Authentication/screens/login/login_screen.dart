@@ -6,6 +6,7 @@ import 'package:stylesage/commons/widgets/Login-signup/form_divider.dart';
 import 'package:stylesage/features/Authentication/screens/SignUp/singnup_screen.dart';
 import 'package:stylesage/features/Authentication/screens/login/widgets/login_form.dart';
 import 'package:stylesage/commons/widgets/Login-signup/header.dart';
+import 'package:stylesage/features/Authentication/screens/verification/verification_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
@@ -60,7 +61,9 @@ class LoginScreen extends StatelessWidget {
                           textStyle: Theme.of(context).textTheme.titleLarge!,
                           width: 0.909,
                           height: 44,
-                          onPressedCallback: () {}),
+                          onPressedCallback: () {
+                            Get.off(() => const VerificationScreen());
+                          }),
                     ),
                     SizedBox(
                       height: SDeviceUtils.getScreenHeight() * 0.05,
@@ -86,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: SDeviceUtils.getScreenHeight() * 0.07,
+                      height: SDeviceUtils.getScreenHeight() * 0.08,
                     ),
                     //last section
                     Row(
@@ -96,12 +99,12 @@ class LoginScreen extends StatelessWidget {
                           STextStrings.loginQuestion,
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
-                        TextButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             Get.off(() => SignUpScreen());
                           },
                           child: Text(
-                            "Sign up",
+                            " Sign up ",
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ),

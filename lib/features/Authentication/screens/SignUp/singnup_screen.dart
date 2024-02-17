@@ -84,12 +84,12 @@ class SignUpScreen extends StatelessWidget {
                           STextStrings.signupQuestion,
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
-                        TextButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             Get.off(() => const LoginScreen());
                           },
                           child: Text(
-                            "Login",
+                            " Login",
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
                         )

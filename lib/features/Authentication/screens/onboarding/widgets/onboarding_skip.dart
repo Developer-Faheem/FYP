@@ -15,7 +15,10 @@ class OnboardingSkip extends StatelessWidget {
         onPressed: () => controller.skipPage(),
         child: Text(
           "Skip",
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .apply(decoration: TextDecoration.underline),
         ),
       ),
     );

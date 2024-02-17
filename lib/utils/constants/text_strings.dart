@@ -33,4 +33,13 @@ class STextStrings {
       "Fill your information below or register with your \n social account.";
   static const String loginQuestion = "Already have an Account?";
   static const String forgotPassword = "Forgot Password";
+
+  ///verification code screen
+  static const String verifyTitle = "Verify Code";
+  static const String verifysubtitle =
+      "Please enter the code we just sent to \n sent to email";
+
+  ///forget Password Screen
+  static const String forgetPassword = "Forgot Password?";
+  static const String forgetSubtile = "Please enter your email";
 }
