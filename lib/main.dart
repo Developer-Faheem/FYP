@@ -9,6 +9,7 @@ void main() {
   //Todo: await native splash
   //Todo: initilize the firebase
   //Todo: initilize the Authentication
+
   runApp(const App());
 }
 

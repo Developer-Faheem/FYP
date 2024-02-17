@@ -8,6 +8,11 @@ class TTextTheme {
     //Used for on onboarding screens  height: 40,
     displayLarge:
         GoogleFonts.tiroTelugu(fontSize: 29, color: SColors.textPrimary),
+    displaySmall: GoogleFonts.manrope(
+      //mainly for textformfield
+      fontSize: 14,
+      color: SColors.textPrimary,
+    ),
 
     headlineLarge: GoogleFonts.manrope(
         fontSize: 22,
@@ -32,8 +37,10 @@ class TTextTheme {
         fontSize: 16, //updated for skip
         color: SColors.textSecondary,
         fontWeight: FontWeight.w600), //body 2 height: 17.8,
-    bodySmall:
-        GoogleFonts.manrope(fontSize: 13, color: SColors.textSecondary), //final
+    bodySmall: GoogleFonts.manrope(
+        fontSize: 13,
+        color: SColors.textSecondary,
+        fontWeight: FontWeight.w600), //final
 
     labelLarge: GoogleFonts.manrope(fontSize: 14, color: SColors.textTertiary),
     labelMedium: GoogleFonts.manrope(fontSize: 12, color: SColors.textTertiary),
@@ -48,7 +55,7 @@ class TTextTheme {
     titleMedium: GoogleFonts.manrope(
         fontSize: 12, color: SColors.textWhite, fontWeight: FontWeight.w600),
     titleSmall: GoogleFonts.manrope(
-        fontSize: 12, color: SColors.textPink, fontWeight: FontWeight.w600),
+        fontSize: 13, color: SColors.textPink, fontWeight: FontWeight.w600),
   );
 
   ///dark theme text

@@ -3,16 +3,16 @@ import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/socials_button.dart';
 import 'package:stylesage/commons/widgets/Login-signup/form_divider.dart';
-import 'package:stylesage/features/Authentication/screens/SignUp/singnup_screen.dart';
-import 'package:stylesage/features/Authentication/screens/login/widgets/login_form.dart';
+import 'package:stylesage/features/Authentication/screens/SignUp/widgets/signup_form.dart';
 import 'package:stylesage/commons/widgets/Login-signup/header.dart';
+import 'package:stylesage/features/Authentication/screens/login/login_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,48 +27,36 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     //login/sign up header
                     const LoginHeader(
-                      title: STextStrings.login,
-                      subTitle: STextStrings.loginTitle,
+                      title: STextStrings.signup,
+                      subTitle: STextStrings.signupTitle,
                     ),
 
                     SizedBox(
-                      height: SDeviceUtils.getScreenHeight() * 0.05,
+                      height: SDeviceUtils.getScreenHeight() * 0.035,
                     ),
                     //Login Form
-                    const LoginForm(),
+                    const SignUpForm(),
                     //keep me sign in
-                    Row(
-                      children: [
-                        Checkbox(value: false, onChanged: (value) {}),
-                        Text(
-                          "Keep me ",
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                        Text(
-                          "signed in",
-                          style: Theme.of(context).textTheme.titleSmall,
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: SSizes.spaceBtwSections,
+
+                    SizedBox(
+                      height: SDeviceUtils.getScreenHeight() * 0.035,
                     ),
                     //continue
                     Center(
                       child: CustomButton(
-                          buttonText: "Continue",
+                          buttonText: "Sign Up",
                           textStyle: Theme.of(context).textTheme.titleLarge!,
                           width: 0.909,
                           height: 44,
                           onPressedCallback: () {}),
                     ),
                     SizedBox(
-                      height: SDeviceUtils.getScreenHeight() * 0.05,
+                      height: SDeviceUtils.getScreenHeight() * 0.035,
                     ),
                     //Divider
                     const FormDivider(),
                     SizedBox(
-                      height: SDeviceUtils.getScreenHeight() * 0.05,
+                      height: SDeviceUtils.getScreenHeight() * 0.035,
                     ),
                     //social buttons
                     Row(
@@ -86,29 +74,25 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: SDeviceUtils.getScreenHeight() * 0.07,
+                      height: SDeviceUtils.getScreenHeight() * 0.05,
                     ),
                     //last section
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          STextStrings.loginQuestion,
+                          STextStrings.signupQuestion,
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                         TextButton(
                           onPressed: () {
-                            Get.off(() => SignUpScreen());
+                            Get.off(() => const LoginScreen());
                           },
                           child: Text(
-                            "Sign up",
+                            "Login",
                             style: Theme.of(context).textTheme.titleSmall,
                           ),
-                        ),
-                        Text(
-                          "here",
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
+                        )
                       ],
                     )
                   ],

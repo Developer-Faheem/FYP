@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
 import 'package:stylesage/features/Authentication/controllers/onboarding_controller.dart';
+import 'package:stylesage/features/Authentication/screens/SignUp/singnup_screen.dart';
 import 'package:stylesage/features/Authentication/screens/login/login_screen.dart';
 import 'package:stylesage/features/Authentication/screens/onboarding/widgets/onboarding_dot_navigation.dart';
 import 'package:stylesage/features/Authentication/screens/onboarding/widgets/onboarding_next.dart';
@@ -75,7 +76,7 @@ class OnboardingScreen extends StatelessWidget {
                           bottom: SDeviceUtils.getScreenHeight() * 0.15,
                           child: CustomButton(
                             onPressedCallback: () {
-                              Get.offAll(const LoginScreen());
+                              Get.offAll(const SignUpScreen());
                             },
                             buttonText: "Sign Up",
                             textStyle: Theme.of(context).textTheme.titleLarge!,
