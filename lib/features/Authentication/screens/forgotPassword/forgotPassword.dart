@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/Login-signup/header.dart';
+import 'package:stylesage/navigation_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
@@ -62,7 +65,9 @@ class ForgotPassword extends StatelessWidget {
                           textStyle: Theme.of(context).textTheme.titleLarge!,
                           width: 0.909,
                           height: 44,
-                          onPressedCallback: () {}),
+                          onPressedCallback: () {
+                            Get.to(() => NavigationMenu());
+                          }),
                     ),
                   ],
                 ),
