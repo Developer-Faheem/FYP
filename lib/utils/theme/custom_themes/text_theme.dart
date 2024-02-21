@@ -43,7 +43,8 @@ class TTextTheme {
         fontWeight: FontWeight.w600), //final
 
     labelLarge: GoogleFonts.manrope(fontSize: 14, color: SColors.textTertiary),
-    labelMedium: GoogleFonts.manrope(fontSize: 12, color: SColors.textTertiary),
+    labelMedium: GoogleFonts.manrope(
+        fontSize: 12, color: SColors.textTertiary, fontWeight: FontWeight.w500),
     labelSmall: GoogleFonts.manrope(
         fontSize: 12,
         color: SColors.textPrimary,

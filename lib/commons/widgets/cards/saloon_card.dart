@@ -13,7 +13,7 @@ class SaloonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 193,
+      height: 195,
       decoration: BoxDecoration(
           color: SColors.bgMainScreens,
           borderRadius: BorderRadius.circular(12),
@@ -161,7 +161,7 @@ class SaloonCard extends StatelessWidget {
                       Center(
                         child: CustomButton(
                             onPressedCallback: () {},
-                            buttonText: "Book Now",
+                            buttonText: "View",
                             height: 28,
                             width: 0.23,
                             textStyle:

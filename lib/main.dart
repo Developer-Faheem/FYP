@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:stylesage/features/Authentication/screens/onboarding/splash_screen.dart';
+import 'package:stylesage/navigation_menu.dart';
 import 'package:stylesage/utils/theme/theme.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class App extends StatelessWidget {
       //     themeMode: ThemeMode.light,
       theme: SAppTheme.lightTheme,
       darkTheme: SAppTheme.darkTheme,
-      home: const SplashScreen(),
+      home: const NavigationMenu(),
     );
   }
 }

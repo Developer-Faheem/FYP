@@ -25,7 +25,7 @@ class ServicesRectangularWidget extends StatelessWidget {
       ),
       child: Center(
         child: SvgPicture.asset(
-          'assets/icons/makeUp.svg',
+          'assets/icons/services/makeUp.svg',
           width: SSizes.iconLg,
         ),
       ),

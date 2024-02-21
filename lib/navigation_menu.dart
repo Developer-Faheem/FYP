@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:stylesage/features/Shop/screens/Home/HomeScreen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 
 class NavigationMenu extends StatefulWidget {
+  const NavigationMenu({super.key});
+
   @override
   _NavigationMenuState createState() => _NavigationMenuState();
 }
 
 class _NavigationMenuState extends State<NavigationMenu> {
   int _currentIndex = 0;
+
   List<String> icons = [
     "assets/icons/navigation_menu/home.svg",
     "assets/icons/navigation_menu/saloon.svg",
@@ -31,7 +35,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
       body: IndexedStack(
         index: _currentIndex,
         children: const [
-          Screen1(),
+          HomeScreen(),
           Screen2(),
           Screen1(),
           Screen2(),

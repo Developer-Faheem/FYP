@@ -13,23 +13,31 @@ class ServicesRoundedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 72,
-      height: 72,
-      decoration: BoxDecoration(
-        color: SColors.secondary.withOpacity(0.26),
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: SColors.secondary,
-          width: 1, // Adjust the border width as needed
+    return Column(
+      children: [
+        Container(
+          width: 72,
+          height: 72,
+          decoration: BoxDecoration(
+            color: SColors.secondary.withOpacity(0.26),
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: SColors.secondary,
+              width: 1, // Adjust the border width as needed
+            ),
+          ),
+          child: Center(
+            child: SvgPicture.asset(
+              'assets/icons/makeUp.svg',
+              width: SSizes.iconMd,
+            ),
+          ),
         ),
-      ),
-      child: Center(
-        child: SvgPicture.asset(
-          'assets/icons/makeUp.svg',
-          width: SSizes.iconMd,
+        SizedBox(
+          height: SSizes.xs,
         ),
-      ),
+        Text("Make Up", style: Theme.of(context).textTheme.labelSmall)
+      ],
     );
   }
 }

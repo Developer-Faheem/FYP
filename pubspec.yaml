@@ -21,6 +21,7 @@ dependencies:
   #utility packages
   google_fonts: ^6.1.0
   flutter_svg: ^2.0.9
+  carousel_slider: ^4.2.1
   #url_launcher
   #intl
   #http
@@ -54,8 +55,11 @@ flutter:
   assets:
     - assets/fonts/
     - assets/icons/
+    - assets/icons/services/
     - assets/icons/navigation_menu/
     - assets/images/
+    - assets/images/onboarding/
+    - assets/images/banners/
     - assets/logos/
 
   # An image asset can refer to one or more resolution-specific "variants", see

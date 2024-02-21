@@ -5,13 +5,21 @@ import 'package:stylesage/utils/constants/sizes.dart';
 
 class RatingsWidget extends StatelessWidget {
   final String rating;
-  const RatingsWidget({super.key, required this.rating});
+  final double height;
+  final double width;
+
+  const RatingsWidget({
+    super.key,
+    required this.rating,
+    this.height = 28,
+    this.width = 65,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 28,
-      width: 65,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(SSizes.radiusLarge),
         gradient: LinearGradient(
@@ -22,7 +30,7 @@ class RatingsWidget extends StatelessWidget {
             SColors.skyEffectColor
                 .withOpacity(0.3), // Lighter shade of primary color
           ],
-          stops: [0.35, 0.65], // Adjust stops for smoother transition
+          // stops: [0.35, 0.65], // Adjust stops for smoother transition
         ),
       ),
       child: Row(
