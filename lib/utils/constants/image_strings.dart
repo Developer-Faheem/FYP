@@ -14,4 +14,14 @@ class SImages {
 
   //banners
   static const String banner_1 = "assets/images/banners/banner.png";
+
+  //services
+  static const String facial = "assets/images/services/facial.png";
+  static const String injectables = "assets/images/services/injectables.png";
+  static const String makeup = "assets/images/services/makeup.png";
+  static const String nail = "assets/images/services/scalp.png";
+  static const String scalp = "assets/images/services/facial.png";
+  static const String tanning = "assets/images/services/tanning.png";
+  static const String waxing = "assets/images/services/waxing.png";
+  //static const String facial = "assets/images/services/facial.png";
 }

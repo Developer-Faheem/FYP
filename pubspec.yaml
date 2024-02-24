@@ -58,6 +58,7 @@ flutter:
     - assets/icons/services/
     - assets/icons/navigation_menu/
     - assets/images/
+    - assets/images/services/
     - assets/images/onboarding/
     - assets/images/banners/
     - assets/logos/

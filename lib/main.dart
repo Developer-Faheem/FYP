@@ -23,7 +23,7 @@ class App extends StatelessWidget {
       //     themeMode: ThemeMode.light,
       theme: SAppTheme.lightTheme,
       darkTheme: SAppTheme.darkTheme,
-      home: const NavigationMenu(),
+      home: NavigationMenu(),
     );
   }
 }

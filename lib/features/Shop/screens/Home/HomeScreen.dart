@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/cards/saloon_card.dart';
-import 'package:stylesage/commons/widgets/ratings_widget.dart';
 import 'package:stylesage/commons/widgets/services_rounded.dart';
-import 'package:stylesage/features/Shop/controllers/home_controller.dart';
+import 'package:stylesage/features/Shop/screens/Home/widgets/carousel.dart';
+import 'package:stylesage/features/Shop/screens/Home/widgets/data.dart';
 import 'package:stylesage/features/Shop/screens/Home/services_screen.dart';
+import 'package:stylesage/features/Shop/screens/Home/widgets/header.dart';
 import 'package:stylesage/utils/constants/colors.dart';
-import 'package:stylesage/utils/constants/image_strings.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -31,39 +30,7 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //header
-                Padding(
-                  padding: const EdgeInsets.only(right: SSizes.lg),
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/icons/location.svg',
-                        height: 20,
-                      ),
-                      const SizedBox(
-                        width: SSizes.defaultSpaceLarge,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Location",
-                              style: Theme.of(context).textTheme.labelMedium,
-                            ),
-                            Text(
-                              "Islamabad, Pakistan",
-                              style: Theme.of(context).textTheme.headlineSmall,
-                            )
-                          ],
-                        ),
-                      ),
-                      SvgPicture.asset(
-                        'assets/icons/bell.svg',
-                        height: 30.5,
-                      ),
-                    ],
-                  ),
-                ),
+                const Header(),
                 const SizedBox(
                   height: SSizes.defaultSpaceLarge,
                 ),
@@ -101,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: SSizes.spaceBtwItems,
                 ),
                 //Carousel slider
@@ -109,8 +76,8 @@ class HomeScreen extends StatelessWidget {
                   "#SpecialForYou",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                Carousel(),
-                SizedBox(
+                const Carousel(),
+                const SizedBox(
                   height: SSizes.sm,
                 ),
                 //services
@@ -125,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.off(() => ServicesScreen());
+                          Get.to(() => ServicesScreen());
                         },
                         child: Text(
                           "See All",
@@ -135,24 +102,25 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: SSizes.sm,
                 ),
                 Container(
-                  height: 100,
-                  // color: Colors.blue,
+                  height: 120,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 4,
+                    itemCount: dataList.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
                         padding: const EdgeInsets.only(right: 20.0),
-                        child: ServicesRoundedWidget(),
+                        child: ServicesRoundedWidget(
+                            service: dataList[index]["service"],
+                            imagePath: dataList[index]["logo"]),
                       );
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: SSizes.spaceBtwItems,
                 ),
                 //salons
@@ -173,10 +141,10 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: SSizes.sm,
                       ),
-                      SaloonCard(),
+                      const SaloonCard(),
                     ],
                   ),
                 )
@@ -185,110 +153,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class Carousel extends StatelessWidget {
-  const Carousel({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
-    return Column(
-      children: [
-        CarouselSlider(
-          items: const [
-            Banner(),
-            Banner(),
-            Banner(),
-          ],
-          options: CarouselOptions(
-            //  autoPlay: true,
-            viewportFraction: 0.74,
-            height: 128,
-            onPageChanged: (index, _) => controller.updatePageIndicator(index),
-          ),
-        ),
-        const SizedBox(
-          height: SSizes.spaceBtwItems,
-        ),
-        Center(
-          child: Obx(
-            () => Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                for (int i = 0; i < 3; i++)
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      color: controller.CarouselCurrentIndex.value == i
-                          ? SColors.secondary
-                          : Color(0XFFA9A7A7),
-                      shape: BoxShape.circle,
-                    ),
-                    margin: EdgeInsets.only(right: 10),
-                  ),
-              ],
-            ),
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class Banner extends StatelessWidget {
-  const Banner({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 8.0),
-      child: Stack(children: [
-        Container(
-          height: 128,
-          width: 258,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(12.0),
-            child: Image(
-              image: AssetImage(SImages.banner_1),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Container(
-          height: 128,
-          width: 258,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              gradient: LinearGradient(
-                colors: [
-                  SColors.primary.withOpacity(0.7),
-                  Colors.white.withOpacity(0.2),
-                ],
-                stops: [
-                  0.4, // Start at the beginning
-                  1.0, // End at the end
-                ],
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-              )),
-        ),
-        Positioned(
-          left: 20,
-          top: 10,
-          child: RatingsWidget(rating: "Limited Offer", height: 22, width: 103),
-        ),
-      ]),
     );
   }
 }

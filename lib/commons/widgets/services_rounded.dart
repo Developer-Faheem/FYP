@@ -4,12 +4,11 @@ import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class ServicesRoundedWidget extends StatelessWidget {
-  // final String imagePath;
+  final String imagePath;
+  final String service;
 
-  const ServicesRoundedWidget({
-    super.key,
-    //   required this.imagePath
-  });
+  const ServicesRoundedWidget(
+      {super.key, required this.imagePath, required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +26,20 @@ class ServicesRoundedWidget extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: SvgPicture.asset(
-              'assets/icons/makeUp.svg',
-              width: SSizes.iconMd,
+            child: Image.asset(
+              imagePath,
+              // width: SSizes.iconMd,
             ),
           ),
         ),
         SizedBox(
           height: SSizes.xs,
         ),
-        Text("Make Up", style: Theme.of(context).textTheme.labelSmall)
+        Text(
+          service,
+          style: Theme.of(context).textTheme.labelSmall,
+          textAlign: TextAlign.center,
+        )
       ],
     );
   }

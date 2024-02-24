@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:stylesage/features/Shop/screens/Favourite/FaviouriteScreen.dart';
 import 'package:stylesage/features/Shop/screens/Home/HomeScreen.dart';
+import 'package:stylesage/features/Shop/screens/Saloons/saloon_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 
-class NavigationMenu extends StatefulWidget {
-  const NavigationMenu({super.key});
+class NavigationController extends GetxController {
+  static NavigationController get instance => Get.find();
+  RxInt _currentIndex = 0.obs;
 
-  @override
-  _NavigationMenuState createState() => _NavigationMenuState();
+  void updateIndex(int index) {
+    _currentIndex.value = index;
+  }
 }
 
-class _NavigationMenuState extends State<NavigationMenu> {
-  int _currentIndex = 0;
+class NavigationMenu extends StatelessWidget {
+  final controller = Get.put(NavigationController());
 
-  List<String> icons = [
+  final List<String> icons = [
     "assets/icons/navigation_menu/home.svg",
     "assets/icons/navigation_menu/saloon.svg",
     "assets/icons/navigation_menu/appointment.svg",
     "assets/icons/navigation_menu/favourite.svg",
     "assets/icons/navigation_menu/profile.svg",
   ];
-  List<String> Sicons = [
+  final List<String> Sicons = [
     "assets/icons/navigation_menu/Shome.svg",
     "assets/icons/navigation_menu/Ssaloon.svg",
     "assets/icons/navigation_menu/Sappointment.svg",
@@ -32,87 +37,84 @@ class _NavigationMenuState extends State<NavigationMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: IndexedStack(
-        index: _currentIndex,
-        children: const [
-          HomeScreen(),
-          Screen2(),
-          Screen1(),
-          Screen2(),
-          Screen2(),
-        ],
-      ),
+      body: Obx(() => IndexedStack(
+            index: controller._currentIndex.value,
+            children: const [
+              HomeScreen(),
+              SalonScreen(),
+              SalonScreen(),
+              FavouriteScreen(),
+              SalonScreen(),
+            ],
+          )),
       bottomNavigationBar: Container(
-        height: 68, // Set the desired height
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
+          height: 68, // Set the desired height
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+            ),
+            color: Color(0XFF4D2C5A),
+            boxShadow: [
+              BoxShadow(color: SColors.primary.withOpacity(0.1), blurRadius: 8),
+            ],
           ),
-          color: Color(0XFF4D2C5A),
-          boxShadow: [
-            BoxShadow(color: SColors.primary.withOpacity(0.1), blurRadius: 8),
-          ],
-        ),
-        child: Row(
-          children: List.generate(
-            5,
-            (index) => Expanded(
-              child: ClipPath(
-                clipper: VShapeClip(),
-                child: Container(
-                  height: 68,
-                  decoration: BoxDecoration(
-                    gradient: index == _currentIndex
-                        ? LinearGradient(
-                            colors: [
-                              SColors.bgMainScreens.withOpacity(0.3),
-                              SColors.primary.withOpacity(0.6),
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                          )
-                        : null,
-                  ),
-                  child: Column(
-                    children: [
-                      index == _currentIndex
-                          ? Column(
-                              children: [
-                                Container(
-                                  width: 50,
-                                  height: 5,
-                                  decoration: BoxDecoration(
-                                    color: SColors.bgMainScreens,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 17,
+          child: Obx(
+            () => Row(
+              children: List.generate(
+                5,
+                (index) => Expanded(
+                  child: ClipPath(
+                    clipper: VShapeClip(),
+                    child: GestureDetector(
+                      onTap: () => controller._currentIndex.value = index,
+                      child: Container(
+                        height: 68,
+                        decoration: BoxDecoration(
+                          gradient: controller._currentIndex.value == index
+                              ? LinearGradient(
+                                  colors: [
+                                    SColors.bgMainScreens.withOpacity(0.3),
+                                    SColors.primary.withOpacity(0.6),
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
                                 )
-                              ],
-                            )
-                          : const SizedBox(height: 22),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _currentIndex = index;
-                          });
-                        },
-                        child: index == _currentIndex
-                            ? SvgPicture.asset(
-                                Sicons[index].toString(),
-                              )
-                            : SvgPicture.asset(icons[index].toString()),
+                              : null,
+                        ),
+                        child: Column(
+                          children: [
+                            controller._currentIndex.value == index
+                                ? Column(
+                                    children: [
+                                      Container(
+                                        width: 50,
+                                        height: 5,
+                                        decoration: BoxDecoration(
+                                          color: SColors.bgMainScreens,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 17,
+                                      )
+                                    ],
+                                  )
+                                : const SizedBox(height: 22),
+                            SvgPicture.asset(
+                                controller._currentIndex.value == index
+                                    ? Sicons[index]
+                                    : icons[index]),
+                          ],
+                        ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }
@@ -132,27 +134,5 @@ class VShapeClip extends CustomClipper<Path> {
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
     return false;
-  }
-}
-
-class Screen1 extends StatelessWidget {
-  const Screen1({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("screeen 1"),
-      ),
-    );
-  }
-}
-
-class Screen2 extends StatelessWidget {
-  const Screen2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
   }
 }
