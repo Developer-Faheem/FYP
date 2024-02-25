@@ -67,6 +67,7 @@ class SColors {
       Color(0XFFA9A7A7); //used for lighter shade text
 
 //background Container colors
+  static const Color profileContainer = Color(0XFFA9A7A7);
 
 //button Colors
 

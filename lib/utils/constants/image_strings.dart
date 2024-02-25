@@ -24,4 +24,7 @@ class SImages {
   static const String tanning = "assets/images/services/tanning.png";
   static const String waxing = "assets/images/services/waxing.png";
   //static const String facial = "assets/images/services/facial.png";
+
+  //profile
+  static const String anonymous = "assets/images/profile/anonymous.jpg";
 }

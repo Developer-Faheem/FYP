@@ -52,4 +52,25 @@ class STextStrings {
   static const String reason3 = "Parking Availability";
   static const String reason4 = "I have Alternate Option";
   static const String reason5 = "Other";
+
+  //change password Screen
+  static const String changePasswordmsg =
+      "  Your new password must be different from \n previously used password.";
+
+  //profile details screen
+  static const String profileSubtitle =
+      "Only you are able to see your personal information, no one else.";
+
+  //help - FAQ screen
+  static const String faq1 = "What is Style Sage about?";
+  static const String ans1 =
+      "StyleSage is a plateform where Users can book the salon services in real time , considering the specific salon ratings and pricings without the hassale of long wait in queues  ";
+
+  static const String faq2 = "How to cancel Appointment?";
+  static const String ans2 =
+      "Inside the appointment tab in bottom navigation, go to the cancel appointment tab ,and cancel the appointment that you don't want anymore";
+
+  static const String faq3 = "How to check Transactions?";
+  static const String ans3 =
+      "Inside the appointment tab in bottom navigation, go to the completed appointment tab ,and check the transaction of the specific booking by reviewing the summary";
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/features/Personalization/screens/profile_main/profile_screen.dart';
 import 'package:stylesage/features/Shop/screens/appointment/appointment_screen.dart';
 import 'package:stylesage/features/Shop/screens/Favourite/FaviouriteScreen.dart';
 import 'package:stylesage/features/Shop/screens/Home/HomeScreen.dart';
@@ -45,7 +46,7 @@ class NavigationMenu extends StatelessWidget {
               SalonScreen(),
               AppointmentScreen(),
               FavouriteScreen(),
-              SalonScreen(),
+              ProfileScreen()
             ],
           )),
       bottomNavigationBar: Container(
