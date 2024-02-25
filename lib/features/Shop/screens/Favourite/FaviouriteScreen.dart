@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:stylesage/commons/widgets/cards/faviourite_card.dart';
+import 'package:stylesage/commons/widgets/custom_appbar1.dart';
 import 'package:stylesage/navigation_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
@@ -16,34 +16,14 @@ class FavouriteScreen extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           appBar: PreferredSize(
-            preferredSize: AppBar().preferredSize,
-            child: Container(
-              decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.grey, // Border color
-                    width: 1.0, // Border width
-                  ),
-                ),
-              ),
-              child: AppBar(
-                centerTitle: true,
-                title: Text(
-                  "Favourites",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                leading: GestureDetector(
-                  onTap: () => controller.updateIndex(0),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: SSizes.lg),
-                    child: SvgPicture.asset(
-                      "assets/icons/back_filled.svg",
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+              preferredSize: AppBar().preferredSize,
+              child: CustomAppbar1(
+                title: "Favourities",
+                isOutlined: true,
+                onPressedCallback: () {
+                  controller.updateIndex(0);
+                },
+              )),
           body: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: 5,

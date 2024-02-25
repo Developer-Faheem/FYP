@@ -5,8 +5,9 @@ import 'package:stylesage/commons/widgets/cards/saloon_card.dart';
 import 'package:stylesage/commons/widgets/services_rounded.dart';
 import 'package:stylesage/features/Shop/screens/Home/widgets/carousel.dart';
 import 'package:stylesage/features/Shop/screens/Home/widgets/data.dart';
-import 'package:stylesage/features/Shop/screens/Home/services_screen.dart';
+import 'package:stylesage/features/Shop/screens/Services/services_screen.dart';
 import 'package:stylesage/features/Shop/screens/Home/widgets/header.dart';
+import 'package:stylesage/navigation_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
@@ -16,6 +17,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = NavigationController.instance;
+
     return Container(
       color: SColors.bgMainScreens,
       child: SafeArea(
@@ -135,9 +138,12 @@ class HomeScreen extends StatelessWidget {
                             "Salons",
                             style: Theme.of(context).textTheme.headlineMedium,
                           ),
-                          Text(
-                            "See All",
-                            style: Theme.of(context).textTheme.bodySmall,
+                          GestureDetector(
+                            onTap: () => controller.updateIndex(1),
+                            child: Text(
+                              "See All",
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
                           ),
                         ],
                       ),

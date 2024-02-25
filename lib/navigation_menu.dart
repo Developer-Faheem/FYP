@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/features/Shop/screens/appointment/appointment_screen.dart';
 import 'package:stylesage/features/Shop/screens/Favourite/FaviouriteScreen.dart';
 import 'package:stylesage/features/Shop/screens/Home/HomeScreen.dart';
 import 'package:stylesage/features/Shop/screens/Saloons/saloon_screen.dart';
@@ -16,8 +17,6 @@ class NavigationController extends GetxController {
 }
 
 class NavigationMenu extends StatelessWidget {
-  final controller = Get.put(NavigationController());
-
   final List<String> icons = [
     "assets/icons/navigation_menu/home.svg",
     "assets/icons/navigation_menu/saloon.svg",
@@ -35,6 +34,8 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = NavigationController.instance;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx(() => IndexedStack(
@@ -42,7 +43,7 @@ class NavigationMenu extends StatelessWidget {
             children: const [
               HomeScreen(),
               SalonScreen(),
-              SalonScreen(),
+              AppointmentScreen(),
               FavouriteScreen(),
               SalonScreen(),
             ],

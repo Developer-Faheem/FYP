@@ -42,4 +42,14 @@ class STextStrings {
   ///forget Password Screen
   static const String forgetPassword = "Forgot Password?";
   static const String forgetSubtile = "Please enter your email";
+
+  //cancelAppointment Screen
+
+  static const String cancellaionQuestion =
+      "Please select the reason for cancellation:";
+  static const String reson1 = "Schedule Change";
+  static const String reason2 = "Weather Conditions";
+  static const String reason3 = "Parking Availability";
+  static const String reason4 = "I have Alternate Option";
+  static const String reason5 = "Other";
 }

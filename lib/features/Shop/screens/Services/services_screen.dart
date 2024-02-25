@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/custom_appbar1.dart';
 import 'package:stylesage/commons/widgets/services_rectangular.dart';
 import 'package:stylesage/features/Shop/screens/Home/widgets/data.dart';
 import 'package:stylesage/utils/constants/colors.dart';
@@ -15,24 +15,15 @@ class ServicesScreen extends StatelessWidget {
       color: SColors.bgMainScreens,
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Text(
-              "Services",
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            leading: GestureDetector(
-              onTap: () {
-                Get.back();
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(left: SSizes.lg),
-                child: SvgPicture.asset(
-                  "assets/icons/back_filled.svg",
-                ),
-              ),
-            ),
-          ),
+          appBar: PreferredSize(
+              preferredSize: AppBar().preferredSize,
+              child: CustomAppbar1(
+                isOutlined: false,
+                title: "Services",
+                onPressedCallback: () {
+                  Get.back();
+                },
+              )),
           body: Padding(
             padding: const EdgeInsets.only(
               top: SSizes.lg,
