@@ -12,7 +12,7 @@ class HelpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Container(
         color: SColors.bgMainScreens,
         child: SafeArea(
@@ -54,43 +54,37 @@ class HelpScreen extends StatelessWidget {
             body: TabBarView(
               children: [
                 //FAQ Tab
-                Padding(
-                  padding: const EdgeInsets.all(SSizes.lg),
-                  child: Column(
-                    children: [
-                      Theme(
-                        data: Theme.of(context).copyWith(
-                          dividerColor: Colors
-                              .transparent, // Set divider color to transparent
+                const SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.all(SSizes.lg),
+                    child: Column(
+                      children: [
+                        FaqWidget(
+                          question: STextStrings.faq1,
+                          answer: STextStrings.ans1,
                         ),
-                        child: ExpansionTile(
-                          title: Text(
-                            STextStrings.faq1,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          trailing: Icon(Icons.arrow_drop_down_circle),
-                          children: [
-                            Text(
-                              STextStrings.ans1,
-                              style: Theme.of(context).textTheme.bodySmall,
-                            )
-                          ],
+                        FaqWidget(
+                          question: STextStrings.faq2,
+                          answer: STextStrings.ans2,
                         ),
-                      ),
-                      ExpansionTile(
-                        title: Text(
-                          STextStrings.faq1,
-                          style: Theme.of(context).textTheme.bodyMedium,
+                        FaqWidget(
+                          question: STextStrings.faq3,
+                          answer: STextStrings.ans3,
                         ),
-                        trailing: Icon(Icons.arrow_drop_down_circle),
-                        children: [
-                          Text(
-                            STextStrings.ans1,
-                            style: Theme.of(context).textTheme.bodySmall,
-                          )
-                        ],
-                      )
-                    ],
+                        FaqWidget(
+                          question: STextStrings.faq1,
+                          answer: STextStrings.ans1,
+                        ),
+                        FaqWidget(
+                          question: STextStrings.faq1,
+                          answer: STextStrings.ans1,
+                        ),
+                        FaqWidget(
+                          question: STextStrings.faq1,
+                          answer: STextStrings.ans1,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
 
@@ -126,6 +120,39 @@ class HelpScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class FaqWidget extends StatelessWidget {
+  final String question;
+  final String answer;
+  const FaqWidget({
+    required this.answer,
+    required this.question,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        dividerColor: Colors.transparent, // Set divider color to transparent
+      ),
+      child: ExpansionTile(
+        title: Text(
+          STextStrings.faq1,
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+        trailing: const Icon(Icons.arrow_drop_down_circle),
+        iconColor: SColors.tertiary,
+        children: [
+          Text(
+            STextStrings.ans1,
+            style: Theme.of(context).textTheme.bodySmall,
+          )
+        ],
       ),
     );
   }

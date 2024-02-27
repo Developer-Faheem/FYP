@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
+import 'package:stylesage/commons/widgets/custom_dialog.dart';
 import 'package:stylesage/features/Personalization/screens/change_password/change_password_screen.dart';
 import 'package:stylesage/features/Personalization/screens/profile_main/widgets/profile_options_tile.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
+import 'package:stylesage/utils/constants/text_strings.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -36,7 +38,18 @@ class SettingsScreen extends StatelessWidget {
                   title: "Password Manager",
                 ),
                 ProfileOptionsTile(
-                  onPressedCallback: () {},
+                  onPressedCallback: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CustomDialog(
+                          title: "Delete Account",
+                          msg: STextStrings.deletePopup,
+                          icon: Icons.info_outline,
+                        );
+                      },
+                    );
+                  },
                   leadingIcon: "assets/icons/profile/deleteAccount.svg",
                   title: "Delete Account",
                 ),

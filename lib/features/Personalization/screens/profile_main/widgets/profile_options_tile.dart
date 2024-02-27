@@ -18,13 +18,15 @@ class ProfileOptionsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ListTile(
-          leading: SvgPicture.asset(leadingIcon),
-          trailing: GestureDetector(
-              onTap: onPressedCallback, child: Icon(Icons.arrow_forward_ios)),
-          title: Text(
-            title,
-            style: Theme.of(context).textTheme.headlineSmall,
+        GestureDetector(
+          onTap: onPressedCallback,
+          child: ListTile(
+            leading: SvgPicture.asset(leadingIcon),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            title: Text(
+              title,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
           ),
         ),
         const Divider(

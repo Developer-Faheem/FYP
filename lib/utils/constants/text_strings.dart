@@ -73,4 +73,17 @@ class STextStrings {
   static const String faq3 = "How to check Transactions?";
   static const String ans3 =
       "Inside the appointment tab in bottom navigation, go to the completed appointment tab ,and check the transaction of the specific booking by reviewing the summary";
+//reviews tab in salon profile
+
+  static const String review =
+      "Exceptional service and skilled stylists create a luxurious experience at this salon, where attention to detail and client satisfaction are top priorities.Outstanding salon with a trendy ambiance, friendly staff, and cutting-edge techniques";
+
+//salon about Us
+
+  static const String aboutus =
+      "Goes beyond the stars. You want your positive reviews to be detailed  Describes the customer Describes the customer experience  Describes the customer experience Describes the customer experience...  READ MORE";
+
+//dialog popups
+  static const String deletePopup =
+      'Are you sure you want to delete this account? This action cannot be undone.';
 }

@@ -19,7 +19,7 @@ class Carousel extends StatelessWidget {
         CarouselSlider(
           items: const [BannerPoster(), BannerPoster(), BannerPoster()],
           options: CarouselOptions(
-            //  autoPlay: true,
+            autoPlay: true,
             viewportFraction: 0.74,
             height: 128,
             onPageChanged: (index, _) => controller.updatePageIndicator(index),

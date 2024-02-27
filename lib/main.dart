@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:stylesage/features/Authentication/screens/splash/splash_screen.dart';
 import 'package:stylesage/features/Personalization/screens/profile_main/profile_screen.dart';
-import 'package:stylesage/features/Shop/screens/cancel_appointment.dart/CancelAppointmentScreen.dart';
+import 'package:stylesage/features/Shop/screens/SaloonProfile/salon_profile_screen.dart';
 import 'package:stylesage/navigation_menu.dart';
 import 'package:stylesage/utils/theme/theme.dart';
 
@@ -27,7 +26,7 @@ class App extends StatelessWidget {
       //     themeMode: ThemeMode.light,
       theme: SAppTheme.lightTheme,
       darkTheme: SAppTheme.darkTheme,
-      home: NavigationMenu(),
+      home: const ProfileScreen(),
     );
   }
 }
