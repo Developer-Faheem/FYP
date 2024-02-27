@@ -86,4 +86,7 @@ class STextStrings {
 //dialog popups
   static const String deletePopup =
       'Are you sure you want to delete this account? This action cannot be undone.';
+
+//bottomsheet messsage
+  static const String logoutMsg = "Are you sure you want to log out?";
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
+import 'package:stylesage/features/Personalization/screens/Logout/logout_bottomsheet.dart';
 import 'package:stylesage/features/Personalization/screens/help/help_screen.dart';
 import 'package:stylesage/features/Personalization/screens/privacy_policy/privacyPolicy_screen.dart';
 import 'package:stylesage/features/Personalization/screens/profile_details/profile_details._screen.dart';
@@ -71,7 +72,9 @@ class ProfileScreen extends StatelessWidget {
                   title: "Help",
                 ),
                 ProfileOptionsTile(
-                  onPressedCallback: () {},
+                  onPressedCallback: () {
+                    showCustomBottomSheet(context);
+                  },
                   leadingIcon: "assets/icons/profile/logout.svg",
                   title: "Log Out",
                 ),
