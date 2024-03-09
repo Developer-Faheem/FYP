@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/features/Personalization/screens/help/widgets/Faq_widget.dart';
 import 'package:stylesage/features/Personalization/screens/help/widgets/StyleSage_socials.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
@@ -76,12 +77,12 @@ class HelpScreen extends StatelessWidget {
                           answer: STextStrings.ans1,
                         ),
                         FaqWidget(
-                          question: STextStrings.faq1,
-                          answer: STextStrings.ans1,
+                          question: STextStrings.faq2,
+                          answer: STextStrings.ans2,
                         ),
                         FaqWidget(
-                          question: STextStrings.faq1,
-                          answer: STextStrings.ans1,
+                          question: STextStrings.faq3,
+                          answer: STextStrings.ans3,
                         ),
                       ],
                     ),
@@ -120,39 +121,6 @@ class HelpScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class FaqWidget extends StatelessWidget {
-  final String question;
-  final String answer;
-  const FaqWidget({
-    required this.answer,
-    required this.question,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-        dividerColor: Colors.transparent, // Set divider color to transparent
-      ),
-      child: ExpansionTile(
-        title: Text(
-          STextStrings.faq1,
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        trailing: const Icon(Icons.arrow_drop_down_circle),
-        iconColor: SColors.tertiary,
-        children: [
-          Text(
-            STextStrings.ans1,
-            style: Theme.of(context).textTheme.bodySmall,
-          )
-        ],
       ),
     );
   }

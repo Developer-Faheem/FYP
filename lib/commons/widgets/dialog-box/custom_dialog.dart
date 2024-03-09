@@ -5,12 +5,12 @@ import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
-class CustomDialog extends StatelessWidget {
+class CustomMsgDialog extends StatelessWidget {
   final String title;
   final String msg;
   final IconData icon;
 
-  CustomDialog({required this.icon, required this.msg, required this.title});
+  CustomMsgDialog({required this.icon, required this.msg, required this.title});
 
   @override
   Widget build(BuildContext context) {

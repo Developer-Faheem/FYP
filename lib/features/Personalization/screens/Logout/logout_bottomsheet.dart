@@ -10,7 +10,7 @@ class CustomBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: SColors.bgMainScreens,
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(SSizes.radiusLarge),
@@ -20,7 +20,7 @@ class CustomBottomSheet extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Center(
               child: Container(
             width: 120,
@@ -38,7 +38,7 @@ class CustomBottomSheet extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
-          Divider(
+          const Divider(
             color: SColors.dividersColor,
           ),
           Padding(
@@ -49,7 +49,7 @@ class CustomBottomSheet extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -66,7 +66,7 @@ class CustomBottomSheet extends StatelessWidget {
                 onPressedCallback: () {
                   Get.back();
                 },
-                buttonText: "Delete",
+                buttonText: "Yes",
                 height: 42,
                 width: 0.26,
                 textStyle: Theme.of(context).textTheme.titleLarge!,
@@ -82,7 +82,7 @@ class CustomBottomSheet extends StatelessWidget {
 void showCustomBottomSheet(BuildContext context) {
   showModalBottomSheet(
     context: context,
-    shape: RoundedRectangleBorder(
+    shape: const RoundedRectangleBorder(
       borderRadius:
           BorderRadius.vertical(top: Radius.circular(SSizes.radiusLarge)),
     ),

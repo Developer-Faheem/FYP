@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:stylesage/features/Shop/screens/Home/widgets/notification_dialog.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class Header extends StatelessWidget {
@@ -35,9 +36,19 @@ class Header extends StatelessWidget {
               ],
             ),
           ),
-          SvgPicture.asset(
-            'assets/icons/bell.svg',
-            height: 30.5,
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return const NotificationDialog();
+                },
+              );
+            },
+            child: SvgPicture.asset(
+              'assets/icons/bell.svg',
+              height: 30.5,
+            ),
           ),
         ],
       ),

@@ -5,6 +5,7 @@ import 'package:stylesage/features/Personalization/screens/Logout/logout_bottoms
 import 'package:stylesage/features/Personalization/screens/help/help_screen.dart';
 import 'package:stylesage/features/Personalization/screens/privacy_policy/privacyPolicy_screen.dart';
 import 'package:stylesage/features/Personalization/screens/profile_details/profile_details._screen.dart';
+import 'package:stylesage/features/Personalization/screens/profile_main/widgets/followers_dialog.dart';
 import 'package:stylesage/features/Personalization/screens/profile_main/widgets/profile_options_tile.dart';
 import 'package:stylesage/features/Personalization/screens/profile_main/widgets/profile_widget.dart';
 import 'package:stylesage/features/Personalization/screens/settings/SettingsScreen.dart';
@@ -35,8 +36,17 @@ class ProfileScreen extends StatelessWidget {
             padding: const EdgeInsets.all(SSizes.lg),
             child: Column(
               children: [
-                // widget comntaining profile image, name and followers
-                const ProfileWidget(),
+                // widget containing profile image, name and followers
+                GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return FollowersDialog();
+                        },
+                      );
+                    },
+                    child: const ProfileWidget()),
 
                 const SizedBox(
                   height: SSizes.spaceBtwSections,

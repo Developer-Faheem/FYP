@@ -56,7 +56,7 @@ class NavigationMenu extends StatelessWidget {
               topLeft: Radius.circular(25),
               topRight: Radius.circular(25),
             ),
-            color: Color(0XFF4D2C5A),
+            color: const Color(0XFF4D2C5A),
             boxShadow: [
               BoxShadow(color: SColors.primary.withOpacity(0.1), blurRadius: 8),
             ],
