@@ -89,4 +89,7 @@ class STextStrings {
 
 //bottomsheet messsage
   static const String logoutMsg = "Are you sure you want to log out?";
+
+//add review screen
+  static const String askForReview = "Your overall rating of the product";
 }

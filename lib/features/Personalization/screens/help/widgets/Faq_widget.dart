@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stylesage/utils/constants/colors.dart';
-import 'package:stylesage/utils/constants/text_strings.dart';
 
 class FaqWidget extends StatelessWidget {
   final String question;

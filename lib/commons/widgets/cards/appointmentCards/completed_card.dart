@@ -5,6 +5,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/shadow_button.dart';
 import 'package:stylesage/features/Shop/screens/Summary_Appointment/appointment_summary.dart';
+import 'package:stylesage/features/Shop/screens/add_review/add_review_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
@@ -148,8 +149,15 @@ class CompletedCard extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          ShadowButton(
-                              buttonText: "Add Review", height: 27, width: 92),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(() => const AddReviewScreen());
+                            },
+                            child: ShadowButton(
+                                buttonText: "Add Review",
+                                height: 27,
+                                width: 92),
+                          ),
                           const SizedBox(
                             width: SSizes.defaultSpacemedium,
                           ),
