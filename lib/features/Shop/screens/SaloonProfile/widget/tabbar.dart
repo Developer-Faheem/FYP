@@ -3,6 +3,7 @@ import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/tabbar_opti
 import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/tabbar_options/aboutus_tabbar.dart';
 import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/tabbar_options/gallery_tabbar.dart';
 import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/tabbar_options/packages_tabbar.dart';
+import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/tabbar_options/services_tabbar.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 
 class Tabbar extends StatelessWidget {
@@ -52,10 +53,10 @@ class Tabbar extends StatelessWidget {
               ),
             ],
           ),
-          const Expanded(
+          Expanded(
             child: TabBarView(
               children: [
-                Center(child: Text('Service')),
+                Center(child: ServicesTab()),
                 Center(
                   child: Package(),
                 ),

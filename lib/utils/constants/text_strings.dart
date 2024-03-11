@@ -92,4 +92,9 @@ class STextStrings {
 
 //add review screen
   static const String askForReview = "Your overall rating of the product";
+
+//success Screen
+
+  static const String success = "Payment Successful!";
+  static const String successmsg = "Your booking has been successfully done.";
 }

@@ -3,15 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
-import 'package:stylesage/features/Shop/screens/Booking_appointment/booking_appointment_screen.dart';
-import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/main_content.dart';
+import 'package:stylesage/features/Shop/screens/Booking_appointment/widget/contentA.dart';
 import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/reviews_widget.dart';
+import 'package:stylesage/features/Shop/screens/success/success_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
-class SalonProfileScreen extends StatelessWidget {
-  const SalonProfileScreen({super.key});
+class BookingAppointmentScreen extends StatelessWidget {
+  const BookingAppointmentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class SalonProfileScreen extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: MainContent(),
+                child: MainContentBooking(),
               ),
 
               //Ratings Widget
@@ -113,7 +113,7 @@ class SalonProfileScreen extends StatelessWidget {
                         width: 0.909,
                         height: 44,
                         onPressedCallback: () {
-                          Get.to(() => const BookingAppointmentScreen());
+                          Get.off(() => const SuccessScreen());
                         }),
                   ),
                 ),
