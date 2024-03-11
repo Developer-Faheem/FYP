@@ -11,6 +11,8 @@ class SliderController extends GetxController {
 }
 
 class SliderWithMarks extends StatelessWidget {
+  const SliderWithMarks({super.key});
+
   @override
   Widget build(BuildContext context) {
     final SliderController sliderController = Get.put(SliderController());
@@ -18,7 +20,7 @@ class SliderWithMarks extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
+        SizedBox(
           width: double.maxFinite,
           child: Obx(
             () => Slider(

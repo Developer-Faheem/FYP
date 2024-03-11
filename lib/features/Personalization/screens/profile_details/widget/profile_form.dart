@@ -3,9 +3,9 @@ import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class ProfileForm extends StatelessWidget {
-  var _value = -1;
+  final _value = -1;
 
-  ProfileForm({
+  const ProfileForm({
     super.key,
   });
 
@@ -22,9 +22,9 @@ class ProfileForm extends StatelessWidget {
         TextFormField(
           decoration: const InputDecoration(
             enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0XFF694D75)),
+              borderSide: BorderSide(color: Color(0XFF694D75)),
             ),
-            focusedBorder: const OutlineInputBorder(
+            focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: SColors.primary),
             ),
           ),
@@ -67,31 +67,31 @@ class ProfileForm extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(SSizes.xs),
-              borderSide: BorderSide(color: Color(0XFF694D75), width: 1.0),
+              borderSide: const BorderSide(color: Color(0XFF694D75), width: 1.0),
             ),
           ),
           value: _value,
           items: const [
             DropdownMenuItem(
+              value: -1,
               child: Text(
                 "-Select Gender-",
                 style: TextStyle(color: Colors.black),
               ),
-              value: -1,
             ),
             DropdownMenuItem(
+              value: 1,
               child: Text(
                 "Male",
                 style: TextStyle(color: Colors.black),
               ),
-              value: 1,
             ),
             DropdownMenuItem(
+              value: 2,
               child: Text(
                 "Female",
                 style: TextStyle(color: Colors.black),
               ),
-              value: 2,
             ),
           ],
           onChanged: (v) {},

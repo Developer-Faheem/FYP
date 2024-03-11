@@ -48,7 +48,7 @@ class AddReviewScreen extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: SingleChildScrollView(child: Content()),
+                child: const SingleChildScrollView(child: Content()),
               ),
 
               //Ratings Widget

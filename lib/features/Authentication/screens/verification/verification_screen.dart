@@ -13,9 +13,9 @@ class VerificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<FocusNode> _focusNodes =
+    final List<FocusNode> focusNodes =
         List.generate(4, (index) => FocusNode());
-    final List<TextEditingController> _controllers =
+    final List<TextEditingController> controllers =
         List.generate(4, (index) => TextEditingController());
 
     return Container(
@@ -59,8 +59,8 @@ class VerificationScreen extends StatelessWidget {
                                 width: 50,
                                 child: TextFormField(
                                   decoration: InputDecoration(
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                    enabledBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
                                         color: Color(0XFF694D75),
                                       ),
                                     ),
@@ -73,14 +73,14 @@ class VerificationScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
-                                  controller: _controllers[index],
-                                  focusNode: _focusNodes[index],
+                                  controller: controllers[index],
+                                  focusNode: focusNodes[index],
                                   keyboardType: TextInputType.number,
                                   textAlign: TextAlign.center,
                                   maxLength: 1,
                                   onChanged: (value) {
                                     if (value.isNotEmpty) {
-                                      _focusNodes[index].nextFocus();
+                                      focusNodes[index].nextFocus();
                                     }
                                   },
                                 ),

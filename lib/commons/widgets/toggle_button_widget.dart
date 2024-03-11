@@ -41,7 +41,7 @@ class ToggleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final toggleController = Get.put(ToggleController());
 
-    return Container(
+    return SizedBox(
       width: 54,
       height: 20,
       child: Switch(

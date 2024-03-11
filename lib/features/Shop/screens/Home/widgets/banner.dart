@@ -11,7 +11,7 @@ class BannerPoster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 8.0),
+      padding: const EdgeInsets.only(top: 8.0),
       child: Stack(children: [
         Container(
           height: 128,
@@ -21,7 +21,7 @@ class BannerPoster extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12.0),
-            child: Image(
+            child: const Image(
               image: AssetImage(SImages.banner_1),
               fit: BoxFit.cover,
             ),
@@ -37,7 +37,7 @@ class BannerPoster extends StatelessWidget {
                   SColors.primary.withOpacity(0.7),
                   Colors.white.withOpacity(0.2),
                 ],
-                stops: [
+                stops: const [
                   0.4, // Start at the beginning
                   1.0, // End at the end
                 ],
@@ -45,7 +45,7 @@ class BannerPoster extends StatelessWidget {
                 end: Alignment.centerRight,
               )),
         ),
-        Positioned(
+        const Positioned(
           left: 20,
           top: 10,
           child: RatingsWidget(rating: "Limited Offer", height: 22, width: 103),

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
-import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class NotificationDialog extends StatelessWidget {
-  const NotificationDialog();
+  const NotificationDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

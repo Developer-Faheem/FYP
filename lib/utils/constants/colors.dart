@@ -16,7 +16,7 @@ class SColors {
       Colors.white.withOpacity(0.6), // Lighter shade of white
       SColors.primary.withOpacity(0.2), // Lighter shade of primary color
     ],
-    stops: [0.6, 1.0],
+    stops: const [0.6, 1.0],
   );
 
   static Gradient smallOutlinedButtonGradient = LinearGradient(
@@ -26,7 +26,7 @@ class SColors {
       Colors.white.withOpacity(0.8), // Lighter shade of white
       SColors.secondary.withOpacity(0.3), // Lighter shade of primary color
     ],
-    stops: [0.05, 0.2],
+    stops: const [0.05, 0.2],
   );
 
   //box shadows
@@ -53,7 +53,7 @@ class SColors {
 
 //Effects
   static const Color pinkishEffectColor = Color(0XFFFDE7E5);
-  static const Color skyEffectColor = Color(0XFFF1BD4CA);
+  static const Color skyEffectColor = Color(0xfff1bd4ca);
 
 //background Colors
   static const Color bgSplashScreen = Color(0XFFFDF4FF);

@@ -10,7 +10,7 @@ class CustomMsgDialog extends StatelessWidget {
   final String msg;
   final IconData icon;
 
-  CustomMsgDialog({required this.icon, required this.msg, required this.title});
+  const CustomMsgDialog({super.key, required this.icon, required this.msg, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +41,15 @@ class CustomMsgDialog extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: SSizes.md),
+              const SizedBox(height: SSizes.md),
               Text(title, style: Theme.of(context).textTheme.headlineLarge),
-              SizedBox(height: SSizes.md),
+              const SizedBox(height: SSizes.md),
               Text(
                 msg,
                 style: Theme.of(context).textTheme.bodyMedium,
                 //textAlign: TextAlign.center,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -62,7 +62,7 @@ class CustomMsgDialog extends StatelessWidget {
                       onPressedCallback: () {
                         Get.back();
                       }),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   CustomButton(
                     onPressedCallback: () {
                       Get.back();

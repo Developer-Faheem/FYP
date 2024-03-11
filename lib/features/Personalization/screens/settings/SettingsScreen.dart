@@ -42,7 +42,7 @@ class SettingsScreen extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return CustomMsgDialog(
+                        return const CustomMsgDialog(
                           title: "Delete Account",
                           msg: STextStrings.deletePopup,
                           icon: Icons.info_outline,

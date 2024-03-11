@@ -48,7 +48,7 @@ class SalonProfileScreen extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: MainContent(),
+                child: const MainContent(),
               ),
 
               //Ratings Widget

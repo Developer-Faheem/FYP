@@ -53,7 +53,7 @@ class Tabbar extends StatelessWidget {
               ),
             ],
           ),
-          Expanded(
+          const Expanded(
             child: TabBarView(
               children: [
                 Center(child: ServicesTab()),

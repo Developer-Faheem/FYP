@@ -9,6 +9,8 @@ import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class MainContentBooking extends StatefulWidget {
+  const MainContentBooking({super.key});
+
   @override
   State<MainContentBooking> createState() => _MainContentBookingState();
 }

@@ -59,7 +59,7 @@ class SignUpScreen extends StatelessWidget {
                       height: SDeviceUtils.getScreenHeight() * 0.035,
                     ),
                     //social buttons
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SocialsButton(

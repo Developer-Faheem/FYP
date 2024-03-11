@@ -28,8 +28,8 @@ class ChangePassForm extends StatelessWidget {
                 'assets/icons/obscure.svg',
               ),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0XFF694D75)),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Color(0XFF694D75)),
             ),
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: SColors.primary),
@@ -54,8 +54,8 @@ class ChangePassForm extends StatelessWidget {
                 'assets/icons/obscure.svg',
               ),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0XFF694D75)),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Color(0XFF694D75)),
             ),
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: SColors.primary),
@@ -82,8 +82,8 @@ class ChangePassForm extends StatelessWidget {
                 'assets/icons/obscure.svg',
               ),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0XFF694D75)),
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Color(0XFF694D75)),
             ),
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: SColors.primary),

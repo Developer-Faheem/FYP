@@ -48,7 +48,7 @@ class BookingAppointmentScreen extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: MainContentBooking(),
+                child: const MainContentBooking(),
               ),
 
               //Ratings Widget

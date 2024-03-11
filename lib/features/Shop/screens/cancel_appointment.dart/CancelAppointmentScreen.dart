@@ -27,6 +27,8 @@ class CancelAppointmentScreen extends StatelessWidget {
     STextStrings.reason5,
   ];
 
+  CancelAppointmentScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -10,7 +10,7 @@ import 'package:stylesage/utils/constants/colors.dart';
 
 class NavigationController extends GetxController {
   static NavigationController get instance => Get.find();
-  RxInt _currentIndex = 0.obs;
+  final RxInt _currentIndex = 0.obs;
 
   void updateIndex(int index) {
     _currentIndex.value = index;
@@ -32,6 +32,8 @@ class NavigationMenu extends StatelessWidget {
     "assets/icons/navigation_menu/Sfavourite.svg",
     "assets/icons/navigation_menu/Sprofile.svg",
   ];
+
+  NavigationMenu({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -10,8 +10,8 @@ class CustomButton extends StatelessWidget {
   final TextStyle textStyle;
   final VoidCallback onPressedCallback;
 
-  CustomButton(
-      {required this.buttonText,
+  const CustomButton(
+      {super.key, required this.buttonText,
       required this.height,
       required this.width,
       required this.textStyle,
@@ -30,7 +30,7 @@ class CustomButton extends StatelessWidget {
               color: SColors.primary.withOpacity(0.27),
               spreadRadius: 4,
               blurRadius: 7,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
           borderRadius: BorderRadius.circular(SSizes.radiusLarge),

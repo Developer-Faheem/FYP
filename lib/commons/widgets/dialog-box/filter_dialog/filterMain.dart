@@ -6,7 +6,7 @@ import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class FilterDialogBox extends StatelessWidget {
-  FilterDialogBox();
+  const FilterDialogBox({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class FilterDialogBox extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: SSizes.lg),
-              SliderWithMarks(),
+              const SliderWithMarks(),
               const FilterTileWidget(
                 title: "Salon",
               ),

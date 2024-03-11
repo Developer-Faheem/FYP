@@ -7,6 +7,8 @@ import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
 
 class CustomBottomSheet extends StatelessWidget {
+  const CustomBottomSheet({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -87,7 +89,7 @@ void showCustomBottomSheet(BuildContext context) {
           BorderRadius.vertical(top: Radius.circular(SSizes.radiusLarge)),
     ),
     builder: (BuildContext context) {
-      return CustomBottomSheet();
+      return const CustomBottomSheet();
     },
   );
 }

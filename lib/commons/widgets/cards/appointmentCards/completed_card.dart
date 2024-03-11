@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/shadow_button.dart';
 import 'package:stylesage/features/Shop/screens/Summary_Appointment/appointment_summary.dart';
@@ -153,7 +152,7 @@ class CompletedCard extends StatelessWidget {
                             onTap: () {
                               Get.to(() => const AddReviewScreen());
                             },
-                            child: ShadowButton(
+                            child: const ShadowButton(
                                 buttonText: "Add Review",
                                 height: 27,
                                 width: 92),

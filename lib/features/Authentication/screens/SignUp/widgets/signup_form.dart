@@ -24,9 +24,9 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             decoration: const InputDecoration(
               enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Color(0XFF694D75)),
+                borderSide: BorderSide(color: Color(0XFF694D75)),
               ),
-              focusedBorder: const OutlineInputBorder(
+              focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: SColors.primary),
               ),
             ),
@@ -44,9 +44,9 @@ class SignUpForm extends StatelessWidget {
           TextFormField(
             decoration: const InputDecoration(
               enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Color(0XFF694D75)),
+                borderSide: BorderSide(color: Color(0XFF694D75)),
               ),
-              focusedBorder: const OutlineInputBorder(
+              focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: SColors.primary),
               ),
             ),

@@ -9,7 +9,6 @@ import 'package:stylesage/features/Personalization/screens/profile_main/widgets/
 import 'package:stylesage/features/Personalization/screens/profile_main/widgets/profile_options_tile.dart';
 import 'package:stylesage/features/Personalization/screens/profile_main/widgets/profile_widget.dart';
 import 'package:stylesage/features/Personalization/screens/settings/SettingsScreen.dart';
-import 'package:stylesage/features/Shop/screens/Home/HomeScreen.dart';
 import 'package:stylesage/navigation_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
@@ -44,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
-                          return FollowersDialog();
+                          return const FollowersDialog();
                         },
                       );
                     },

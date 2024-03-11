@@ -10,8 +10,8 @@ class OnboardingPage extends StatelessWidget {
   final double width;
   final double height;
 
-  OnboardingPage(
-      {this.height = 0.6,
+  const OnboardingPage(
+      {super.key, this.height = 0.6,
       this.width = 0.8,
       required this.imageUrl,
       required this.subtitle,

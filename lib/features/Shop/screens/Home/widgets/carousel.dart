@@ -40,10 +40,10 @@ class Carousel extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: controller.CarouselCurrentIndex.value == i
                           ? SColors.secondary
-                          : Color(0XFFA9A7A7),
+                          : const Color(0XFFA9A7A7),
                       shape: BoxShape.circle,
                     ),
-                    margin: EdgeInsets.only(right: 10),
+                    margin: const EdgeInsets.only(right: 10),
                   ),
               ],
             ),

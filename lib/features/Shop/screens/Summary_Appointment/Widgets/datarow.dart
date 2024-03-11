@@ -11,7 +11,7 @@ class DataRows extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: SSizes.xs),
+      padding: const EdgeInsets.symmetric(vertical: SSizes.xs),
       child: Row(
         children: [
           Expanded(

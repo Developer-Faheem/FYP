@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class Gallery extends StatelessWidget {
-  const Gallery({Key? key});
+  const Gallery({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

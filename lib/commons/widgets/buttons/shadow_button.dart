@@ -7,8 +7,8 @@ class ShadowButton extends StatelessWidget {
   final double width; //must be in percent 0-0 - 0.5 - 1.0
   final double height;
 
-  ShadowButton(
-      {required this.buttonText, required this.height, required this.width});
+  const ShadowButton(
+      {super.key, required this.buttonText, required this.height, required this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ShadowButton extends StatelessWidget {
             color: SColors.skyEffectColor.withOpacity(0.7),
             spreadRadius: 2,
             blurRadius: 2,
-            offset: Offset(0, 0),
+            offset: const Offset(0, 0),
           ),
         ],
         color: Colors.white,

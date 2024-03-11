@@ -7,7 +7,7 @@ import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class ServicesScreen extends StatelessWidget {
-  ServicesScreen({super.key});
+  const ServicesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

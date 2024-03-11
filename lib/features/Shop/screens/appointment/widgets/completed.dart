@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stylesage/commons/widgets/cards/appointmentCards/completed_card.dart';
-import 'package:stylesage/commons/widgets/cards/appointmentCards/upcoming_card.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class Completed extends StatelessWidget {

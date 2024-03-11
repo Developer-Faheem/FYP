@@ -8,7 +8,7 @@ class SocialsButton extends StatelessWidget {
   final String buttonText;
   final String iconPath;
 
-  SocialsButton({required this.buttonText, required this.iconPath});
+  const SocialsButton({super.key, required this.buttonText, required this.iconPath});
 
   @override
   Widget build(BuildContext context) {

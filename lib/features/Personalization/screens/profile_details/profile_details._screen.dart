@@ -3,10 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
-import 'package:stylesage/features/Personalization/screens/change_password/change_password_screen.dart';
 import 'package:stylesage/features/Personalization/screens/profile_details/widget/profile_form.dart';
 import 'package:stylesage/features/Personalization/screens/profile_main/profile_screen.dart';
-import 'package:stylesage/features/Personalization/screens/profile_main/widgets/profile_options_tile.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
@@ -51,7 +49,7 @@ class ProfileDetailsScreen extends StatelessWidget {
                   height: SSizes.spaceBtwItems,
                 ),
                 // form for details of users
-                ProfileForm(),
+                const ProfileForm(),
                 //update button
                 CustomButton(
                     buttonText: "Update Profile",

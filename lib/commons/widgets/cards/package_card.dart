@@ -36,7 +36,7 @@ class PackageCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: SSizes.defaultSpacemedium,
             ),
             Row(
@@ -51,7 +51,7 @@ class PackageCard extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: SSizes.defaultSpaceLarge,
                 ),
                 Expanded(
@@ -68,15 +68,15 @@ class PackageCard extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: SSizes.defaultSpaceSmall,
                         ),
-                        LocationWidget(
+                        const LocationWidget(
                           IconPath: 'assets/icons/pin.svg',
                           address:
                               "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: SSizes.defaultSpacemedium,
                         ),
                         Container(
@@ -99,7 +99,7 @@ class PackageCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: SSizes.defaultSpacemedium,
                         ),
                         Center(

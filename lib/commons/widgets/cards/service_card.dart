@@ -62,7 +62,7 @@ class ServiceCard extends StatelessWidget {
                     height: SSizes.defaultSpaceSmall,
                   ),
                   //time and distance
-                  TimeDistanceWidget(
+                  const TimeDistanceWidget(
                       iconPath: 'assets/icons/distance_time.svg',
                       text1: "15 min",
                       text2: "2 Km"),
@@ -70,7 +70,7 @@ class ServiceCard extends StatelessWidget {
                   const SizedBox(
                     height: SSizes.defaultSpaceSmall,
                   ),
-                  TimeDistanceWidget(
+                  const TimeDistanceWidget(
                       iconPath: 'assets/icons/clock.svg',
                       text1: "MON-SAT",
                       text2: "9:00 AM-3:30 PM jsjs shhs shsh"),

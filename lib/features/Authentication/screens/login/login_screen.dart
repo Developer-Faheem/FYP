@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                       height: SDeviceUtils.getScreenHeight() * 0.05,
                     ),
                     //social buttons
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SocialsButton(
@@ -101,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Get.off(() => SignUpScreen());
+                            Get.off(() => const SignUpScreen());
                           },
                           child: Text(
                             " Sign up ",

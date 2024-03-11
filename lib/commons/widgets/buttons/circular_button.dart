@@ -6,7 +6,7 @@ import 'package:stylesage/utils/constants/sizes.dart';
 class CircularButton extends StatelessWidget {
   final String iconPath;
   final VoidCallback onPressedCallback;
-  CircularButton({
+  const CircularButton({
     required this.iconPath,
     required this.onPressedCallback,
     super.key,

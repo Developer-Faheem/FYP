@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/service_selection_dropdown.dart';
 
 class ServicesTab extends StatelessWidget {
-  ServicesTab({super.key});
+  const ServicesTab({super.key});
 
   @override
   Widget build(BuildContext context) {

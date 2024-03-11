@@ -49,7 +49,7 @@ class _UpcomingCardState extends State<UpcomingCard> {
                       ),
                     ),
                     Obx(() => toggleController.isFaviourite.value
-                        ? SizedBox.shrink()
+                        ? const SizedBox.shrink()
                         : Padding(
                             padding: const EdgeInsets.only(
                                 top: SSizes.defaultSpacemedium),

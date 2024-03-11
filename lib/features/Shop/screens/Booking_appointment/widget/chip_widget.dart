@@ -7,7 +7,7 @@ import 'package:stylesage/utils/constants/sizes.dart';
 class ChipWidget extends StatelessWidget {
   final List<Map<String, String>> items;
 
-  ChipWidget(this.items);
+  const ChipWidget(this.items, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class ChipWidget extends StatelessWidget {
           child: Chip(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(SSizes.radiusLarge),
-              side: BorderSide(color: SColors.primary), // Set border color
+              side: const BorderSide(color: SColors.primary), // Set border color
             ),
             labelStyle: Theme.of(context).textTheme.labelSmall,
             padding: EdgeInsets.zero,

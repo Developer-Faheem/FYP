@@ -4,7 +4,7 @@ class PrivacyPolicyItem extends StatelessWidget {
   final String title;
   final String content;
 
-  const PrivacyPolicyItem({required this.title, required this.content});
+  const PrivacyPolicyItem({super.key, required this.title, required this.content});
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +15,12 @@ class PrivacyPolicyItem extends StatelessWidget {
           title,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        title != '' ? SizedBox(height: 8.0) : SizedBox(),
+        title != '' ? const SizedBox(height: 8.0) : const SizedBox(),
         Text(
           content,
           style: Theme.of(context).textTheme.labelSmall,
         ),
-        content != '' ? SizedBox(height: 16.0) : SizedBox(),
+        content != '' ? const SizedBox(height: 16.0) : const SizedBox(),
       ],
     );
   }

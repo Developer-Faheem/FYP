@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
@@ -36,6 +35,8 @@ class TimeSlotWrap extends StatelessWidget {
     '11:00 am',
     '11:00 am'
   ];
+
+  TimeSlotWrap({super.key});
 
   @override
   Widget build(BuildContext context) {

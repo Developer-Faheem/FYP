@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
+                      SizedBox(
                         width: SDeviceUtils.getScreenWidth() * 0.77,
                         height: 33,
                         child: TextFormField(
@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return FilterDialogBox();
+                              return const FilterDialogBox();
                             },
                           );
                         },
@@ -106,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => ServicesScreen());
+                          Get.to(() => const ServicesScreen());
                         },
                         child: Text(
                           "See All",
@@ -119,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: SSizes.sm,
                 ),
-                Container(
+                SizedBox(
                   height: 120,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,

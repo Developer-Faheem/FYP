@@ -11,8 +11,8 @@ class CustomOutlinedButton extends StatelessWidget {
   final VoidCallback onPressedCallback;
   final TextStyle textStyle;
 
-  CustomOutlinedButton(
-      {required this.buttonText,
+  const CustomOutlinedButton(
+      {super.key, required this.buttonText,
       required this.height,
       required this.width,
       required this.gradient,

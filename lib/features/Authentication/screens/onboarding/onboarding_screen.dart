@@ -37,12 +37,12 @@ class OnboardingScreen extends StatelessWidget {
                         controller: controller.pageController,
                         onPageChanged: controller.updatePageIndicator,
                         children: [
-                          OnboardingPage(
+                          const OnboardingPage(
                             imageUrl: SImages.onboarding_1,
                             title: STextStrings.title_1,
                             subtitle: STextStrings.subtitle_1,
                           ),
-                          OnboardingPage(
+                          const OnboardingPage(
                             imageUrl: SImages.onboarding_2,
                             title: STextStrings.title_2,
                             subtitle: STextStrings.subtitle_2,
@@ -51,7 +51,7 @@ class OnboardingScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                               vertical: SDeviceUtils.getScreenHeight() * 0.1,
                             ),
-                            child: OnboardingPage(
+                            child: const OnboardingPage(
                               imageUrl: SImages.onboarding_3,
                               title: STextStrings.title_3,
                               subtitle: STextStrings.subtitle_3,
