@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
+import 'package:stylesage/features/Shop/screens/SaloonProfile/salon_profile_screen.dart';
 import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/reviews_widget.dart';
 import 'package:stylesage/features/Shop/screens/add_review/widgets/content.dart';
 import 'package:stylesage/utils/constants/colors.dart';
@@ -111,7 +112,9 @@ class AddReviewScreen extends StatelessWidget {
                         textStyle: Theme.of(context).textTheme.titleLarge!,
                         width: 0.909,
                         height: 44,
-                        onPressedCallback: () {}),
+                        onPressedCallback: () {
+                          Get.off(() => const SalonProfileScreen());
+                        }),
                   ),
                 ),
               )

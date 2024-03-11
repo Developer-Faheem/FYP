@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
+import 'package:stylesage/commons/widgets/toggle_button_widget.dart';
 import 'package:stylesage/features/Shop/screens/cancel_appointment.dart/CancelAppointmentScreen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
@@ -16,9 +17,10 @@ class UpcomingCard extends StatefulWidget {
 }
 
 class _UpcomingCardState extends State<UpcomingCard> {
+  final toggleController = Get.put(ToggleController());
+
   @override
   Widget build(BuildContext context) {
-    bool _isToggled = false;
     return Container(
       height: 195,
       decoration: BoxDecoration(
@@ -40,33 +42,13 @@ class _UpcomingCardState extends State<UpcomingCard> {
                 ),
                 Column(
                   children: [
-                    Container(
-                      width: 54,
-                      height: 20,
-                      child: Switch(
-                        value: _isToggled,
-                        onChanged: (value) {
-                          setState(() {
-                            _isToggled = value;
-                          });
-                        },
-                        trackOutlineColor: MaterialStateProperty.resolveWith(
-                          (_isToggled) {
-                            if (_isToggled.contains(MaterialState.disabled)) {
-                              return SColors
-                                  .secondary; // Color of the track outline when the switch is disabled
-                            }
-                            return SColors
-                                .secondary; // Color of the track outline when the switch is enabled
-                          },
-                        ),
-                        activeTrackColor: SColors.secondary,
-                        activeColor: SColors.bgMainScreens,
-                        inactiveThumbColor: SColors.secondary,
-                        inactiveTrackColor: SColors.bgMainScreens,
+                    Obx(
+                      () => ToggleButton(
+                        isToggled: toggleController.isFaviourite.value,
+                        isFilter: false,
                       ),
                     ),
-                    _isToggled
+                    Obx(() => toggleController.isFaviourite.value
                         ? SizedBox.shrink()
                         : Padding(
                             padding: const EdgeInsets.only(
@@ -75,7 +57,7 @@ class _UpcomingCardState extends State<UpcomingCard> {
                               "Remind Me",
                               style: Theme.of(context).textTheme.labelMedium,
                             ),
-                          )
+                          ))
                   ],
                 ),
               ],

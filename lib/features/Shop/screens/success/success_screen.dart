@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
-import 'package:stylesage/features/Shop/screens/SaloonProfile/salon_profile_screen.dart';
 import 'package:stylesage/features/Shop/screens/Summary_Appointment/appointment_summary.dart';
 import 'package:stylesage/navigation_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
@@ -31,7 +30,7 @@ class SuccessScreen extends StatelessWidget {
                 height: SDeviceUtils.getScreenHeight() * 0.3,
               ),
               SvgPicture.asset("assets/icons/success.svg"),
-              SizedBox(
+              const SizedBox(
                 height: SSizes.md,
               ),
               Text(

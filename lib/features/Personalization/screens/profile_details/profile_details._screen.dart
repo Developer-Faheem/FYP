@@ -5,6 +5,7 @@ import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
 import 'package:stylesage/features/Personalization/screens/change_password/change_password_screen.dart';
 import 'package:stylesage/features/Personalization/screens/profile_details/widget/profile_form.dart';
+import 'package:stylesage/features/Personalization/screens/profile_main/profile_screen.dart';
 import 'package:stylesage/features/Personalization/screens/profile_main/widgets/profile_options_tile.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
@@ -57,7 +58,9 @@ class ProfileDetailsScreen extends StatelessWidget {
                     textStyle: Theme.of(context).textTheme.titleLarge!,
                     width: 0.909,
                     height: 44,
-                    onPressedCallback: () {}),
+                    onPressedCallback: () {
+                      Get.to(() => const ProfileScreen());
+                    }),
               ],
             ),
           ),

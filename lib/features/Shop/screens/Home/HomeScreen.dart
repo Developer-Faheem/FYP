@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/cards/saloon_card.dart';
+import 'package:stylesage/commons/widgets/dialog-box/filter_dialog/filterMain.dart';
 import 'package:stylesage/commons/widgets/services_rounded.dart';
 import 'package:stylesage/features/Shop/screens/Home/widgets/carousel.dart';
 import 'package:stylesage/features/Shop/screens/Home/widgets/data.dart';
@@ -65,8 +66,18 @@ class HomeScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ),
-                      SvgPicture.asset(
-                        'assets/icons/filter.svg',
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return FilterDialogBox();
+                            },
+                          );
+                        },
+                        child: SvgPicture.asset(
+                          'assets/icons/filter.svg',
+                        ),
                       ),
                     ],
                   ),

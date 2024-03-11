@@ -4,7 +4,6 @@ import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
 import 'package:stylesage/features/Shop/screens/SaloonProfile/widget/tabbar.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
-import 'package:stylesage/utils/device/device_utilities.dart';
 
 class MainContent extends StatelessWidget {
   const MainContent({
