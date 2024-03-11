@@ -54,7 +54,7 @@ class ServiceCard extends StatelessWidget {
                     height: SSizes.defaultSpaceSmall,
                   ),
                   const LocationWidget(
-                      IconPath: 'assets/icons/location.svg',
+                      iconPath: 'assets/icons/location.svg',
                       address:
                           "0539 NYC, Street #98 Maine# wood 04...Ingelroad"),
 

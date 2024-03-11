@@ -25,6 +25,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   smooth_page_indicator: ^1.1.0
   multiselect_dropdown_flutter: ^0.0.7
+  url_launcher: ^6.2.5
   #url_launcher
   #intl
   #http

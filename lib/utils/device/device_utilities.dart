@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SDeviceUtils {
+  static Future<void> launch(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   // static void hideKeyboard(BuildContext context) {
   //   FocusScope.of(context).requestFocus(FocusNode());
   // }
@@ -100,13 +111,5 @@ class SDeviceUtils {
 
   // static bool isAndroid() {
   //   return Platform.isIOS;
-  // }
-
-  // static void launchUrl(String url) async {
-  //   if (await canLaunchUrlString(url)) {
-  //     await launchUrlString(url);
-  //   } else {
-  //     throw 'could not launch $url';
-  //   }
   // }
 }

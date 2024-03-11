@@ -72,7 +72,7 @@ class PackageCard extends StatelessWidget {
                           height: SSizes.defaultSpaceSmall,
                         ),
                         const LocationWidget(
-                          IconPath: 'assets/icons/pin.svg',
+                          iconPath: 'assets/icons/pin.svg',
                           address:
                               "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
                         ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/features/Authentication/screens/splash/splash_screen.dart';
-import 'package:stylesage/navigation_menu.dart';
 import 'package:stylesage/utils/theme/theme.dart';
 
 void main() {
@@ -10,8 +9,6 @@ void main() {
   //Todo: await native splash
   //Todo: initilize the firebase
   //Todo: initilize the Authentication
-  final controller =
-      Get.put(NavigationController()); //initilizing the navigation controller
   runApp(const App());
 }
 
@@ -21,9 +18,9 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      //     themeMode: ThemeMode.light,
+      debugShowCheckedModeBanner: false,
       theme: SAppTheme.lightTheme,
-      darkTheme: SAppTheme.darkTheme,
+      // darkTheme: SAppTheme.darkTheme,
       home: const SplashScreen(),
     );
   }

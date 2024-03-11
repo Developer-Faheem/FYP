@@ -3,11 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class LocationWidget extends StatelessWidget {
-  final String IconPath;
+  final String iconPath;
   final String address;
   const LocationWidget({
     required this.address,
-    required this.IconPath,
+    required this.iconPath,
     super.key,
   });
 
@@ -17,7 +17,7 @@ class LocationWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SvgPicture.asset(
-          IconPath,
+          iconPath,
           height: SSizes.iconXS,
         ),
         const SizedBox(

@@ -3,9 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/features/Personalization/screens/help/widgets/Faq_widget.dart';
 import 'package:stylesage/features/Personalization/screens/help/widgets/StyleSage_socials.dart';
+import 'package:stylesage/utils/constants/api_constants.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
+import 'package:stylesage/utils/device/device_utilities.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
@@ -95,17 +98,26 @@ class HelpScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       StyleSageSocials(
-                        onPressedCallback: () {},
+                        onPressedCallback: () async {
+                          Uri uri = Uri.parse(SAPIConstants.facebook);
+                          await SDeviceUtils.launch(uri);
+                        },
                         leading: "assets/icons/profile/facebook.svg",
                         title: "Facebook",
                       ),
                       StyleSageSocials(
-                        onPressedCallback: () {},
+                        onPressedCallback: () async {
+                          Uri uri = Uri.parse(SAPIConstants.instagram);
+                          await SDeviceUtils.launch(uri);
+                        },
                         leading: "assets/icons/profile/instagram.svg",
                         title: "Instagram",
                       ),
                       StyleSageSocials(
-                        onPressedCallback: () {},
+                        onPressedCallback: () async {
+                          Uri uri = Uri.parse(SAPIConstants.linkedin);
+                          await SDeviceUtils.launch(uri);
+                        },
                         leading: "assets/icons/profile/linkedin.svg",
                         title: "Linkedin",
                       ),

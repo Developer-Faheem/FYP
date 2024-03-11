@@ -27,21 +27,22 @@ class StyleSageSocials extends StatelessWidget {
             width: 1.0,
           ),
         ),
-        child: ListTile(
-          leading: SvgPicture.asset(
-            leading,
-            width: 30.0,
-            height: 30.0,
-          ),
-          trailing: GestureDetector(
-              onTap: onPressedCallback,
-              child: const Icon(
-                Icons.arrow_forward_ios,
-                size: SSizes.iconSm,
-              )),
-          title: Text(
-            title,
-            style: Theme.of(context).textTheme.headlineSmall,
+        child: GestureDetector(
+          onTap: onPressedCallback,
+          child: ListTile(
+            leading: SvgPicture.asset(
+              leading,
+              width: 30.0,
+              height: 30.0,
+            ),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              size: SSizes.iconSm,
+            ),
+            title: Text(
+              title,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
           ),
         ),
       ),

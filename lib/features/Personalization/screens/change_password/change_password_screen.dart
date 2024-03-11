@@ -26,32 +26,36 @@ class ChangePasswordScreen extends StatelessWidget {
                   Get.back();
                 },
               )),
-          body: Padding(
-            padding: const EdgeInsets.all(SSizes.lg),
-            child: Column(
-              children: [
-                //chnage password msg
-                Text(
-                  STextStrings.changePasswordmsg,
-                  style: Theme.of(context).textTheme.bodySmall,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: SSizes.spaceBtwSections,
-                ),
-                //change password form
-                const ChangePassForm(),
-                SizedBox(
-                  height: SDeviceUtils.getScreenHeight() * 0.31,
-                ),
-                //confirmation button
-                CustomButton(
-                    buttonText: "Continue",
-                    textStyle: Theme.of(context).textTheme.titleLarge!,
-                    width: 0.909,
-                    height: 44,
-                    onPressedCallback: () {}),
-              ],
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(SSizes.lg),
+              child: Column(
+                children: [
+                  //chnage password msg
+                  Text(
+                    STextStrings.changePasswordmsg,
+                    style: Theme.of(context).textTheme.bodySmall,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: SSizes.spaceBtwSections,
+                  ),
+                  //change password form
+                  const ChangePassForm(),
+                  SizedBox(
+                    height: SDeviceUtils.getScreenHeight() * 0.31,
+                  ),
+                  //confirmation button
+                  CustomButton(
+                      buttonText: "Continue",
+                      textStyle: Theme.of(context).textTheme.titleLarge!,
+                      width: 0.909,
+                      height: 44,
+                      onPressedCallback: () {
+                        Get.back();
+                      }),
+                ],
+              ),
             ),
           ),
         ),

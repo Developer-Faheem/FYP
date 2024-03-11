@@ -48,7 +48,9 @@ class SignUpScreen extends StatelessWidget {
                           textStyle: Theme.of(context).textTheme.titleLarge!,
                           width: 0.909,
                           height: 44,
-                          onPressedCallback: () {}),
+                          onPressedCallback: () {
+                            Get.to(() => const LoginScreen());
+                          }),
                     ),
                     SizedBox(
                       height: SDeviceUtils.getScreenHeight() * 0.035,

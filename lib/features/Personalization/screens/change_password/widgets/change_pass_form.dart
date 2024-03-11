@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:stylesage/utils/constants/colors.dart';
+import 'package:stylesage/commons/widgets/textFields/custom_textfield.dart';
+import 'package:stylesage/commons/widgets/textFields/password_field.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class ChangePassForm extends StatelessWidget {
@@ -19,24 +19,7 @@ class ChangePassForm extends StatelessWidget {
         const SizedBox(
           height: SSizes.defaultSpaceSmall,
         ),
-        TextFormField(
-          obscureText: true,
-          decoration: InputDecoration(
-            suffixIcon: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SvgPicture.asset(
-                'assets/icons/obscure.svg',
-              ),
-            ),
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0XFF694D75)),
-            ),
-            focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: SColors.primary),
-            ),
-          ),
-          style: Theme.of(context).textTheme.displaySmall,
-        ),
+        const CustomTextField(),
         const SizedBox(
           height: SSizes.spaceBtwSections,
         ),
@@ -45,24 +28,7 @@ class ChangePassForm extends StatelessWidget {
         const SizedBox(
           height: SSizes.defaultSpaceSmall,
         ),
-        TextFormField(
-          obscureText: true,
-          decoration: InputDecoration(
-            suffixIcon: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SvgPicture.asset(
-                'assets/icons/obscure.svg',
-              ),
-            ),
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0XFF694D75)),
-            ),
-            focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: SColors.primary),
-            ),
-          ),
-          style: Theme.of(context).textTheme.displaySmall,
-        ),
+        const CustomPasswordField(),
         const SizedBox(
           height: SSizes.spaceBtwSections,
         ),
@@ -73,24 +39,7 @@ class ChangePassForm extends StatelessWidget {
         const SizedBox(
           height: SSizes.defaultSpaceSmall,
         ),
-        TextFormField(
-          obscureText: true,
-          decoration: InputDecoration(
-            suffixIcon: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SvgPicture.asset(
-                'assets/icons/obscure.svg',
-              ),
-            ),
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0XFF694D75)),
-            ),
-            focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: SColors.primary),
-            ),
-          ),
-          style: Theme.of(context).textTheme.displaySmall,
-        ),
+        const CustomPasswordField(),
       ],
     );
   }

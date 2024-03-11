@@ -37,7 +37,7 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = NavigationController.instance;
+    final controller = Get.put(NavigationController());
 
     return Scaffold(
       backgroundColor: Colors.white,

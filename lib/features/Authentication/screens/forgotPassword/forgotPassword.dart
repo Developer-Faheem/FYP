@@ -3,6 +3,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/Login-signup/header.dart';
+import 'package:stylesage/commons/widgets/textFields/custom_textfield.dart';
 import 'package:stylesage/navigation_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
@@ -42,23 +43,13 @@ class ForgotPassword extends StatelessWidget {
                         const SizedBox(
                           height: SSizes.defaultSpaceSmall,
                         ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0XFF694D75)),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: SColors.primary),
-                            ),
-                          ),
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
+                        const CustomTextField()
                       ],
                     ),
                     SizedBox(
                       height: SDeviceUtils.getScreenHeight() * 0.085,
                     ),
-                    //verify
+                    //send
                     Center(
                       child: CustomButton(
                           buttonText: "Send",

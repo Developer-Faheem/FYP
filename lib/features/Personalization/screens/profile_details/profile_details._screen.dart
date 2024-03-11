@@ -57,7 +57,7 @@ class ProfileDetailsScreen extends StatelessWidget {
                     width: 0.909,
                     height: 44,
                     onPressedCallback: () {
-                      Get.to(() => const ProfileScreen());
+                      Get.back();
                     }),
               ],
             ),
