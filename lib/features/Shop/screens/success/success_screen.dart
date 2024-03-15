@@ -49,7 +49,7 @@ class SuccessScreen extends StatelessWidget {
               ),
               CustomButton(
                 onPressedCallback: () {
-                  Get.offAll(const AppointmentSummaryScreen());
+                  Get.to(const AppointmentSummaryScreen());
                 },
                 buttonText: "Review Summary",
                 textStyle: Theme.of(context).textTheme.titleLarge!,
