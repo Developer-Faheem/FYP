@@ -13,8 +13,7 @@ class VerificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<FocusNode> focusNodes =
-        List.generate(4, (index) => FocusNode());
+    final List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
     final List<TextEditingController> controllers =
         List.generate(4, (index) => TextEditingController());
 

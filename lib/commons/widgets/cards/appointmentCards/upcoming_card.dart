@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/toggle_button_widget.dart';
-import 'package:stylesage/features/Shop/screens/cancel_appointment.dart/CancelAppointmentScreen.dart';
+import 'package:stylesage/features/User_side/Shop/screens/cancel_appointment.dart/CancelAppointmentScreen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 

@@ -5,7 +5,7 @@ import 'package:stylesage/commons/widgets/Location_widget.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/ratings_widget.dart';
 import 'package:stylesage/commons/widgets/time_distance_widget.dart';
-import 'package:stylesage/features/Shop/screens/SaloonProfile/salon_profile_screen.dart';
+import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/salon_profile_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 

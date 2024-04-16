@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/shadow_button.dart';
-import 'package:stylesage/features/Shop/screens/Summary_Appointment/appointment_summary.dart';
-import 'package:stylesage/features/Shop/screens/add_review/add_review_screen.dart';
+import 'package:stylesage/features/User_side/Shop/screens/Summary_Appointment/appointment_summary.dart';
+import 'package:stylesage/features/User_side/Shop/screens/add_review/add_review_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
