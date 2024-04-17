@@ -6,11 +6,13 @@ import 'package:stylesage/features/User_side/Shop/screens/appointment/appointmen
 import 'package:stylesage/features/User_side/Shop/screens/Favourite/FaviouriteScreen.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Home/HomeScreen.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Saloons/saloon_screen.dart';
+import 'package:stylesage/features/Vendor_side/Salon/screens/appointments/appointment_screen.dart';
+import 'package:stylesage/features/Vendor_side/Salon/screens/home/home_screen.dart';
+import 'package:stylesage/user_nav_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
-import 'package:stylesage/vendor_nav_menu.dart';
 
-class NavigationController extends GetxController {
-  static NavigationController get instance => Get.find();
+class VendorNavigationController extends GetxController {
+  static VendorNavigationController get instance => Get.find();
   final RxInt _currentIndex = 0.obs;
 
   void updateIndex(int index) {
@@ -18,41 +20,41 @@ class NavigationController extends GetxController {
   }
 }
 
-class UserNavigationMenu extends StatelessWidget {
+class VendorNavigationMenu extends StatelessWidget {
   final List<String> icons = [
     "assets/icons/navigation_menu/home.svg",
-    "assets/icons/navigation_menu/saloon.svg",
     "assets/icons/navigation_menu/appointment.svg",
-    "assets/icons/navigation_menu/favourite.svg",
+    "assets/icons/navigation_menu/serviceInfo.svg",
     "assets/icons/navigation_menu/profile.svg",
   ];
   final List<String> Sicons = [
     "assets/icons/navigation_menu/Shome.svg",
-    "assets/icons/navigation_menu/Ssaloon.svg",
     "assets/icons/navigation_menu/Sappointment.svg",
-    "assets/icons/navigation_menu/Sfavourite.svg",
+    "assets/icons/navigation_menu/sserviceInfo.svg",
     "assets/icons/navigation_menu/Sprofile.svg",
   ];
 
-  UserNavigationMenu({super.key});
+  VendorNavigationMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(NavigationController());
     final vendorController = Get.put(VendorNavigationController());
+    final controller = Get.put(NavigationController());
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Obx(() => IndexedStack(
-            index: controller._currentIndex.value,
-            children: const [
-              HomeScreen(),
-              SalonScreen(),
-              AppointmentScreen(),
-              FavouriteScreen(),
-              ProfileScreen()
-            ],
-          )),
+      backgroundColor: SColors.bgMainScreens,
+      body: Obx(
+        () => IndexedStack(
+          index: vendorController._currentIndex.value,
+          children: [
+            VendorHomeScreen(),
+            VendorAppointmentScreen(),
+            AppointmentScreen(),
+            FavouriteScreen(),
+            //  ProfileScreen()
+          ],
+        ),
+      ),
       bottomNavigationBar: Container(
           height: 68, // Set the desired height
           decoration: BoxDecoration(
@@ -68,29 +70,30 @@ class UserNavigationMenu extends StatelessWidget {
           child: Obx(
             () => Row(
               children: List.generate(
-                5,
+                4,
                 (index) => Expanded(
                   child: ClipPath(
                     clipper: VShapeClip(),
                     child: GestureDetector(
-                      onTap: () => controller._currentIndex.value = index,
+                      onTap: () => vendorController._currentIndex.value = index,
                       child: Container(
                         height: 68,
                         decoration: BoxDecoration(
-                          gradient: controller._currentIndex.value == index
-                              ? LinearGradient(
-                                  colors: [
-                                    SColors.bgMainScreens.withOpacity(0.3),
-                                    SColors.primary.withOpacity(0.6),
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                )
-                              : null,
+                          gradient:
+                              vendorController._currentIndex.value == index
+                                  ? LinearGradient(
+                                      colors: [
+                                        SColors.bgMainScreens.withOpacity(0.3),
+                                        SColors.primary.withOpacity(0.6),
+                                      ],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                    )
+                                  : null,
                         ),
                         child: Column(
                           children: [
-                            controller._currentIndex.value == index
+                            vendorController._currentIndex.value == index
                                 ? Column(
                                     children: [
                                       Container(
@@ -109,7 +112,7 @@ class UserNavigationMenu extends StatelessWidget {
                                   )
                                 : const SizedBox(height: 22),
                             SvgPicture.asset(
-                                controller._currentIndex.value == index
+                                vendorController._currentIndex.value == index
                                     ? Sicons[index]
                                     : icons[index]),
                           ],
@@ -129,10 +132,11 @@ class VShapeClip extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.moveTo(size.width / 1.2, 0);
+
+    path.moveTo(size.width / 1.32, 0);
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
-    path.lineTo(size.width / 5.8, 0);
+    path.lineTo(size.width / 4.1, 0);
     path.close();
     return path;
   }

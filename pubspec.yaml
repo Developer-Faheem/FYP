@@ -51,6 +51,7 @@ flutter:
   assets:
     - assets/fonts/
     - assets/icons/
+    - assets/icons/appointmentCardVendor/
     - assets/icons/services/
     - assets/icons/profile/
     - assets/icons/navigation_menu/
