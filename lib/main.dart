@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/features/Onboarding/screens/splash/splash_screen.dart';
+import 'package:stylesage/user_nav_menu.dart';
 import 'package:stylesage/utils/theme/theme.dart';
 import 'package:stylesage/vendor_nav_menu.dart';
 

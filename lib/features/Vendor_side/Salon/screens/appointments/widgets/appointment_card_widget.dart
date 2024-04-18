@@ -3,6 +3,7 @@ import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/appointments/widgets/bookingInfoRow_widget.dart';
 import 'package:stylesage/utils/constants/colors.dart';
+import 'package:stylesage/utils/constants/image_strings.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class AppointmentCard extends StatelessWidget {
@@ -37,8 +38,7 @@ class AppointmentCard extends StatelessWidget {
                     CircleAvatar(
                       radius: 28,
                       // backgroundColor: Colors.grey,
-                      backgroundImage:
-                          AssetImage('assets/images/profile/anonymous.jpg'),
+                      backgroundImage: AssetImage(SImages.anonymous),
                     ),
                     SizedBox(
                       width: SSizes.md,

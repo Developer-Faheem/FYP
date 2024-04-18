@@ -8,6 +8,8 @@ import 'package:stylesage/features/User_side/Shop/screens/Home/HomeScreen.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Saloons/saloon_screen.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/appointments/appointment_screen.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/home/home_screen.dart';
+import 'package:stylesage/features/Vendor_side/Personalization/screens/profile_main/vendor_profile_screen.dart';
+import 'package:stylesage/features/Vendor_side/Salon/screens/serviceInfo_screen/service_info_screen.dart';
 import 'package:stylesage/user_nav_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 
@@ -49,8 +51,8 @@ class VendorNavigationMenu extends StatelessWidget {
           children: [
             VendorHomeScreen(),
             VendorAppointmentScreen(),
-            AppointmentScreen(),
-            FavouriteScreen(),
+            VendorServiceInfoScreen(),
+            VendorProfileScreen()
             //  ProfileScreen()
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:stylesage/utils/constants/colors.dart';
+import 'package:stylesage/utils/constants/image_strings.dart';
 
 class ReviewTile extends StatelessWidget {
   const ReviewTile({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class ReviewTile extends StatelessWidget {
         children: [
           const CircleAvatar(
             backgroundColor: Colors.grey,
-            backgroundImage: AssetImage('assets/images/profile/anonymous.jpg'),
+            backgroundImage: AssetImage(SImages.anonymous),
           ),
           const SizedBox(width: 8),
           Expanded(
@@ -47,7 +48,7 @@ class ReviewTile extends StatelessWidget {
                               color: SColors.tertiary,
                             ),
                         onRatingUpdate: (rating) {}),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Text(

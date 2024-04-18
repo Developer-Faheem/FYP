@@ -27,4 +27,9 @@ class SImages {
 
   //profile
   static const String anonymous = "assets/images/profile/anonymous.jpg";
+
+  //***************************** Vendor Side *******************************/
+  static const String service = "assets/images/appointment/service.png";
+  static const String gallery = "assets/images/appointment/gallery.png";
+  static const String package = "assets/images/appointment/package.png";
 }

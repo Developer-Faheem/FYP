@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+import 'package:stylesage/features/Vendor_side/Salon/screens/notificationScreen/widget/notification_header_widget.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/notificationScreen/widget/notification_tile_widget.dart';
-import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -11,37 +9,14 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: Text(
-            "Hello, Enclave Haven",
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(
-              right: SSizes.lg,
-            ),
-            child: GestureDetector(
-              onTap: () {
-                Get.back();
-              },
-              child: SvgPicture.asset(
-                'assets/icons/bell.svg',
-                height: 30.5,
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: PreferredSize(
+          preferredSize: AppBar().preferredSize, child: NotificationHeader()),
       body: Padding(
         padding: const EdgeInsets.only(left: SSizes.lg, right: SSizes.lg),
         child: Column(
           children: [
             const SizedBox(height: SSizes.defaultSpacemedium),
+            //new notifications
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -64,7 +39,7 @@ class NotificationScreen extends StatelessWidget {
                 },
               ),
             ),
-            //earlier notification
+            //earlier notifications
             const SizedBox(height: SSizes.defaultSpacemedium),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -77,7 +52,6 @@ class NotificationScreen extends StatelessWidget {
               ],
             ),
             Expanded(
-              //height: 250,
               child: ListView.builder(
                 itemCount: 6,
                 itemBuilder: (context, index) {
