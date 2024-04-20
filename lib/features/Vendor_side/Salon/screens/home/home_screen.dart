@@ -6,7 +6,7 @@ import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class VendorHomeScreen extends StatelessWidget {
-  VendorHomeScreen({Key? key});
+  const VendorHomeScreen({Key? key2}) : super(key: key2);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class VendorHomeScreen extends StatelessWidget {
                 childAspectRatio: 1.2,
                 mainAxisSpacing: 16,
                 crossAxisSpacing: 16,
-                children: [
+                children: const [
                   GridItemWidget(
                     icon: "assets/icons/earning.svg",
                     figure: 'Rs 1,259',

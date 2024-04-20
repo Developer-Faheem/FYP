@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
 import 'package:stylesage/features/User_side/Personalization/screens/profile_details/widget/profile_form.dart';
-import 'package:stylesage/features/User_side/Personalization/screens/profile_main/profile_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';

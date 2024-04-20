@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
+// ignore: must_be_immutable
 class TemporaryWidget extends StatelessWidget {
   String msg;
   String image;

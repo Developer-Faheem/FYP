@@ -4,13 +4,14 @@ import 'package:stylesage/features/Vendor_side/Salon/screens/notificationScreen/
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class NotificationScreen extends StatelessWidget {
-  NotificationScreen({Key? key});
+  const NotificationScreen({Key? key4}) : super(key: key4);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: AppBar().preferredSize, child: NotificationHeader()),
+          preferredSize: AppBar().preferredSize,
+          child: const NotificationHeader()),
       body: Padding(
         padding: const EdgeInsets.only(left: SSizes.lg, right: SSizes.lg),
         child: Column(

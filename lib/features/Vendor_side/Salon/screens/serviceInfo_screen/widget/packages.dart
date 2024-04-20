@@ -18,10 +18,6 @@ class VendorPackages extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.add,
-          color: SColors.bgMainScreens,
-        ),
         onPressed: () {
           showDialog(
             context: context,
@@ -30,8 +26,12 @@ class VendorPackages extends StatelessWidget {
             },
           );
         },
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         backgroundColor: SColors.tertiary,
+        child: const Icon(
+          Icons.add,
+          color: SColors.bgMainScreens,
+        ),
       ),
     );
   }

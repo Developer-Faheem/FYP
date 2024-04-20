@@ -3,11 +3,9 @@ import 'package:stylesage/features/Vendor_side/Salon/screens/serviceInfo_screen/
 import 'package:stylesage/features/Vendor_side/Salon/screens/serviceInfo_screen/widget/temporary_widget.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/image_strings.dart';
-import 'package:stylesage/utils/constants/sizes.dart';
-import 'package:stylesage/utils/device/device_utilities.dart';
 
 class VendorServices extends StatelessWidget {
-  const VendorServices({Key? key});
+  const VendorServices({Key? key3}) : super(key: key3);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +19,6 @@ class VendorServices extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.add,
-          color: SColors.bgMainScreens,
-        ),
         onPressed: () {
           showDialog(
             context: context,
@@ -33,8 +27,12 @@ class VendorServices extends StatelessWidget {
             },
           );
         },
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         backgroundColor: SColors.tertiary,
+        child: const Icon(
+          Icons.add,
+          color: SColors.bgMainScreens,
+        ),
       ),
     );
   }

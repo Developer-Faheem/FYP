@@ -3,7 +3,7 @@ import 'package:stylesage/features/Vendor_side/Salon/screens/appointments/widget
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class VendorAppointmentScreen extends StatelessWidget {
-  VendorAppointmentScreen({Key? key});
+  const VendorAppointmentScreen({Key? key1}) : super(key: key1);
 
   @override
   Widget build(BuildContext context) {

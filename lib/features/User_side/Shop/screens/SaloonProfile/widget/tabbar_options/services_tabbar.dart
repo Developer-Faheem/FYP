@@ -9,8 +9,6 @@ class ServicesTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final DropDownController controller = Get.put(DropDownController());
 
-    print(controller.selectedItems1);
-    print(controller.selectedItems2);
     return Column(
       children: [
         ServiceSelectionDropdown(

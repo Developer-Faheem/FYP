@@ -20,7 +20,7 @@ class AppointmentCard extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 5,
               blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3), // changes position of shadow
             ),
           ],
           border: Border.all(width: 2, color: SColors.primary),
@@ -35,12 +35,12 @@ class AppointmentCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 28,
                       // backgroundColor: Colors.grey,
                       backgroundImage: AssetImage(SImages.anonymous),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: SSizes.md,
                     ),
                     Column(
@@ -59,6 +59,10 @@ class AppointmentCard extends StatelessWidget {
                   ],
                 ),
                 Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(SSizes.radiusLarge),
+                    color: Colors.red,
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12.0, vertical: 6),
@@ -67,26 +71,22 @@ class AppointmentCard extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(SSizes.radiusLarge),
-                    color: Colors.red,
-                  ),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: SSizes.md,
             ),
             //booking info
-            BookingInfoRowWidget(
+            const BookingInfoRowWidget(
               data: "Hair colouring, Hair cutting , Make Up",
               iconPath: "assets/icons/appointmentCardVendor/pade.svg",
             ),
-            BookingInfoRowWidget(
+            const BookingInfoRowWidget(
               data: "02 Febuary, 2022 at 8:30 AM",
               iconPath: "assets/icons/appointmentCardVendor/Calendar.svg",
             ),
-            BookingInfoRowWidget(
+            const BookingInfoRowWidget(
               data: "Service ID: #037485",
               iconPath: "assets/icons/appointmentCardVendor/serviceId.svg",
             ),
@@ -101,7 +101,7 @@ class AppointmentCard extends StatelessWidget {
                     gradient: SColors.MainOutlinedButtonGradient,
                     textStyle: Theme.of(context).textTheme.headlineMedium!,
                     onPressedCallback: () {}),
-                SizedBox(
+                const SizedBox(
                   width: SSizes.md,
                 ),
                 CustomButton(

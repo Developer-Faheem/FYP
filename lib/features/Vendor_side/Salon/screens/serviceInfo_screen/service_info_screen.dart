@@ -1,23 +1,14 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import 'package:stylesage/features/User_side/Shop/screens/appointment/widgets/upcoming.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/serviceInfo_screen/widget/gallery.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/serviceInfo_screen/widget/packages.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/serviceInfo_screen/widget/services.dart';
-import 'package:stylesage/user_nav_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
-import 'package:stylesage/utils/constants/sizes.dart';
 
 class VendorServiceInfoScreen extends StatelessWidget {
   const VendorServiceInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = NavigationController.instance;
-
     return DefaultTabController(
       length: 3,
       child: Container(

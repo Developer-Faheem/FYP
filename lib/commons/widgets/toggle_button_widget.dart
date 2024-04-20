@@ -13,7 +13,6 @@ class ToggleController extends GetxController {
     } else {
       isFaviourite.value = false;
     }
-    print(isFaviourite);
   }
 
   void toggleFilter() {

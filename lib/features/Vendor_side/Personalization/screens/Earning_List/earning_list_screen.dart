@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
-import 'package:stylesage/features/Vendor_side/Personalization/screens/Earning_List/widgets/details_widget.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/Earning_List/widgets/earning_card.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';

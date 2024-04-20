@@ -9,7 +9,6 @@ import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
-import 'package:stylesage/vendor_nav_menu.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
@@ -58,7 +57,7 @@ class ForgotPassword extends StatelessWidget {
                           width: 0.909,
                           height: 44,
                           onPressedCallback: () {
-                            Get.to(() => VendorNavigationMenu());
+                            Get.to(() => UserNavigationMenu());
                           }),
                     ),
                   ],

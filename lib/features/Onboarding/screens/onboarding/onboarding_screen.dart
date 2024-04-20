@@ -15,6 +15,7 @@ import 'package:stylesage/utils/constants/image_strings.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
+import 'package:stylesage/vendor_nav_menu.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -74,14 +75,16 @@ class OnboardingScreen extends StatelessWidget {
                         Positioned(
                           left: 0,
                           bottom: SDeviceUtils.getScreenHeight() * 0.15,
-                          child: CustomButton(
+                          child: CustomOutlinedButton(
                             onPressedCallback: () {
-                              Get.offAll(const SignUpScreen());
+                              Get.offAll(const LoginScreen());
                             },
-                            buttonText: "Sign Up",
-                            textStyle: Theme.of(context).textTheme.titleLarge!,
+                            buttonText: "Start as a User",
+                            textStyle:
+                                Theme.of(context).textTheme.headlineMedium!,
                             width: 0.909,
                             height: 44,
+                            gradient: SColors.MainOutlinedButtonGradient,
                           ),
                         ),
                         Positioned(
@@ -89,10 +92,11 @@ class OnboardingScreen extends StatelessWidget {
                           bottom: SDeviceUtils.getScreenHeight() * 0.08,
                           child: CustomOutlinedButton(
                             onPressedCallback: () {
-                              Get.offAll(const LoginScreen());
+                              Get.offAll(VendorNavigationMenu());
                             },
-                            buttonText: "Already with us? Login",
-                            textStyle: Theme.of(context).textTheme.bodyMedium!,
+                            buttonText: "Start as a Vendor",
+                            textStyle:
+                                Theme.of(context).textTheme.headlineMedium!,
                             width: 0.909,
                             height: 44,
                             gradient: SColors.MainOutlinedButtonGradient,

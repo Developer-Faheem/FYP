@@ -11,8 +11,8 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
-      style: TextStyle(color: Colors.black),
-      decoration: InputDecoration(
+      style: const TextStyle(color: Colors.black),
+      decoration: const InputDecoration(
         border: OutlineInputBorder(
           borderSide: BorderSide(color: Color(0XFF694D75)),
         ),
@@ -33,7 +33,7 @@ class _OutlinedDropdownButtonState extends State<OutlinedDropdownButton> {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value,
-              style: TextStyle(color: Colors.black)), // Set text color
+              style: const TextStyle(color: Colors.black)), // Set text color
         );
       }).toList(),
     );

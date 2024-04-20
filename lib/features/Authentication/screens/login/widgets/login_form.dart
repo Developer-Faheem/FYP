@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:stylesage/commons/widgets/textFields/custom_textfield.dart';
 import 'package:stylesage/commons/widgets/textFields/password_field.dart';
-import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
 

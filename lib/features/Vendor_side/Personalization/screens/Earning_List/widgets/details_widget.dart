@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
+// ignore: must_be_immutable
 class DetailsWidget extends StatelessWidget {
   String leading;
   String trailing;

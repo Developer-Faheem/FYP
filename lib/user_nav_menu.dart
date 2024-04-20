@@ -7,7 +7,6 @@ import 'package:stylesage/features/User_side/Shop/screens/Favourite/FaviouriteSc
 import 'package:stylesage/features/User_side/Shop/screens/Home/HomeScreen.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Saloons/saloon_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
-import 'package:stylesage/vendor_nav_menu.dart';
 
 class NavigationController extends GetxController {
   static NavigationController get instance => Get.find();
@@ -26,7 +25,7 @@ class UserNavigationMenu extends StatelessWidget {
     "assets/icons/navigation_menu/favourite.svg",
     "assets/icons/navigation_menu/profile.svg",
   ];
-  final List<String> Sicons = [
+  final List<String> sIcons = [
     "assets/icons/navigation_menu/Shome.svg",
     "assets/icons/navigation_menu/Ssaloon.svg",
     "assets/icons/navigation_menu/Sappointment.svg",
@@ -39,7 +38,6 @@ class UserNavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
-    final vendorController = Get.put(VendorNavigationController());
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -110,7 +108,7 @@ class UserNavigationMenu extends StatelessWidget {
                                 : const SizedBox(height: 22),
                             SvgPicture.asset(
                                 controller._currentIndex.value == index
-                                    ? Sicons[index]
+                                    ? sIcons[index]
                                     : icons[index]),
                           ],
                         ),

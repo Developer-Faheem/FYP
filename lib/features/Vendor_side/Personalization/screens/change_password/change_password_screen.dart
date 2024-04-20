@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
-import 'package:stylesage/features/User_side/Personalization/screens/change_password/widgets/change_pass_form.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/change_password/widgets/change_pass_form.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';

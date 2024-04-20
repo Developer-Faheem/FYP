@@ -1,1 +1,1 @@
-enum payementMethods { paypal, googlepay, visa, masterCard }
+enum PayementMethods { paypal, googlepay, visa, masterCard }

@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:stylesage/features/User_side/Personalization/screens/profile_main/profile_screen.dart';
-import 'package:stylesage/features/User_side/Shop/screens/appointment/appointment_screen.dart';
-import 'package:stylesage/features/User_side/Shop/screens/Favourite/FaviouriteScreen.dart';
-import 'package:stylesage/features/User_side/Shop/screens/Home/HomeScreen.dart';
-import 'package:stylesage/features/User_side/Shop/screens/Saloons/saloon_screen.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/appointments/appointment_screen.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/home/home_screen.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/profile_main/vendor_profile_screen.dart';
@@ -29,7 +24,7 @@ class VendorNavigationMenu extends StatelessWidget {
     "assets/icons/navigation_menu/serviceInfo.svg",
     "assets/icons/navigation_menu/profile.svg",
   ];
-  final List<String> Sicons = [
+  final List<String> sIcons = [
     "assets/icons/navigation_menu/Shome.svg",
     "assets/icons/navigation_menu/Sappointment.svg",
     "assets/icons/navigation_menu/sserviceInfo.svg",
@@ -48,7 +43,7 @@ class VendorNavigationMenu extends StatelessWidget {
       body: Obx(
         () => IndexedStack(
           index: vendorController._currentIndex.value,
-          children: [
+          children: const [
             VendorHomeScreen(),
             VendorAppointmentScreen(),
             VendorServiceInfoScreen(),
@@ -115,7 +110,7 @@ class VendorNavigationMenu extends StatelessWidget {
                                 : const SizedBox(height: 22),
                             SvgPicture.asset(
                                 vendorController._currentIndex.value == index
-                                    ? Sicons[index]
+                                    ? sIcons[index]
                                     : icons[index]),
                           ],
                         ),

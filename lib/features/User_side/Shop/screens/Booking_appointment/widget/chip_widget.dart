@@ -32,7 +32,6 @@ class ChipWidget extends StatelessWidget {
             onDeleted: () {
               controller.selectedItems1.remove(item);
               controller.selectedItems2.remove(item);
-              print(controller.selectedItems1);
             },
           ),
         );

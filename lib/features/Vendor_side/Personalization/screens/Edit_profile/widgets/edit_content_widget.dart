@@ -10,8 +10,6 @@ class EditContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? _selectedItem;
-
     return Container(
       decoration: const BoxDecoration(
         color: SColors.bgMainScreens,
@@ -33,52 +31,52 @@ class EditContent extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomTextField1(
+                  const CustomTextField1(
                     hintText: "Salon Name",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: SSizes.md,
                   ),
-                  CustomTextField1(
+                  const CustomTextField1(
                     hintText: "User Name(Private info)",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: SSizes.md,
                   ),
-                  CustomTextField1(
+                  const CustomTextField1(
                     hintText: "example@gmail.com",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: SSizes.md,
                   ),
-                  CustomTextField1(
+                  const CustomTextField1(
                     hintText: "Jazzcash no",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: SSizes.md,
                   ),
-                  CustomTextField1(
+                  const CustomTextField1(
                     hintText: "Easypaisa no",
                   ),
                   const SizedBox(
                     height: SSizes.md,
                   ),
-                  CustomTextField1(
+                  const CustomTextField1(
                     hintText: "Salon tagline",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: SSizes.md,
                   ),
-                  CustomTextField1(
+                  const CustomTextField1(
                     hintText: "Phone no",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: SSizes.md,
                   ),
-                  CustomTextField1(
+                  const CustomTextField1(
                     hintText: "City",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: SSizes.md,
                   ),
                   TextField(
@@ -93,7 +91,7 @@ class EditContent extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: SSizes.lg,
                   ),
                 ],

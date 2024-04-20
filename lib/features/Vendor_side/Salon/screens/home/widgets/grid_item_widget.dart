@@ -8,7 +8,7 @@ class GridItemWidget extends StatelessWidget {
   final String figure;
   final String text2;
 
-  GridItemWidget(
+  const GridItemWidget(
       {required this.icon, required this.figure, required this.text2});
 
   @override

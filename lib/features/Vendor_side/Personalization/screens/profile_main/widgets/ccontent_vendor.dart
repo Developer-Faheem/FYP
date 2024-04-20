@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
-import 'package:stylesage/features/User_side/Personalization/screens/Logout/logout_bottomsheet.dart';
 import 'package:stylesage/features/User_side/Personalization/screens/help/help_screen.dart';
-import 'package:stylesage/features/User_side/Shop/screens/add_review/widgets/location_time_widget.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/Earning_List/earning_list_screen.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/Edit_profile/edit_profile_screen.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/Logout/logout_bottomsheet.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/change_password/change_password_screen.dart';
-import 'package:stylesage/features/Vendor_side/Personalization/screens/change_password/widgets/change_pass_form.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/profile_main/widgets/followers_widget.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/profile_main/widgets/profile_option_tile.dart';
 import 'package:stylesage/utils/constants/colors.dart';
@@ -55,8 +52,8 @@ class ContentVendorProfile extends StatelessWidget {
                   color: SColors.dividersColor,
                 ),
                 //followers and the success rate widget
-                FollowersSuccessRateWidget(),
-                SizedBox(
+                const FollowersSuccessRateWidget(),
+                const SizedBox(
                   height: SSizes.sm,
                 ),
 
@@ -78,7 +75,7 @@ class ContentVendorProfile extends StatelessWidget {
                   children: [
                     VendorProfileOptionsTile(
                       onPressedCallback: () {
-                        Get.to(() => EditVendorProfileScreen());
+                        Get.to(() => const EditVendorProfileScreen());
                       },
                       leadingIcon: "assets/icons/profile/profile.svg",
                       title: "Your profile",
