@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "760968111277",
+    "project_id": "fyp-stylesage",
+    "storage_bucket": "fyp-stylesage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760968111277:android:99442503580fb3124d5224",
+        "android_client_info": {
+          "package_name": "com.faheem.fyp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760968111277-u3mph37l7ln0br6jj55tmnddc398i1ib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.faheem.fyp",
+            "certificate_hash": "60fd9f06e03e204eca1ab966f832f22ce1f023a4"
+          }
+        },
+        {
+          "client_id": "760968111277-qn3stmh8uvjg5kcf8qm4g5ambrnu9rdt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmfOoTKNrLCZBwptNuy3pB8cczsVeGnNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760968111277-qn3stmh8uvjg5kcf8qm4g5ambrnu9rdt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "760968111277-gsv6n2835a0euumhc8744lln4ll80cdr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.stylesage"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

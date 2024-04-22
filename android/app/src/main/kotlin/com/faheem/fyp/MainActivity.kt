@@ -1,4 +1,4 @@
-package com.example.stylesage
+package com.faheem.fyp
 
 import io.flutter.embedding.android.FlutterActivity
 

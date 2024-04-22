@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
-import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:stylesage/features/Onboarding/controllers/onboarding_controller.dart';
-import 'package:stylesage/features/Authentication/screens/SignUp/singnup_screen.dart';
-import 'package:stylesage/features/Authentication/screens/login/login_screen.dart';
+import 'package:stylesage/features/Onboarding/screens/Choice/choice.dart';
 import 'package:stylesage/features/Onboarding/screens/onboarding/widgets/onboarding_dot_navigation.dart';
 import 'package:stylesage/features/Onboarding/screens/onboarding/widgets/onboarding_next.dart';
 import 'package:stylesage/features/Onboarding/screens/onboarding/widgets/onboarding_page.dart';
@@ -15,7 +13,6 @@ import 'package:stylesage/utils/constants/image_strings.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
-import 'package:stylesage/vendor_nav_menu.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -65,44 +62,29 @@ class OnboardingScreen extends StatelessWidget {
                       //things to be shown for 0th nd 1st page only
                       if (controller.currentPageIndex.value != 2) ...[
                         const OnboardingSkip(),
-                        const OnboardingDotNavigation(),
-                        const OnboardingNext(),
-                        if (controller.currentPageIndex.value == 1)
-                          const OnboardingPrevious(),
+                        OnboardingNext(
+                          onPressedCallback: () => controller.nextPage(),
+                        ),
                       ],
-                      //things to be shown on 2nd page only
+
+                      //On all Pages
+                      const OnboardingDotNavigation(),
+
+                      //for the 2nd page (last)
                       if (controller.currentPageIndex.value == 2) ...[
-                        Positioned(
-                          left: 0,
-                          bottom: SDeviceUtils.getScreenHeight() * 0.15,
-                          child: CustomOutlinedButton(
-                            onPressedCallback: () {
-                              Get.offAll(const LoginScreen());
-                            },
-                            buttonText: "Start as a User",
-                            textStyle:
-                                Theme.of(context).textTheme.headlineMedium!,
-                            width: 0.909,
-                            height: 44,
-                            gradient: SColors.MainOutlinedButtonGradient,
-                          ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          bottom: SDeviceUtils.getScreenHeight() * 0.08,
-                          child: CustomOutlinedButton(
-                            onPressedCallback: () {
-                              Get.offAll(VendorNavigationMenu());
-                            },
-                            buttonText: "Start as a Vendor",
-                            textStyle:
-                                Theme.of(context).textTheme.headlineMedium!,
-                            width: 0.909,
-                            height: 44,
-                            gradient: SColors.MainOutlinedButtonGradient,
-                          ),
+                        OnboardingNext(
+                          onPressedCallback: () {
+                            final storage = GetStorage();
+                            storage.write("isFirstTime", false);
+                            Get.offAll(const Choice());
+                          },
                         ),
                       ],
+
+                      //for 1st and 2nd page
+                      if (controller.currentPageIndex.value == 1 ||
+                          controller.currentPageIndex.value == 2)
+                        const OnboardingPrevious(),
                     ],
                   ),
                 )),

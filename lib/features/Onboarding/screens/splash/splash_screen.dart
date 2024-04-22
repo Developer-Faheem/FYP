@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
 import 'package:stylesage/features/Onboarding/screens/onboarding/onboarding_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/image_strings.dart';
@@ -21,18 +23,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future _navigateToUserScreen() async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // bool isFirstLaunch = prefs.getBool('firstLaunch') ?? true;
-
-    await Future.delayed(const Duration(milliseconds: 2000), () {
-      Get.off(() => const OnboardingScreen());
-    });
-
-    // Navigator.pushReplacement(
-    //     context,
-    //     MaterialPageRoute(
-    //         builder: (context) =>
-    //             isFirstLaunch ? UserScreen() : CustomBottomNavigationBar(),),);
+    await Future.delayed(const Duration(milliseconds: 2000), () {})
+        .then((value) => Get.put(AuthenticationRepository()));
   }
 
   @override
