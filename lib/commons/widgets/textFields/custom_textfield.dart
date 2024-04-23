@@ -3,15 +3,21 @@ import 'package:stylesage/utils/constants/colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? hintText;
+  final TextEditingController controller;
+  final FormFieldValidator<String>? validator;
 
   const CustomTextField({
     Key? key,
     this.hintText,
+    required this.controller,
+    this.validator,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
+      controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
         enabledBorder: const OutlineInputBorder(

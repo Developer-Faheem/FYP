@@ -27,4 +27,6 @@ class AuthenticationRepository extends GetxController {
         ? Get.offAll(() => const Choice())
         : Get.offAll(() => const OnboardingScreen());
   }
+
+  //sign up function
 }

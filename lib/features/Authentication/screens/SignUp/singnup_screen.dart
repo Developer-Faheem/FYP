@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/socials_button.dart';
 import 'package:stylesage/commons/widgets/Login-signup/form_divider.dart';
+import 'package:stylesage/features/Authentication/controller/signUp/signup_controller.dart';
 import 'package:stylesage/features/Authentication/screens/SignUp/widgets/signup_form.dart';
 import 'package:stylesage/commons/widgets/Login-signup/header.dart';
 import 'package:stylesage/features/Authentication/screens/login/login_screen.dart';
@@ -16,6 +17,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
     return Container(
         color: SColors.bgMainScreens,
         child: SafeArea(
@@ -49,7 +51,13 @@ class SignUpScreen extends StatelessWidget {
                           width: 0.909,
                           height: 44,
                           onPressedCallback: () {
-                            Get.to(() => const LoginScreen());
+                            if (controller.SignUpFormKey.currentState!
+                                .validate()) {
+                              // If validation passes, perform the signup process
+                              controller.signup();
+                            }
+                            //  controller.signup();
+                            //Get.to(() => const LoginScreen());
                           }),
                     ),
                     SizedBox(

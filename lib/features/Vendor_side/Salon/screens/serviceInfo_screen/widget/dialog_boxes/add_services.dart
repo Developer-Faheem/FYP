@@ -9,10 +9,10 @@ import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class AddServicesDialog extends StatelessWidget {
-  const AddServicesDialog({
+  AddServicesDialog({
     super.key,
   });
-
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -60,7 +60,8 @@ class AddServicesDialog extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   const SizedBox(height: 16),
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: controller,
                     hintText: "",
                   ),
                   const SizedBox(height: 16),
@@ -80,8 +81,9 @@ class AddServicesDialog extends StatelessWidget {
                       const SizedBox(
                         width: 26,
                       ),
-                      const Expanded(
+                      Expanded(
                           child: CustomTextField(
+                        controller: controller,
                         hintText: "Rs.",
                       )),
                     ],

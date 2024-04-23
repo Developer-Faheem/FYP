@@ -17,6 +17,7 @@ class VendorGallery extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
+            barrierDismissible: false,
             context: context,
             builder: (BuildContext context) {
               return const AddImageDialog();

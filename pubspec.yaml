@@ -26,6 +26,9 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   multiselect_dropdown_flutter: ^0.0.7
   url_launcher: ^6.2.5
+  lottie: ^3.1.0
+  connectivity_plus: ^6.0.3
+  flutter_native_splash: ^2.3.10
   #url_launcher
   #intl
   #http
@@ -34,10 +37,16 @@ dependencies:
 
   #state Management
   get: ^4.6.6
-  change_app_package_name: ^1.1.0
-  firebase_core: ^2.27.0
   get_storage: ^2.1.1
-  flutter_native_splash: ^2.3.10
+ 
+  
+
+  #firebase
+  firebase_core: ^2.27.0
+  firebase_auth: ^4.17.8
+  cloud_firestore: ^4.15.8
+  
+  
   
   
 

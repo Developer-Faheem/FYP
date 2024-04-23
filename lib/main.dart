@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:stylesage/bindings/general_binding.dart';
 import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
 import 'package:stylesage/features/Onboarding/screens/onboarding/onboarding_screen.dart';
 import 'package:stylesage/features/Onboarding/screens/splash/splash_screen.dart';
@@ -23,7 +24,8 @@ void main() async {
 
   //Todo: initilize the firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
+      .then((FirebaseApp value) => Get.put(
+          AuthenticationRepository())); //authentication repository called when the app start to check the user status and rediret to the relevent screen
 
   //Todo: initilize the Authentication
   runApp(const App());
@@ -37,6 +39,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: SAppTheme.lightTheme,
+      // initialBinding: GeneralBindings(),
       // darkTheme: SAppTheme.darkTheme
       home: const Scaffold(
         backgroundColor: SColors.bgSplashScreen,

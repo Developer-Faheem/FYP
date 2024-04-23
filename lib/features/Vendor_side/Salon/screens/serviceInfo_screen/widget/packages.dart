@@ -20,9 +20,10 @@ class VendorPackages extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
+            barrierDismissible: false,
             context: context,
             builder: (BuildContext context) {
-              return const AddPackageDialog();
+              return AddPackageDialog();
             },
           );
         },

@@ -9,9 +9,11 @@ import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class AddPackageDialog extends StatelessWidget {
-  const AddPackageDialog({
+  AddPackageDialog({
     super.key,
   });
+
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,8 @@ class AddPackageDialog extends StatelessWidget {
 
                   //add package field
                   const SizedBox(height: 16),
-                  const CustomTextField(
+                  CustomTextField(
+                    controller: controller,
                     hintText: "Add Package name",
                   ),
 
@@ -94,8 +97,9 @@ class AddPackageDialog extends StatelessWidget {
                       const SizedBox(
                         width: 26,
                       ),
-                      const Expanded(
+                      Expanded(
                           child: CustomTextField(
+                        controller: controller,
                         hintText: "Rs.",
                       )),
                     ],

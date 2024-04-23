@@ -1,21 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 
-class CustomPasswordField extends StatelessWidget {
-  const CustomPasswordField({
-    super.key,
-  });
+class CustomPasswordField extends StatefulWidget {
+  final TextEditingController controller;
+  final FormFieldValidator<String>? validator;
+
+  CustomPasswordField({
+    Key? key,
+    required this.controller,
+    this.validator,
+  }) : super(key: key);
+
+  @override
+  _CustomPasswordFieldState createState() => _CustomPasswordFieldState();
+}
+
+class _CustomPasswordFieldState extends State<CustomPasswordField> {
+  bool hidePassword = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: true,
+      controller: widget.controller,
+      obscureText: hidePassword,
       decoration: InputDecoration(
-        suffixIcon: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: SvgPicture.asset(
-            'assets/icons/obscure.svg',
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              hidePassword = !hidePassword;
+            });
+          },
+          icon: Icon(
+            hidePassword ? Icons.visibility_off : Icons.visibility,
+            color: SColors.secondary,
           ),
         ),
         enabledBorder: const OutlineInputBorder(
@@ -26,6 +43,7 @@ class CustomPasswordField extends StatelessWidget {
         ),
       ),
       style: Theme.of(context).textTheme.displaySmall,
+      validator: widget.validator,
     );
   }
 }
