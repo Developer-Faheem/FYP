@@ -1,5 +1,6 @@
 //these repository contains the backend related data like fetch data etc
 
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:stylesage/features/Onboarding/screens/Choice/choice.dart';
@@ -15,15 +16,15 @@ class AuthenticationRepository extends GetxController {
   ///called from main.dart when the app is launched like init
   @override
   void onReady() {
+    FlutterNativeSplash.remove();
     screenRedirect();
   }
 
   ///function to show the relevand screen after checking the user
   screenRedirect() async {
     deviceStorage.writeIfNull("isFirstTime", true);
-    print(deviceStorage.read("isFirstTime"));
     deviceStorage.read("isFirstTime") != true
         ? Get.offAll(() => const Choice())
-        : Get.offAll(() => const SplashScreen());
+        : Get.offAll(() => const OnboardingScreen());
   }
 }
