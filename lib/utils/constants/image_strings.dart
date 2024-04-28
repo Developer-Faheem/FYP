@@ -12,6 +12,9 @@ class SImages {
   static const String onboarding_3 =
       "assets/images/onboarding/onboarding_3.png";
 
+  //verificatiom screen
+  static const String verificationImage =
+      "assets/images/onboarding/verification.jpg";
   //banners
   static const String banner_1 = "assets/images/banners/banner.png";
 

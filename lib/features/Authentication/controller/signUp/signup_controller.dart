@@ -1,6 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/Loaders/loaders.dart';
+import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
+import 'package:stylesage/data/repositories/user/user_repositories.dart';
+import 'package:stylesage/features/Authentication/models/user_model/user_model.dart';
+import 'package:stylesage/features/Authentication/screens/verification/verification_screen.dart';
 import 'package:stylesage/features/User_side/Personalization/screens/privacy_policy/widgets/privacy_policy_item.dart';
 import 'package:stylesage/utils/network_manager/network_manger.dart';
 import 'package:stylesage/utils/popups/full_screen_loader.dart';
@@ -19,7 +23,7 @@ class SignupController extends GetxController {
 
   /// signup
 
-  Future<void> signup() async {
+  void signup() async {
     try {
       //start loading
       //FullScreenLoader.openScreenDialog("We are processing your information...", images.decor)
@@ -45,17 +49,39 @@ class SignupController extends GetxController {
       }
 
       //register user in firebase auth & and store data in firestore
+      final userCredential = await AuthenticationRepository.instance
+          .registerWithEmailAndPassword(
+              email.text.trim(), password.text.trim());
 
       //save authenticated user data in firestore
 
-      //show th success message
+      final newUser = UserModel(
+        id: userCredential.user!.uid,
+        name: name.text.trim(),
+        email: email.text.trim(),
+        phoneNumber: "",
+        gender: "",
+        profilePicture: "",
+      );
+
+      final userRepository = Get.put(UserRepositories());
+
+      await userRepository.saveUserRecord(newUser);
+
+      //stop loading
+
+      //show the success message
+      SLoaders.successSnackbar(
+          Title: "Congratulations", message: "Your account has been created!");
+
+      //move to verify email
+      Get.to(() => VerificationScreen(
+            email: email.text.trim(),
+          ));
     } catch (e) {
       //some thing generic to the user
       SLoaders.errorSnackbar(
           Title: "Something went wrong!", message: e.toString());
-    } finally {
-      //remove the loader
-      //FullScreenLoader.stopLoading();
     }
   }
 }

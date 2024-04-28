@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/Login-signup/header.dart';
+import 'package:stylesage/features/Authentication/controller/signUp/verify_email_controller.dart';
 import 'package:stylesage/features/Authentication/screens/forgotPassword/forgotPassword.dart';
 import 'package:stylesage/utils/constants/colors.dart';
+import 'package:stylesage/utils/constants/image_strings.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class VerificationScreen extends StatelessWidget {
-  const VerificationScreen({super.key});
+  final String? email;
+
+  const VerificationScreen({super.key, this.email});
 
   @override
   Widget build(BuildContext context) {
-    final List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
-    final List<TextEditingController> controllers =
-        List.generate(4, (index) => TextEditingController());
+    final controller = Get.put(VerifyEmailController());
 
     return Container(
         color: SColors.bgMainScreens,
@@ -26,97 +28,38 @@ class VerificationScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(SSizes.md),
                 child: Column(
                   children: [
-                    //login/sign up header
-                    const LoginHeader(
-                      title: STextStrings.verifyTitle,
-                      subTitle: STextStrings.verifysubtitle,
+                    SizedBox(
+                      height: SDeviceUtils.getScreenHeight() * 0.08,
+                    ),
+                    Image.asset(
+                      SImages.verificationImage,
+                      width: 250,
+                    ),
+
+                    SizedBox(
+                      height: SDeviceUtils.getScreenHeight() * 0.05,
+                    ),
+                    Text(
+                      "Verify Your Email Address",
+                      style: Theme.of(context).textTheme.displayLarge,
+                      textAlign: TextAlign.center,
                     ),
                     SizedBox(
                       height: SDeviceUtils.getScreenHeight() * 0.01,
                     ),
-                    Center(
-                      child: Text(
-                        "example@gmail.com",
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                    ),
-                    SizedBox(
-                      height: SDeviceUtils.getScreenHeight() * 0.065,
+                    Text(
+                      STextStrings.verificatiomScreentext,
+                      style: Theme.of(context).textTheme.bodySmall,
+                      textAlign: TextAlign.center,
                     ),
 
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(
-                            4,
-                            (index) => Padding(
-                              padding: const EdgeInsets.only(right: 16.0),
-                              child: SizedBox(
-                                height: 45,
-                                width: 50,
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    enabledBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0XFF694D75),
-                                      ),
-                                    ),
-                                    focusedBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: SColors.tertiary, width: 2),
-                                    ),
-                                    counterText: "",
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                  ),
-                                  controller: controllers[index],
-                                  focusNode: focusNodes[index],
-                                  keyboardType: TextInputType.number,
-                                  textAlign: TextAlign.center,
-                                  maxLength: 1,
-                                  onChanged: (value) {
-                                    if (value.isNotEmpty) {
-                                      focusNodes[index].nextFocus();
-                                    }
-                                  },
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: SDeviceUtils.getScreenHeight() * 0.065,
-                    ),
-                    //resend code
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Don't received OTP!",
-                          style: Theme.of(context).textTheme.bodySmall,
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          height: SDeviceUtils.getScreenHeight() * 0.01,
-                        ),
-                        Text(
-                          "Resend code",
-                          style: Theme.of(context).textTheme.titleSmall,
-                        ),
-                      ],
-                    ),
                     SizedBox(
                       height: SDeviceUtils.getScreenHeight() * 0.05,
                     ),
                     //verify
                     Center(
                       child: CustomButton(
-                          buttonText: "Verify",
+                          buttonText: "Continue",
                           textStyle: Theme.of(context).textTheme.titleLarge!,
                           width: 0.909,
                           height: 44,
@@ -125,6 +68,13 @@ class VerificationScreen extends StatelessWidget {
                             //  String otp = _controllers.map((controller) => controller.text).join();
                             //   print('Entered OTP: $otp');
                           }),
+                    ),
+                    SizedBox(
+                      height: SDeviceUtils.getScreenHeight() * 0.05,
+                    ),
+                    Text(
+                      "Resend Email",
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],
                 ),

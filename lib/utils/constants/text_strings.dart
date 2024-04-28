@@ -17,6 +17,10 @@ class STextStrings {
   static const String subtitle_3 =
       "Unlock the new beauty secrets hidden in \n your neighbour hood.";
 
+  //verification screen
+  static const String verificatiomScreentext =
+      "Verify your email to secure your salon account\n and unlock exclusive benefits and updates!";
+
   ///Login
   static const String loginTitle =
       "Welcome back. Enter your credentials to access your \n account";
