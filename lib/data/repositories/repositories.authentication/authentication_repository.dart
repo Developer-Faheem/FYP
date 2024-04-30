@@ -4,10 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:stylesage/features/Authentication/screens/verification/verification_screen.dart';
 import 'package:stylesage/features/Onboarding/screens/Choice/choice.dart';
 import 'package:stylesage/features/Onboarding/screens/onboarding/onboarding_screen.dart';
 import 'package:stylesage/features/Onboarding/screens/splash/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:stylesage/user_nav_menu.dart';
 import 'package:stylesage/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:stylesage/utils/exceptions/firebase_exceptions.dart';
 import 'package:stylesage/utils/exceptions/firebase_plateform_exceptions.dart';
@@ -28,10 +30,21 @@ class AuthenticationRepository extends GetxController {
 
   ///function to show the relevand screen after checking the user
   screenRedirect() async {
-    deviceStorage.writeIfNull("isFirstTime", true);
-    deviceStorage.read("isFirstTime") != true
-        ? Get.offAll(() => const Choice())
-        : Get.offAll(() => const OnboardingScreen());
+    final user = _auth.currentUser;
+    if (user != null) {
+      if (user.emailVerified) {
+        Get.offAll(() => UserNavigationMenu());
+      } else {
+        Get.offAll(() => VerificationScreen(
+              email: _auth.currentUser?.email,
+            ));
+      }
+    } else {
+      deviceStorage.writeIfNull("isFirstTime", true);
+      deviceStorage.read("isFirstTime") != true
+          ? Get.offAll(() => const Choice())
+          : Get.offAll(() => const OnboardingScreen());
+    }
   }
 
 //**************************email and password sign in********************** */
@@ -59,6 +72,25 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.currentUser
           ?.sendEmailVerification(); //the current user is fetched automatically
+    } on FirebaseAuthException catch (e) {
+      throw SFirebaseAuthException(e.code).meassage;
+    } on FirebaseException catch (e) {
+      throw SFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw SPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong, please try again!";
+    }
+  }
+
+  //*****************Federated identity****************** */
+
+  //logout user
+  Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(
+          () => const Choice()); //the current user is fetched automatically
     } on FirebaseAuthException catch (e) {
       throw SFirebaseAuthException(e.code).meassage;
     } on FirebaseException catch (e) {

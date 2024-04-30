@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'dart:async';
 import 'package:stylesage/commons/widgets/Loaders/loaders.dart';
 import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
+import 'package:stylesage/user_nav_menu.dart';
 
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
@@ -9,6 +12,7 @@ class VerifyEmailController extends GetxController {
   @override
   void onInit() {
     sendEmailVerification();
+    setTimerForAutoRedirect();
     super.onInit();
   }
 
@@ -25,6 +29,29 @@ class VerifyEmailController extends GetxController {
   }
 
   //timer to automatically redirect to eamil verification
+  setTimerForAutoRedirect() {
+    Timer.periodic(const Duration(seconds: 1), (timer) async {
+      await FirebaseAuth.instance.currentUser?.reload();
+      final user = FirebaseAuth.instance.currentUser;
+      if (user?.emailVerified ?? false) {
+        timer.cancel();
+        AuthenticationRepository.instance.screenRedirect();
+        SLoaders.successSnackbar(
+            Title: "Email Verified",
+            message: "Your email has been verified successfully");
+      }
+    });
+  }
 
   //manually check if eamil verified
+  checkEmailVerificationStatus() async {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null && currentUser.emailVerified) {
+      // Get.off(()=>UserNavigationMenu());
+      AuthenticationRepository.instance.screenRedirect();
+      SLoaders.successSnackbar(
+          Title: "Email Verified",
+          message: "Your email has been verified successfully");
+    }
+  }
 }
