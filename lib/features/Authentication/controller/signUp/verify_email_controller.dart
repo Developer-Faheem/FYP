@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'dart:async';
 import 'package:stylesage/commons/widgets/Loaders/loaders.dart';
 import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
-import 'package:stylesage/user_nav_menu.dart';
 
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
@@ -36,9 +35,6 @@ class VerifyEmailController extends GetxController {
       if (user?.emailVerified ?? false) {
         timer.cancel();
         AuthenticationRepository.instance.screenRedirect();
-        SLoaders.successSnackbar(
-            Title: "Email Verified",
-            message: "Your email has been verified successfully");
       }
     });
   }
@@ -49,9 +45,6 @@ class VerifyEmailController extends GetxController {
     if (currentUser != null && currentUser.emailVerified) {
       // Get.off(()=>UserNavigationMenu());
       AuthenticationRepository.instance.screenRedirect();
-      SLoaders.successSnackbar(
-          Title: "Email Verified",
-          message: "Your email has been verified successfully");
     }
   }
 }

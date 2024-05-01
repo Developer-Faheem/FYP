@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/socials_button.dart';
 import 'package:stylesage/commons/widgets/Login-signup/form_divider.dart';
+import 'package:stylesage/features/Authentication/controller/login_controller.dart/login_controller.dart';
 import 'package:stylesage/features/Authentication/screens/SignUp/singnup_screen.dart';
 import 'package:stylesage/features/Authentication/screens/login/widgets/login_form.dart';
 import 'package:stylesage/commons/widgets/Login-signup/header.dart';
@@ -17,6 +18,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Container(
         color: SColors.bgMainScreens,
         child: SafeArea(
@@ -37,20 +39,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     //Login Form
                     const LoginForm(),
-                    //keep me sign in
-                    Row(
-                      children: [
-                        Checkbox(value: false, onChanged: (value) {}),
-                        Text(
-                          "Keep me ",
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                        Text(
-                          "signed in",
-                          style: Theme.of(context).textTheme.titleSmall,
-                        )
-                      ],
-                    ),
+
                     const SizedBox(
                       height: SSizes.spaceBtwSections,
                     ),
@@ -62,7 +51,12 @@ class LoginScreen extends StatelessWidget {
                           width: 0.909,
                           height: 44,
                           onPressedCallback: () {
-                            Get.off(() => const VerificationScreen());
+                            if (controller.loginFormKey.currentState!
+                                .validate()) {
+                              // If validation passes, perform the signup process
+                              controller.signup();
+                            }
+                            //  Get.off(() => const VerificationScreen());
                           }),
                     ),
                     SizedBox(
