@@ -25,7 +25,7 @@ class LoginController extends GetxController {
 
   /// signup
 
-  void signup() async {
+  void signin() async {
     try {
       //start loading
       //FullScreenLoader.openScreenDialog("logging you in...", images.decor)

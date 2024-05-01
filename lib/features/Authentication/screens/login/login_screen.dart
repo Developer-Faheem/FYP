@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                             if (controller.loginFormKey.currentState!
                                 .validate()) {
                               // If validation passes, perform the signup process
-                              controller.signup();
+                              controller.signin();
                             }
                             //  Get.off(() => const VerificationScreen());
                           }),

@@ -5,6 +5,8 @@ class SFirebaseAuthException implements Exception {
 
   String get meassage {
     switch (code) {
+      case 'invalid-credential':
+        return 'The provided authentication credentials are incorrect';
       case 'email-already-in-use':
         return 'The email address is already in use by another account.';
       case 'invalid-email':
