@@ -8,16 +8,15 @@ class NetworkManger extends GetxController {
   static NetworkManger get instance => Get.find();
 
   final Connectivity _connectivity = Connectivity();
-  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   final Rx<ConnectivityResult> _connectionStatus = ConnectivityResult.none.obs;
 
   //initilize the netword manager and stup a stream to continually check the connection status
   @override
   void onInit() {
     super.onInit();
-    _connectivitySubscription = _connectivity.onConnectivityChanged.listen(
-        _updateConnectionStatus as void Function(
-            List<ConnectivityResult> event)?);
+    // _connectivitySubscription = _connectivity.onConnectivityChanged.listen(
+    //     _updateConnectionStatus);
   }
 
   ///update the connection status on the basis of cahnge in connectvity and show the relevent pop for no internet connection

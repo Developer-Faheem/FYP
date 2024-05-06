@@ -5,9 +5,6 @@ import 'package:stylesage/data/repositories/repositories.authentication/authenti
 import 'package:stylesage/data/repositories/user/user_repositories.dart';
 import 'package:stylesage/features/Authentication/models/user_model/user_model.dart';
 import 'package:stylesage/features/Authentication/screens/verification/verification_screen.dart';
-import 'package:stylesage/features/User_side/Personalization/screens/privacy_policy/widgets/privacy_policy_item.dart';
-import 'package:stylesage/utils/network_manager/network_manger.dart';
-import 'package:stylesage/utils/popups/full_screen_loader.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();

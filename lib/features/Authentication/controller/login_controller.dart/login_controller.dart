@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:stylesage/commons/widgets/Loaders/loaders.dart';
 import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
+import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
 import 'package:stylesage/utils/popups/full_screen_loader.dart';
 
 class LoginController extends GetxController {
@@ -13,6 +15,7 @@ class LoginController extends GetxController {
   final localStorage = GetStorage();
   final email = TextEditingController();
   final password = TextEditingController();
+  final userController = Get.put(UserController());
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   @override
@@ -23,7 +26,7 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
-  /// signup
+  /// signin
 
   void signin() async {
     try {
@@ -54,10 +57,44 @@ class LoginController extends GetxController {
       //remove loader
       //FullScreenLoader.stopLoading();
 
-      //redirect user
+      //Redirect user
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       //some thing generic to the user
+      SLoaders.errorSnackbar(
+          Title: "Something went wrong!", message: e.toString());
+    }
+  }
+
+  //signin with google
+
+  Future<void> googleSignIn() async {
+    try {
+      //start loading
+      //FullScreenLoader.openScreenDialog("logging you in...", images.decor)
+
+      //check internet connectivity
+      // final isConnected = await NetworkManger.instance.isConnected();
+      // if (!isConnected) {
+      // FullScreenLoader.stopLoading();
+      //   return;
+      // }
+
+      //google Authentication
+      final userCredential =
+          await AuthenticationRepository.instance.signInWithGoogle();
+
+      //save the user record
+      await userController.saveUserRecord(userCredential);
+
+      // remove the loader
+      // FullScreenLoader.stopLoading();
+
+      //rediret te user
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      // remove the loader
+      // FullScreenLoader.stopLoading();
       SLoaders.errorSnackbar(
           Title: "Something went wrong!", message: e.toString());
     }

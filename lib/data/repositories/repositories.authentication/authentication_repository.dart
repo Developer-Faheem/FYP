@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:stylesage/features/Authentication/screens/verification/verification_screen.dart';
 import 'package:stylesage/features/Onboarding/screens/Choice/choice.dart';
 import 'package:stylesage/features/Onboarding/screens/onboarding/onboarding_screen.dart';
@@ -56,7 +57,6 @@ class AuthenticationRepository extends GetxController {
       return await _auth.signInWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      print(e.toString());
       throw SFirebaseAuthException(e.code).meassage;
     } on FirebaseException catch (e) {
       throw SFirebaseException(e.code).message;
@@ -101,11 +101,40 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  //*****************social  signin****************** */
+
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      //trigger the authentication flow - open popup
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
+      //obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
+
+      //create a new credential
+      final credentials = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+
+      //once signin return the user credentails
+      return await _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw SFirebaseAuthException(e.code).meassage;
+    } on FirebaseException catch (e) {
+      throw SFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw SPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong, please try again!";
+    }
+  }
+
   //*****************Federated identity****************** */
 
   //logout user
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(
           () => const Choice()); //the current user is fetched automatically
@@ -119,4 +148,6 @@ class AuthenticationRepository extends GetxController {
       throw "Something went wrong, please try again!";
     }
   }
+
+  //*******************checking type of user************************/
 }
