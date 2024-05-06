@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:stylesage/features/Authentication/screens/login/login_screen.dart';
 import 'package:stylesage/features/Onboarding/controllers/onboarding_controller.dart';
 import 'package:stylesage/features/Onboarding/screens/Choice/choice.dart';
 import 'package:stylesage/features/Onboarding/screens/onboarding/widgets/onboarding_dot_navigation.dart';
@@ -76,7 +77,7 @@ class OnboardingScreen extends StatelessWidget {
                           onPressedCallback: () {
                             final storage = GetStorage();
                             storage.write("isFirstTime", false);
-                            Get.offAll(const Choice());
+                            Get.offAll(const LoginScreen());
                           },
                         ),
                       ],
