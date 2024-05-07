@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
+import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
+import 'package:stylesage/features/Authentication/controller/vendor_controller/vendor_controller.dart';
 import 'package:stylesage/user_nav_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
@@ -14,6 +16,8 @@ class Choice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final storage = GetStorage();
+    final userController = Get.put(UserController());
+    final vendorController = Get.put(VendorController());
     return Container(
         color: SColors.bgMainScreens,
         child: SafeArea(
@@ -26,9 +30,10 @@ class Choice extends StatelessWidget {
                   height: SDeviceUtils.getScreenHeight() * 0.35,
                 ),
                 CustomOutlinedButton(
-                  onPressedCallback: () {
+                  onPressedCallback: () async {
                     storage.writeIfNull("isChoiceDone", true);
                     storage.writeIfNull("isUser", true);
+                    await userController.saveUserRecord();
                     Get.offAll(UserNavigationMenu());
                     // Get.offAll(const LoginScreen());
                   },
@@ -42,9 +47,10 @@ class Choice extends StatelessWidget {
                   height: SDeviceUtils.getScreenHeight() * 0.05,
                 ),
                 CustomOutlinedButton(
-                  onPressedCallback: () {
+                  onPressedCallback: () async {
                     storage.writeIfNull("isChoiceDone", true);
                     storage.writeIfNull("isUser", false);
+                    await vendorController.saveVendorRecord();
                     Get.offAll(VendorNavigationMenu());
                   },
                   buttonText: "Start as a Vendor",

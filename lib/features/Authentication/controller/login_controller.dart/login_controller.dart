@@ -5,7 +5,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:stylesage/commons/widgets/Loaders/loaders.dart';
 import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
 import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
-import 'package:stylesage/utils/popups/full_screen_loader.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
@@ -85,7 +84,7 @@ class LoginController extends GetxController {
           await AuthenticationRepository.instance.signInWithGoogle();
 
       //save the user record
-      await userController.saveUserRecord(userCredential);
+      //await userController.saveUserRecord(userCredential);
 
       // remove the loader
       // FullScreenLoader.stopLoading();

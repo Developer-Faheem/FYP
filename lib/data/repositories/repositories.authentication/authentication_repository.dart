@@ -8,9 +8,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:stylesage/features/Authentication/screens/SignUp/singnup_screen.dart';
 import 'package:stylesage/features/Authentication/screens/login/login_screen.dart';
 import 'package:stylesage/features/Authentication/screens/verification/verification_screen.dart';
-import 'package:stylesage/features/Onboarding/screens/Choice/choice.dart';
+import 'package:stylesage/features/Authentication/screens/Choice/choice.dart';
 import 'package:stylesage/features/Onboarding/screens/onboarding/onboarding_screen.dart';
-import 'package:stylesage/features/Onboarding/screens/splash/splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stylesage/user_nav_menu.dart';
 import 'package:stylesage/utils/exceptions/firebase_auth_exceptions.dart';
@@ -144,7 +143,7 @@ class AuthenticationRepository extends GetxController {
   //logout user
   Future<void> logout() async {
     try {
-      // await GetStorage().erase();
+      await GetStorage().erase();
       await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() =>

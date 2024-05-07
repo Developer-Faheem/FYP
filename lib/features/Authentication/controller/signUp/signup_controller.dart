@@ -1,9 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:stylesage/commons/widgets/Loaders/loaders.dart';
 import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
-import 'package:stylesage/data/repositories/user/user_repositories.dart';
-import 'package:stylesage/features/Authentication/models/user_model/user_model.dart';
 import 'package:stylesage/features/Authentication/screens/verification/verification_screen.dart';
 
 class SignupController extends GetxController {
@@ -15,12 +14,15 @@ class SignupController extends GetxController {
   final name = TextEditingController();
   final email = TextEditingController();
   final password = TextEditingController();
+  final storage = GetStorage();
 
   GlobalKey<FormState> SignUpFormKey = GlobalKey<FormState>();
 
   /// signup
 
   void signup() async {
+    //
+    storage.write('name', name.text.toString());
     try {
       //start loading
       //FullScreenLoader.openScreenDialog("We are processing your information...", images.decor)
@@ -52,18 +54,18 @@ class SignupController extends GetxController {
 
       //save authenticated user data in firestore
 
-      final newUser = UserModel(
-        id: userCredential.user!.uid,
-        name: name.text.trim(),
-        email: email.text.trim(),
-        phoneNumber: "",
-        gender: "",
-        profilePicture: "",
-      );
+      // final newUser = UserModel(
+      //   id: userCredential.user!.uid,
+      //   name: name.text.trim(),
+      //   email: email.text.trim(),
+      //   phoneNumber: "",
+      //   gender: "",
+      //   profilePicture: "",
+      // );
 
-      final userRepository = Get.put(UserRepositories());
+      // final userRepository = Get.put(UserRepositories());
 
-      await userRepository.saveUserRecord(newUser);
+      // await userRepository.saveUserRecord(newUser);
 
       //stop loading
 

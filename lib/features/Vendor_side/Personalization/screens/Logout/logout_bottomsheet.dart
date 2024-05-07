@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
+import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
@@ -66,7 +67,7 @@ class LogoutCustomBottomSheet extends StatelessWidget {
                   }),
               CustomButton(
                 onPressedCallback: () {
-                  Get.back();
+                  AuthenticationRepository.instance.logout();
                 },
                 buttonText: "Yes",
                 height: 42,
