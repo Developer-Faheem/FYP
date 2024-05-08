@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
 import 'package:stylesage/commons/widgets/dialog-box/custom_dialog.dart';
+import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
 import 'package:stylesage/features/User_side/Personalization/screens/change_password/change_password_screen.dart';
 import 'package:stylesage/features/User_side/Personalization/screens/profile_main/widgets/profile_options_tile.dart';
 import 'package:stylesage/utils/constants/colors.dart';
@@ -13,6 +14,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Container(
       color: SColors.bgMainScreens,
       child: SafeArea(
@@ -42,7 +44,10 @@ class SettingsScreen extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return const CustomMsgDialog(
+                        return CustomMsgDialog(
+                          onPressedCallback: () {
+                            controller.deleteUserAccount();
+                          },
                           title: "Delete Account",
                           msg: STextStrings.deletePopup,
                           icon: Icons.info_outline,

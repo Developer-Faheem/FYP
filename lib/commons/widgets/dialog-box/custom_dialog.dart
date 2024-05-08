@@ -9,8 +9,14 @@ class CustomMsgDialog extends StatelessWidget {
   final String title;
   final String msg;
   final IconData icon;
+  final VoidCallback onPressedCallback;
 
-  const CustomMsgDialog({super.key, required this.icon, required this.msg, required this.title});
+  const CustomMsgDialog(
+      {super.key,
+      required this.icon,
+      required this.msg,
+      required this.title,
+      required this.onPressedCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +70,7 @@ class CustomMsgDialog extends StatelessWidget {
                       }),
                   const SizedBox(width: 16),
                   CustomButton(
-                    onPressedCallback: () {
-                      Get.back();
-                    },
+                    onPressedCallback: onPressedCallback,
                     buttonText: "Delete",
                     height: 42,
                     width: 0.26,

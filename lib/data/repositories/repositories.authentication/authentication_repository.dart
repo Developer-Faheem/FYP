@@ -5,6 +5,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:stylesage/data/repositories/user/user_repositories.dart';
 import 'package:stylesage/features/Authentication/screens/SignUp/singnup_screen.dart';
 import 'package:stylesage/features/Authentication/screens/login/login_screen.dart';
 import 'package:stylesage/features/Authentication/screens/verification/verification_screen.dart';
@@ -167,6 +168,22 @@ class AuthenticationRepository extends GetxController {
       await FirebaseAuth.instance.signOut();
       Get.offAll(() =>
           const LoginScreen()); //the current user is fetched automatically
+    } on FirebaseAuthException catch (e) {
+      throw SFirebaseAuthException(e.code).meassage;
+    } on FirebaseException catch (e) {
+      throw SFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw SPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong, please try again!";
+    }
+  }
+
+  //delete user account
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepositories.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
     } on FirebaseAuthException catch (e) {
       throw SFirebaseAuthException(e.code).meassage;
     } on FirebaseException catch (e) {
