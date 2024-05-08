@@ -49,12 +49,10 @@ class SignUpForm extends StatelessWidget {
           ),
           //---------------password
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(STextStrings.password,
                   style: Theme.of(context).textTheme.headlineSmall),
-              Text(STextStrings.forgotPassword,
-                  style: Theme.of(context).textTheme.labelMedium),
             ],
           ),
           const SizedBox(

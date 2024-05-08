@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/Login-signup/header.dart';
 import 'package:stylesage/commons/widgets/textFields/custom_textfield.dart';
@@ -11,6 +9,7 @@ import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
+import 'package:stylesage/utils/validators/validator.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
@@ -50,6 +49,8 @@ class ForgotPassword extends StatelessWidget {
                           ),
                           CustomTextField(
                             controller: controller.email,
+                            validator: (value) =>
+                                SValidators.validateEmail(value),
                           )
                         ],
                       ),
@@ -65,7 +66,11 @@ class ForgotPassword extends StatelessWidget {
                           width: 0.909,
                           height: 44,
                           onPressedCallback: () {
-                            Get.to(() => UserNavigationMenu());
+                            if (controller.forgotPasswordFormKey.currentState!
+                                .validate()) {
+                              // If validation passes, perform the signup process
+                              controller.sendPasswordResetEmail();
+                            }
                           }),
                     ),
                   ],

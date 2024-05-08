@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:stylesage/commons/widgets/Loaders/loaders.dart';
 import 'package:stylesage/data/repositories/vendor_repository/vendor_repositories.dart';
-import 'package:stylesage/features/Authentication/controller/signUp/signup_controller.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 
 class VendorController extends GetxController {

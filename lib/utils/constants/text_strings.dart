@@ -20,6 +20,9 @@ class STextStrings {
   //verification screen
   static const String verificatiomScreentext =
       "Verify your email to secure your salon account\n and unlock exclusive benefits and updates!";
+  //forgot password email sent screen
+  static const String emailSent =
+      "Your account security is our Priority! we've sent \n sent you a secure link to safely change your \n password and keep you account protected";
 
   ///Login
   static const String loginTitle =
