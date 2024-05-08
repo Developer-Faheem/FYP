@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer_loader.dart';
+import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/image_strings.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
@@ -10,6 +13,7 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final usercontroller = Get.put(UserController());
     return Container(
       height: 72,
       width: double.infinity,
@@ -36,13 +40,19 @@ class ProfileWidget extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Anna Wilson",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontSize: 14),
-                    ),
+                    Obx(() {
+                      if (usercontroller.profileLoading.value) {
+                        return const SShimmerEffect(width: 100, height: 14);
+                      } else {
+                        return Text(
+                          usercontroller.user.value.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(fontSize: 14),
+                        );
+                      }
+                    }),
                     const SizedBox(
                       height: SSizes.xs,
                     ),

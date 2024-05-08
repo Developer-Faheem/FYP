@@ -19,6 +19,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
+
     return Container(
       color: SColors.bgMainScreens,
       child: SafeArea(

@@ -1,125 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/textFields/custom_textfield.dart';
+import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
+import 'package:stylesage/features/User_side/Personalization/controllers/updateProfileController/updateProfileController.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
+import 'package:stylesage/utils/validators/validator.dart';
 
 class ProfileForm extends StatelessWidget {
-  final _value = -1;
-
   const ProfileForm({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        //-----------Name-----
-        Text("Name", style: Theme.of(context).textTheme.headlineSmall),
-        const SizedBox(
-          height: SSizes.defaultSpaceSmall,
-        ),
-        TextFormField(
-          decoration: const InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0XFF694D75)),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: SColors.primary),
-            ),
+    final updateDataController = UpdateUserProfileController.instance;
+    final userController = UserController.instance;
+
+    return Form(
+      key: updateDataController.updateUserProfile,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //-----------Name-----
+          Text("Name", style: Theme.of(context).textTheme.headlineSmall),
+          const SizedBox(
+            height: SSizes.defaultSpaceSmall,
           ),
-          style: Theme.of(context).textTheme.displaySmall,
-        ),
-        const SizedBox(
-          height: SSizes.spaceBtwItems,
-        ),
-        //-----------Phone No-----
-        Text("Phone no", style: Theme.of(context).textTheme.headlineSmall),
-        const SizedBox(
-          height: SSizes.defaultSpaceSmall,
-        ),
-        TextFormField(
-          decoration: const InputDecoration(
-            hintText: "+92",
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0XFF694D75)),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: SColors.primary),
-            ),
+          CustomTextField(
+            hintText: userController.user.value.name,
+            validator: (value) => SValidators.validateEmptyText('Name', value),
+            controller: updateDataController.name,
           ),
-          style: Theme.of(context).textTheme.displaySmall,
-        ),
-        const SizedBox(
-          height: SSizes.spaceBtwItems,
-        ),
-        //---------------------gender---
-        Text("Gender", style: Theme.of(context).textTheme.headlineSmall),
-        const SizedBox(
-          height: SSizes.defaultSpaceSmall,
-        ),
-        DropdownButtonFormField(
-          style: Theme.of(context).textTheme.displaySmall,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(SSizes.xs),
-              // borderSide: BorderSide(color: Colors.red, width: 1.0),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(SSizes.xs),
-              borderSide: const BorderSide(color: Color(0XFF694D75), width: 1.0),
-            ),
+          const SizedBox(
+            height: SSizes.spaceBtwItems,
           ),
-          value: _value,
-          items: const [
-            DropdownMenuItem(
-              value: -1,
-              child: Text(
-                "-Select Gender-",
-                style: TextStyle(color: Colors.black),
+          //-----------Phone No-----
+          Text("Phone no", style: Theme.of(context).textTheme.headlineSmall),
+          const SizedBox(
+            height: SSizes.defaultSpaceSmall,
+          ),
+          CustomTextField(
+            hintText: userController.user.value.phoneNumber,
+            validator: (value) =>
+                SValidators.validateEmptyText('Phone No', value),
+            controller: updateDataController.phoneNumber,
+          ),
+          const SizedBox(
+            height: SSizes.spaceBtwItems,
+          ),
+          //---------------------gender---
+          Text("Gender", style: Theme.of(context).textTheme.headlineSmall),
+          const SizedBox(
+            height: SSizes.defaultSpaceSmall,
+          ),
+          CustomTextField(
+            hintText: userController.user.value.gender,
+            validator: (value) =>
+                SValidators.validateEmptyText('Gender', value),
+            controller: updateDataController.gender,
+          ),
+          const SizedBox(
+            height: SSizes.spaceBtwItems,
+          ),
+          //-----------Email -----
+          Text("Email", style: Theme.of(context).textTheme.headlineSmall),
+          const SizedBox(
+            height: SSizes.defaultSpaceSmall,
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              hintText: userController.user.value.email,
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0XFF694D75)),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: SColors.primary),
               ),
             ),
-            DropdownMenuItem(
-              value: 1,
-              child: Text(
-                "Male",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            DropdownMenuItem(
-              value: 2,
-              child: Text(
-                "Female",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-          ],
-          onChanged: (v) {},
-        ),
-        const SizedBox(
-          height: SSizes.spaceBtwItems,
-        ),
-        //-----------Email -----
-        Text("Phone no", style: Theme.of(context).textTheme.headlineSmall),
-        const SizedBox(
-          height: SSizes.defaultSpaceSmall,
-        ),
-        TextFormField(
-          decoration: const InputDecoration(
-            hintText: "abc@gmail.com",
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0XFF694D75)),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: SColors.primary),
-            ),
+            style: Theme.of(context).textTheme.displaySmall,
           ),
-          style: Theme.of(context).textTheme.displaySmall,
-        ),
-        const SizedBox(
-          height: SSizes.spaceBtwItems,
-        ),
-      ],
+          const SizedBox(
+            height: SSizes.spaceBtwItems,
+          ),
+        ],
+      ),
     );
   }
 }
