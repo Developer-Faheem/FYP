@@ -29,10 +29,20 @@ class ProfileWidget extends StatelessWidget {
             Row(
               children: [
                 //profile image
-                const CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage(SImages.anonymous),
-                ),
+                Obx(() {
+                  return usercontroller.user.value.profilePicture != ""
+                      ? CircleAvatar(
+                          radius: 30, // Adjust the radius to fit your design
+                          backgroundImage: NetworkImage(
+                            usercontroller.user.value.profilePicture,
+                          ),
+                        )
+                      : const CircleAvatar(
+                          radius: 30,
+                          backgroundImage: AssetImage(SImages.anonymous),
+                        );
+                }),
+
                 const SizedBox(
                   width: SSizes.sm,
                 ),

@@ -1,8 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer_loader.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
+import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
 import 'package:stylesage/features/User_side/Personalization/controllers/updateProfileController/updateProfileController.dart';
 import 'package:stylesage/features/User_side/Personalization/screens/profile_details/widget/profile_form.dart';
 import 'package:stylesage/utils/constants/colors.dart';
@@ -15,6 +19,7 @@ class ProfileDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final updateDataController = Get.put(UpdateUserProfileController());
+    final userController = Get.put(UserController());
     return Container(
       color: SColors.bgMainScreens,
       child: SafeArea(
@@ -43,10 +48,26 @@ class ProfileDetailsScreen extends StatelessWidget {
                     height: SSizes.spaceBtwSections,
                   ),
                   //Avatar for profile picture
-                  SvgPicture.asset(
-                    "assets/icons/profile/profile.svg",
-                    width: 152,
-                  ),
+                  Obx(() {
+                    return userController.user.value.profilePicture != ""
+                        ? CircleAvatar(
+                            radius: 42, // Adjust the radius to fit your design
+                            backgroundImage: NetworkImage(
+                              userController.user.value.profilePicture,
+                            ),
+                          )
+                        : SvgPicture.asset("assets/icons/profile/profile.svg");
+                  }),
+
+                  TextButton(
+                      onPressed: () {
+                        userController.uploadUserProfilePicture();
+                      },
+                      child: Text(
+                        'change profile picture',
+                        style: Theme.of(context).textTheme.titleSmall,
+                      )),
+
                   const SizedBox(
                     height: SSizes.spaceBtwItems,
                   ),
@@ -74,3 +95,51 @@ class ProfileDetailsScreen extends StatelessWidget {
     );
   }
 }
+
+// class SCircularImage extends StatelessWidget {
+//   final double width, height, padding;
+//   final BoxFit? fit;
+//   final String image;
+//   final bool isNetworkImage;
+
+//   const SCircularImage(
+//       {super.key,
+//       this.height = 56,
+//       this.width = 56,
+//       required this.image,
+//       this.fit = BoxFit.cover,
+//       this.padding = SSizes.sm,
+//       this.isNetworkImage = false});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         width: width,
+//         height: height,
+//         padding: EdgeInsets.all(padding),
+//         decoration: BoxDecoration(
+//           color: Colors.grey,
+//           borderRadius: BorderRadius.circular(100),
+//         ),
+//         child: Center(
+//           child: isNetworkImage
+//               ? CachedNetworkImage(
+//                   fit: fit,
+//                   imageUrl: image,
+//                   progressIndicatorBuilder: (context, url, DownloadProgress) =>
+//                       const SShimmerEffect(
+//                     width: 55,
+//                     height: 55,
+//                     radius: 55,
+//                   ),
+//                   errorWidget: (context, url, error) => const Icon(Icons.error),
+//                 )
+//               : Image(
+//                   fit: fit,
+//                   image: isNetworkImage
+//                       ? NetworkImage(image)
+//                       //: Svgr,
+//                 ),
+//         ));
+//   }
+// }

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:stylesage/commons/widgets/Loaders/loaders.dart';
 import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
 import 'package:stylesage/data/repositories/user/user_repositories.dart';
@@ -36,7 +37,12 @@ class UserController extends GetxController {
   ///save user record from any registration provider
   Future<void> saveUserRecord() async {
     final currentUser = FirebaseAuth.instance.currentUser;
+
+    //refresh user record
+    //  await fetchUserRecord();
+
     try {
+      //   if (user.value.id.isEmpty) {
       if (currentUser != null) {
         final name = await storage.read('name');
 
@@ -52,6 +58,7 @@ class UserController extends GetxController {
 
         //save user data
         await userRepository.saveUserRecord(user);
+        // }
       }
     } catch (e) {
       SLoaders.warningSnackbar(
@@ -83,6 +90,37 @@ class UserController extends GetxController {
     } catch (e) {
       SLoaders.warningSnackbar(
           Title: 'Account not deleted', message: e.toString());
+    }
+  }
+
+  //upload profile picture
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxWidth: 512,
+          maxHeight: 512);
+
+      if (image != null) {
+        //upload image
+        final imageUrl =
+            await userRepository.uploadImage('users/images/profile/', image);
+
+        //update user image record
+        Map<String, dynamic> json = {'profilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl as String;
+
+        SLoaders.successSnackbar(
+            Title: 'Congratulation',
+            message: "The profile image has been updated");
+      }
+    } catch (e) {
+      print(e);
+      SLoaders.warningSnackbar(
+          Title: 'operation unsuccessful', message: "something went wrong");
     }
   }
 }
