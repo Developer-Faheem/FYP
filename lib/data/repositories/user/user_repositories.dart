@@ -98,9 +98,26 @@ class UserRepositories extends GetxController {
   }
 
   //function to remove the data from firestore
+  // Method to delete the image from Firebase Storage
+  Future<void> deleteImageFromStorage(String? imageUrl) async {
+    if (imageUrl != null) {
+      final storageRef = FirebaseStorage.instance.refFromURL(imageUrl);
+      await storageRef.delete();
+    }
+  }
+
+// Updated removeUserRecord method
   Future<void> removeUserRecord(String userId) async {
     try {
+      // Get the profile picture URL before deleting the document
+      final userSnapshot = await _db.collection('users').doc(userId).get();
+      final profilePictureUrl = userSnapshot.get('profilePicture') as String?;
+
+      // Delete the Firestore document
       await _db.collection('users').doc(userId).delete();
+
+      // Delete the image from Firebase Storage
+      await deleteImageFromStorage(profilePictureUrl);
     } on FirebaseAuthException catch (e) {
       throw SFirebaseAuthException(e.code).meassage;
     } on FirebaseException catch (e) {
