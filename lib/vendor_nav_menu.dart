@@ -48,7 +48,6 @@ class VendorNavigationMenu extends StatelessWidget {
             VendorAppointmentScreen(),
             VendorServiceInfoScreen(),
             VendorProfileScreen()
-            //  ProfileScreen()
           ],
         ),
       ),

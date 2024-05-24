@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer_loader.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
+import 'package:stylesage/features/Authentication/controller/vendor_controller/vendor_controller.dart';
 import 'package:stylesage/features/User_side/Personalization/screens/help/help_screen.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/Earning_List/earning_list_screen.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/Edit_profile/edit_profile_screen.dart';
@@ -18,6 +20,7 @@ class ContentVendorProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = VendorController.instance;
     return Container(
       decoration: const BoxDecoration(
         color: SColors.bgMainScreens,
@@ -38,16 +41,34 @@ class ContentVendorProfile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Enclave Haven",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                Text(
-                  "0539 NYC, Street #98 , Maine# 23",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                Obx(() {
+                  if (controller.profileLoading.value) {
+                    return const SShimmerEffect(width: 100, height: 16);
+                  } else {
+                    return Text(
+                      controller.vendor.value.salonName == ""
+                          ? "Your salon name"
+                          : controller.vendor.value.salonName,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    );
+                  }
+                }),
+
+                Obx(() {
+                  if (controller.profileLoading.value) {
+                    return const SShimmerEffect(width: 100, height: 14);
+                  } else {
+                    return Text(
+                      controller.vendor.value.address == ""
+                          ? "salon address here"
+                          : controller.vendor.value.address,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    );
+                  }
+                }),
+
                 const Divider(
                   color: SColors.dividersColor,
                 ),

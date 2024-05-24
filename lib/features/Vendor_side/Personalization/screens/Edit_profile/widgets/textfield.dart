@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 class CustomTextField1 extends StatelessWidget {
   final String? hintText;
   final String? suffixIcon; // New property for trailing icon
+  final FormFieldValidator<String>? validator;
+  final TextEditingController? controller;
 
   const CustomTextField1({
     Key? key,
     this.hintText,
     this.suffixIcon, // Updated constructor
+    this.validator,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -24,6 +28,8 @@ class CustomTextField1 extends StatelessWidget {
         ],
       ),
       child: TextFormField(
+        controller: controller,
+        validator: validator,
         decoration: InputDecoration(
           hintText: hintText,
           border: InputBorder.none, // Remove the default border

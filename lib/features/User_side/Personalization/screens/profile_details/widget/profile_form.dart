@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/textFields/custom_textfield.dart';
 import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
 import 'package:stylesage/features/User_side/Personalization/controllers/updateProfileController/updateProfileController.dart';

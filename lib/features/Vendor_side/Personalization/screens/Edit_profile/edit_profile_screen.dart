@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer_loader.dart';
 import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
+import 'package:stylesage/features/Authentication/controller/vendor_controller/vendor_controller.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/Edit_profile/widgets/edit_content_widget.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
@@ -11,6 +13,7 @@ class EditVendorProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = VendorController.instance;
     return Container(
       color: SColors.bgMainScreens,
       child: SafeArea(
@@ -69,20 +72,36 @@ class EditVendorProfileScreen extends StatelessWidget {
               Positioned(
                 left: SDeviceUtils.getScreenHeight() * 0.029,
                 top: SDeviceUtils.getScreenHeight() * 0.16,
-                child: Text(
-                  "Enclave Haven",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
+                child: Obx(() {
+                  if (controller.profileLoading.value) {
+                    return const SShimmerEffect(width: 100, height: 16);
+                  } else {
+                    return Text(
+                      controller.vendor.value.salonName == ""
+                          ? "Your salon name"
+                          : controller.vendor.value.salonName,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    );
+                  }
+                }),
               ),
               Positioned(
                 left: SDeviceUtils.getScreenHeight() * 0.029,
                 top: SDeviceUtils.getScreenHeight() * 0.19,
-                child: Text(
-                  "0539 NYC, Street #98 , Maine# 23",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                child: Obx(() {
+                  if (controller.profileLoading.value) {
+                    return const SShimmerEffect(width: 100, height: 16);
+                  } else {
+                    return Text(
+                      controller.vendor.value.address == ""
+                          ? "Your salon address"
+                          : controller.vendor.value.address,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    );
+                  }
+                }),
               ),
             ],
           ),

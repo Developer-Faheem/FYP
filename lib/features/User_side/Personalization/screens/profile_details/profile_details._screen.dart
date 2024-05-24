@@ -56,7 +56,10 @@ class ProfileDetailsScreen extends StatelessWidget {
                               userController.user.value.profilePicture,
                             ),
                           )
-                        : SvgPicture.asset("assets/icons/profile/profile.svg");
+                        : SvgPicture.asset(
+                            height: 66,
+                            "assets/icons/profile/profile.svg",
+                          );
                   }),
 
                   TextButton(
@@ -95,51 +98,3 @@ class ProfileDetailsScreen extends StatelessWidget {
     );
   }
 }
-
-// class SCircularImage extends StatelessWidget {
-//   final double width, height, padding;
-//   final BoxFit? fit;
-//   final String image;
-//   final bool isNetworkImage;
-
-//   const SCircularImage(
-//       {super.key,
-//       this.height = 56,
-//       this.width = 56,
-//       required this.image,
-//       this.fit = BoxFit.cover,
-//       this.padding = SSizes.sm,
-//       this.isNetworkImage = false});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         width: width,
-//         height: height,
-//         padding: EdgeInsets.all(padding),
-//         decoration: BoxDecoration(
-//           color: Colors.grey,
-//           borderRadius: BorderRadius.circular(100),
-//         ),
-//         child: Center(
-//           child: isNetworkImage
-//               ? CachedNetworkImage(
-//                   fit: fit,
-//                   imageUrl: image,
-//                   progressIndicatorBuilder: (context, url, DownloadProgress) =>
-//                       const SShimmerEffect(
-//                     width: 55,
-//                     height: 55,
-//                     radius: 55,
-//                   ),
-//                   errorWidget: (context, url, error) => const Icon(Icons.error),
-//                 )
-//               : Image(
-//                   fit: fit,
-//                   image: isNetworkImage
-//                       ? NetworkImage(image)
-//                       //: Svgr,
-//                 ),
-//         ));
-//   }
-// }

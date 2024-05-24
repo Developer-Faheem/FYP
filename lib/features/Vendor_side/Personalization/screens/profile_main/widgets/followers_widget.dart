@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer_loader.dart';
+import 'package:stylesage/features/Authentication/controller/vendor_controller/vendor_controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
@@ -9,6 +12,7 @@ class FollowersSuccessRateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = VendorController.instance;
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(SSizes.radiusSmall),
@@ -20,10 +24,16 @@ class FollowersSuccessRateWidget extends StatelessWidget {
           children: [
             Column(
               children: [
-                Text(
-                  "259",
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
+                Obx(() {
+                  if (controller.profileLoading.value) {
+                    return const SShimmerEffect(width: 40, height: 22);
+                  } else {
+                    return Text(
+                      controller.vendor.value.followers.toString(),
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    );
+                  }
+                }),
                 Text(
                   "Followers",
                   style: Theme.of(context).textTheme.bodyMedium,

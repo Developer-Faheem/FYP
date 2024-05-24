@@ -48,17 +48,17 @@ class SValidators {
     return null;
   }
 
-  static String? validatePhnNumber(String? value) {
+  static String? validatePhnNumber(String? value, String? fieldName) {
     if (value == null || value.isEmpty) {
-      return 'Phone number is Required.';
+      return '$fieldName is Required.';
     }
 
-    //reqular expersion assuming 10 digit us number
+    // Pakistani phone number format regex
+    final pakPhnRegExp = RegExp(
+        r"^(?:\+92)?(03[0-9]{9}|01[0-9]{9}|02[1-9]{8}|04[0-9]{8}|05[1-5]{8}|06[1-9]{8}|07[0-9]{8}|08[1-9]{8}|09[0-9]{8})$");
 
-    final phnRegExp = RegExp(r'^\d{10}$');
-
-    if (!phnRegExp.hasMatch(value)) {
-      return 'Invalid phone number format (required 10 digits)';
+    if (!pakPhnRegExp.hasMatch(value)) {
+      return 'Invalid phone No format ';
     }
 
     return null;

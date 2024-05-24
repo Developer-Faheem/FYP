@@ -3,7 +3,6 @@ import 'dart:ffi';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/Loaders/loaders.dart';
-import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
 import 'package:stylesage/data/repositories/user/user_repositories.dart';
 import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
 import 'package:stylesage/features/User_side/Personalization/screens/profile_main/profile_screen.dart';

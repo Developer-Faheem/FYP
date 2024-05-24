@@ -91,8 +91,6 @@ class UserRepositories extends GetxController {
     } on PlatformException catch (e) {
       throw SPlatformException(e.code).message;
     } catch (e) {
-      print(e);
-      print('------------------------------------------------');
       throw "Something went wrong, Please try again!";
     }
   }
@@ -110,14 +108,14 @@ class UserRepositories extends GetxController {
   Future<void> removeUserRecord(String userId) async {
     try {
       // Get the profile picture URL before deleting the document
-      final userSnapshot = await _db.collection('users').doc(userId).get();
-      final profilePictureUrl = userSnapshot.get('profilePicture') as String?;
+      // final userSnapshot = await _db.collection('users').doc(userId).get();
+      // final profilePictureUrl = userSnapshot.get('profilePicture') as String?;
 
       // Delete the Firestore document
       await _db.collection('users').doc(userId).delete();
 
       // Delete the image from Firebase Storage
-      await deleteImageFromStorage(profilePictureUrl);
+      //   await deleteImageFromStorage(profilePictureUrl);
     } on FirebaseAuthException catch (e) {
       throw SFirebaseAuthException(e.code).meassage;
     } on FirebaseException catch (e) {

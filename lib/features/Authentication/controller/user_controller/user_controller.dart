@@ -118,7 +118,7 @@ class UserController extends GetxController {
             message: "The profile image has been updated");
       }
     } catch (e) {
-      print(e);
+      // print(e);
       SLoaders.warningSnackbar(
           Title: 'operation unsuccessful', message: "something went wrong");
     }
