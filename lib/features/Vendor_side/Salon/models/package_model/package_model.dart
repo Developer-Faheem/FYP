@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PackageModel {
+  String id;
   String packageName;
   String packageImage;
   String packageServices;
   double packagePrice;
 
   PackageModel({
+    required this.id,
     required this.packageName,
     required this.packagePrice,
     required this.packageImage,
@@ -14,6 +16,7 @@ class PackageModel {
   });
 
   static PackageModel empty() => PackageModel(
+        id: '',
         packageName: '',
         packageImage: '',
         packageServices: '',
@@ -25,6 +28,7 @@ class PackageModel {
     if (document.data() != null) {
       final data = document.data()!;
       return PackageModel(
+        id: data['id'] ?? '',
         packageName: data['packageName'] ?? '',
         packageServices: data['packageServices'] ?? '',
         packageImage: data['packageImage'] ?? '',
@@ -37,6 +41,7 @@ class PackageModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'packageName': packageName,
       'packageServices': packageServices,
       'packageImage': packageImage,

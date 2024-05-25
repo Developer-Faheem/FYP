@@ -4,16 +4,15 @@ import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
 import 'package:stylesage/commons/widgets/textFields/custom_textfield.dart';
+import 'package:stylesage/features/Vendor_side/Salon/controllers/package_controller/package_controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class AddPackageDialog extends StatelessWidget {
-  AddPackageDialog({
-    super.key,
-  });
+  AddPackageDialog({super.key});
 
-  TextEditingController controller = TextEditingController();
+  final PackageController packageController = Get.put(PackageController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +46,7 @@ class AddPackageDialog extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16),
-                  //image
-
+                  // Image
                   Stack(
                     children: [
                       // Container for the image
@@ -58,10 +56,12 @@ class AddPackageDialog extends StatelessWidget {
                           borderRadius:
                               BorderRadius.circular(SSizes.radiusSmall),
                           image: DecorationImage(
-                            image:
-                                AssetImage("assets/images/packagePicture.png"),
-                            fit: BoxFit
-                                .cover, // Adjust fit as needed (cover, contain, etc.)
+                            image: packageController.imageUrl != null
+                                ? NetworkImage(packageController.imageUrl!)
+                                : const AssetImage(
+                                        "assets/images/packagePicture.png")
+                                    as ImageProvider,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
@@ -72,22 +72,22 @@ class AddPackageDialog extends StatelessWidget {
                         child: Material(
                           color: Colors.transparent,
                           child: CircularButton(
-                            onPressedCallback: () {},
+                            onPressedCallback: () async {
+                              await packageController.uploadPackageImage();
+                            },
                             iconPath: "assets/icons/profile/Edit.svg",
                           ),
                         ),
                       ),
                     ],
                   ),
-
-                  //add package field
+                  // Add package field
                   const SizedBox(height: 16),
                   CustomTextField(
-                    controller: controller,
+                    controller: packageController.packageNameController,
                     hintText: "Add Package name",
                   ),
-
-                  //included services field
+                  // Included services field
                   const SizedBox(height: 16),
                   Text(
                     "Services",
@@ -95,6 +95,7 @@ class AddPackageDialog extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   TextField(
+                    controller: packageController.packageServicesController,
                     maxLines: 5,
                     keyboardType: TextInputType.multiline,
                     decoration: InputDecoration(
@@ -106,8 +107,7 @@ class AddPackageDialog extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-
-                  //total price of the package
+                  // Total price of the package
                   Text(
                     "Total Package price",
                     style: Theme.of(context).textTheme.headlineMedium,
@@ -119,33 +119,35 @@ class AddPackageDialog extends StatelessWidget {
                         "Total Price",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                      const SizedBox(
-                        width: 26,
-                      ),
+                      const SizedBox(width: 26),
                       Expanded(
                           child: CustomTextField(
-                        controller: controller,
+                        controller: packageController.packagePriceController,
                         hintText: "Rs.",
                       )),
                     ],
                   ),
                   const SizedBox(height: 16),
-
-                  //buttons
+                  // Buttons
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CustomOutlinedButton(
-                          buttonText: "Delete",
+                          buttonText: "Cancel",
                           height: 42,
                           width: 0.3,
                           gradient: SColors.MainOutlinedButtonGradient,
                           textStyle:
                               Theme.of(context).textTheme.headlineMedium!,
-                          onPressedCallback: () {}),
+                          onPressedCallback: () {
+                            Get.back();
+                          }),
                       const SizedBox(width: 16),
                       CustomButton(
-                        onPressedCallback: () {},
+                        onPressedCallback: () async {
+                          await packageController.savePackageRecord();
+                          Get.back();
+                        },
                         buttonText: "Add package",
                         height: 42,
                         width: 0.3,
