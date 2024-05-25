@@ -53,7 +53,7 @@ class AddImageDialog extends StatelessWidget {
                 GestureDetector(
                   onTap: () async {
                     await galleryImageController.uploadGalleryImage();
-                    Get.back();
+                    //  Get.back();
                   },
                   child: Obx(() => DashedBorderContainer(
                         strokeWidth: 3.0,
@@ -107,7 +107,8 @@ class AddImageDialog extends StatelessWidget {
                       onPressedCallback: () async {
                         // Logic for uploading image
                         await galleryImageController.uploadGalleryImage();
-                        Get.back();
+
+                        // Get.back();
                       },
                       buttonText: "Upload",
                       height: 42,

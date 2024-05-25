@@ -10,7 +10,9 @@ import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class AddPackageDialog extends StatelessWidget {
-  AddPackageDialog({super.key});
+  AddPackageDialog({
+    super.key,
+  });
 
   final PackageController packageController = Get.put(PackageController());
 
@@ -46,7 +48,7 @@ class AddPackageDialog extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16),
-                  // Image
+                  //image
                   Stack(
                     children: [
                       // Container for the image
@@ -72,8 +74,8 @@ class AddPackageDialog extends StatelessWidget {
                         child: Material(
                           color: Colors.transparent,
                           child: CircularButton(
-                            onPressedCallback: () async {
-                              await packageController.uploadPackageImage();
+                            onPressedCallback: () {
+                              packageController.uploadPackageImage();
                             },
                             iconPath: "assets/icons/profile/Edit.svg",
                           ),
@@ -81,13 +83,14 @@ class AddPackageDialog extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // Add package field
+                  //add package field
                   const SizedBox(height: 16),
                   CustomTextField(
                     controller: packageController.packageNameController,
                     hintText: "Add Package name",
                   ),
-                  // Included services field
+
+                  //included services field
                   const SizedBox(height: 16),
                   Text(
                     "Services",
@@ -107,7 +110,8 @@ class AddPackageDialog extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  // Total price of the package
+
+                  //total price of the package
                   Text(
                     "Total Package price",
                     style: Theme.of(context).textTheme.headlineMedium,
@@ -119,7 +123,9 @@ class AddPackageDialog extends StatelessWidget {
                         "Total Price",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                      const SizedBox(width: 26),
+                      const SizedBox(
+                        width: 26,
+                      ),
                       Expanded(
                           child: CustomTextField(
                         controller: packageController.packagePriceController,
@@ -128,7 +134,8 @@ class AddPackageDialog extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16),
-                  // Buttons
+
+                  //buttons
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -144,9 +151,8 @@ class AddPackageDialog extends StatelessWidget {
                           }),
                       const SizedBox(width: 16),
                       CustomButton(
-                        onPressedCallback: () async {
-                          await packageController.savePackageRecord();
-                          Get.back();
+                        onPressedCallback: () {
+                          packageController.savePackageRecord();
                         },
                         buttonText: "Add package",
                         height: 42,

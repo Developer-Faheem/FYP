@@ -45,20 +45,21 @@ class PackageController extends GetxController {
     }
   }
 
-  // Save package record
+// Save package record
   Future<void> savePackageRecord() async {
-    if (packageNameController.text.isEmpty ||
-        packageServicesController.text.isEmpty ||
-        packagePriceController.text.isEmpty ||
-        imageUrl == null) {
-      SLoaders.warningSnackbar(
-          Title: 'Incomplete Information',
-          message:
-              "Please ensure all fields are filled and an image is uploaded.");
-      return;
-    }
-
     try {
+      if (packageNameController.text.isEmpty ||
+          packageServicesController.text.isEmpty ||
+          packagePriceController.text.isEmpty ||
+          imageUrl == null) {
+        SLoaders.warningSnackbar(
+            Title: 'Incomplete Information',
+            message:
+                "Please ensure all fields are filled and an image is uploaded.");
+
+        return;
+      }
+
       // Mapping the data
       final PackageModel packageData = PackageModel(
           id: AuthenticationRepository.instance.authUser?.uid ?? '',
@@ -74,6 +75,8 @@ class PackageController extends GetxController {
       SLoaders.successSnackbar(
           Title: 'Congratulation',
           message: "Package has been successfully added.");
+
+      //  Get.back();
     } catch (e) {
       SLoaders.warningSnackbar(
           Title: 'Package not added',

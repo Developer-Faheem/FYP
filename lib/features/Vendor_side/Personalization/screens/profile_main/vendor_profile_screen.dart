@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
+import 'package:stylesage/features/Vendor_side/Personalization/screens/Edit_profile/edit_profile_screen.dart';
 import 'package:stylesage/features/Vendor_side/Personalization/screens/profile_main/widgets/ccontent_vendor.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
@@ -51,7 +53,9 @@ class VendorProfileScreen extends StatelessWidget {
                 right: SDeviceUtils.getScreenHeight() * 0.055,
                 top: SDeviceUtils.getScreenHeight() * 0.1999,
                 child: CircularButton(
-                  onPressedCallback: () {},
+                  onPressedCallback: () {
+                    Get.to(() => const EditVendorProfileScreen());
+                  },
                   iconPath: "assets/icons/profile/Edit.svg",
                 ),
               ),

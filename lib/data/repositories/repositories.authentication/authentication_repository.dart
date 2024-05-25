@@ -163,7 +163,7 @@ class AuthenticationRepository extends GetxController {
   //logout user
   Future<void> logout() async {
     try {
-      await GetStorage().erase();
+      //  await GetStorage().erase();
       await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() =>
