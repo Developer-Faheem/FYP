@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:stylesage/data/repositories/user/user_repositories.dart';
+import 'package:stylesage/features/Authentication/controller/choice_controller/choice_controller.dart';
 import 'package:stylesage/features/Authentication/screens/SignUp/singnup_screen.dart';
 import 'package:stylesage/features/Authentication/screens/login/login_screen.dart';
 import 'package:stylesage/features/Authentication/screens/verification/verification_screen.dart';
@@ -38,11 +39,16 @@ class AuthenticationRepository extends GetxController {
   ///function to show the relevand screen after checking the user
   screenRedirect() async {
     final user = _auth.currentUser;
-    //await GetStorage().erase();
+    final roleController = Get.put(RoleController());
+
     if (user != null) {
       if (user.emailVerified) {
-        if (deviceStorage.read("isChoiceDone") == true) {
-          deviceStorage.read('isUser')
+        final roleData = await roleController.retrieveUserRole();
+
+        if (roleData != null && roleData['isChoiceDone'] == true) {
+          final role = roleData['role'];
+
+          role == 'user'
               ? Get.offAll(() => UserNavigationMenu())
               : Get.offAll(() => VendorNavigationMenu());
         } else {

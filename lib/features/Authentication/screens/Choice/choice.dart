@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
+import 'package:stylesage/features/Authentication/controller/choice_controller/choice_controller.dart';
 import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
 import 'package:stylesage/features/Authentication/controller/vendor_controller/vendor_controller.dart';
 import 'package:stylesage/user_nav_menu.dart';
@@ -18,6 +19,7 @@ class Choice extends StatelessWidget {
     final storage = GetStorage();
     final userController = Get.put(UserController());
     final vendorController = Get.put(VendorController());
+    final roleController = Get.put(RoleController());
     return Container(
         color: SColors.bgMainScreens,
         child: SafeArea(
@@ -31,8 +33,8 @@ class Choice extends StatelessWidget {
                 ),
                 CustomOutlinedButton(
                   onPressedCallback: () async {
-                    storage.writeIfNull("isChoiceDone", true);
-                    storage.writeIfNull("isUser", true);
+                    //storage.writeIfNull("isChoiceDone", true);
+                    await roleController.storeUserRole('user', true);
                     await userController.saveUserRecord();
                     Get.offAll(UserNavigationMenu());
                     // Get.offAll(const LoginScreen());
@@ -48,8 +50,8 @@ class Choice extends StatelessWidget {
                 ),
                 CustomOutlinedButton(
                   onPressedCallback: () async {
-                    storage.writeIfNull("isChoiceDone", true);
-                    storage.writeIfNull("isUser", false);
+                    //storage.writeIfNull("isChoiceDone", true);
+                    await roleController.storeUserRole('vendor', true);
                     await vendorController.saveVendorRecord();
                     Get.offAll(VendorNavigationMenu());
                   },
