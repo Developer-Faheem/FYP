@@ -94,14 +94,15 @@ class AddImageDialog extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustomOutlinedButton(
-                        buttonText: "Cancel",
-                        height: 42,
-                        width: 0.26,
-                        gradient: SColors.MainOutlinedButtonGradient,
-                        textStyle: Theme.of(context).textTheme.headlineMedium!,
-                        onPressedCallback: () {
-                          Get.back();
-                        }),
+                      buttonText: "Cancel",
+                      height: 42,
+                      width: 0.26,
+                      gradient: SColors.MainOutlinedButtonGradient,
+                      textStyle: Theme.of(context).textTheme.headlineMedium!,
+                      onPressedCallback: () {
+                        Get.back();
+                      },
+                    ),
                     const SizedBox(width: 16),
                     CustomButton(
                       onPressedCallback: () async {

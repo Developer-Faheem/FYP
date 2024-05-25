@@ -4,12 +4,16 @@ import 'package:stylesage/commons/widgets/Location_widget.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/ratings_widget.dart';
 import 'package:stylesage/commons/widgets/time_distance_widget.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/salon_profile_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class SaloonCard extends StatelessWidget {
+  final VendorModel vendor;
+
   const SaloonCard({
+    required this.vendor,
     super.key,
   });
 
@@ -30,11 +34,11 @@ class SaloonCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Bell curls , Salon",
+                  vendor.salonName,
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                const RatingsWidget(
-                  rating: "3.5k",
+                RatingsWidget(
+                  rating: vendor.ratings.toString(),
                 ),
               ],
             ),
@@ -62,7 +66,7 @@ class SaloonCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hair cutting and Stylit ddj dhhd dhdh",
+                        vendor.tagline,
                         style: Theme.of(context).textTheme.headlineSmall,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -70,10 +74,9 @@ class SaloonCard extends StatelessWidget {
                       const SizedBox(
                         height: SSizes.defaultSpaceSmall,
                       ),
-                      const LocationWidget(
+                      LocationWidget(
                         iconPath: 'assets/icons/location.svg',
-                        address:
-                            "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
+                        address: vendor.address,
                       ),
                       const SizedBox(
                         height: SSizes.defaultSpaceSmall,
@@ -90,7 +93,7 @@ class SaloonCard extends StatelessWidget {
                       const TimeDistanceWidget(
                         iconPath: 'assets/icons/clock.svg',
                         text1: "MON-SAT",
-                        text2: "9:00 AM-3:30 PM jsjs shhs shsh",
+                        text2: "9:00 AM - 8:30 PM",
                       ),
                       const SizedBox(
                         height: SSizes.defaultSpacemedium,

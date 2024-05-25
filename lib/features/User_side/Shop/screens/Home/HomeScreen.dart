@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/cards/saloon_card.dart';
 import 'package:stylesage/commons/widgets/dialog-box/filter_dialog/filterMain.dart';
 import 'package:stylesage/commons/widgets/services_rounded.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/salons_controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Home/widgets/carousel.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Home/widgets/data.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Home/widgets/search_field.dart';
@@ -19,6 +20,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = NavigationController.instance;
+    final SalonController salonController = Get.put(SalonController());
 
     return Container(
       color: SColors.bgMainScreens,
@@ -142,7 +144,18 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(
                           height: SSizes.sm,
                         ),
-                        const SaloonCard(),
+                        //  const SaloonCard(),
+                        Obx(() {
+                          if (salonController.vendors.isEmpty) {
+                            return Center(
+                              child: Text(
+                                "No salon added yet",
+                                style: TextStyle(color: SColors.primary),
+                              ),
+                            );
+                          }
+                          return SaloonCard(vendor: salonController.vendors[0]);
+                        }),
                       ],
                     ),
                   )
