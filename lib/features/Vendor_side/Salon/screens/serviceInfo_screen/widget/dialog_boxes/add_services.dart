@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/textFields/custom_textfield.dart';
-import 'package:stylesage/features/Vendor_side/Salon/screens/serviceInfo_screen/widget/dialog_boxes/dropdown_widget.dart';
+import 'package:stylesage/features/Vendor_side/Salon/controllers/service_controller/services_controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
@@ -12,7 +12,9 @@ class AddServicesDialog extends StatelessWidget {
   AddServicesDialog({
     super.key,
   });
-  TextEditingController controller = TextEditingController();
+
+  final ServiceController serviceController = Get.put(ServiceController());
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -45,15 +47,45 @@ class AddServicesDialog extends StatelessWidget {
                     ],
                   ),
 
-                  //select service catagory
+                  // Select service category
                   const SizedBox(height: 16),
                   Text(
                     "Select Service Category",
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   const SizedBox(height: 16),
-                  OutlinedDropdownButton(),
-                  // services name
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Obx(() => DropdownButton<String>(
+                          isExpanded: true,
+                          value: serviceController.selectedCategory.value,
+                          onChanged: (String? newValue) {
+                            if (newValue != null) {
+                              serviceController.selectedCategory.value =
+                                  newValue;
+                            }
+                          },
+                          items: serviceController.categories
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            );
+                          }).toList(),
+                          underline:
+                              SizedBox(), // To remove the default underline
+                        )),
+                  ),
+
+                  // Service name
                   const SizedBox(height: 16),
                   Text(
                     "Create service Name",
@@ -61,12 +93,12 @@ class AddServicesDialog extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   CustomTextField(
-                    controller: controller,
+                    controller: serviceController.serviceNameController,
                     hintText: "",
                   ),
                   const SizedBox(height: 16),
 
-                  // price of the service
+                  // Price of the service
                   Text(
                     "Price for service created",
                     style: Theme.of(context).textTheme.headlineMedium,
@@ -83,20 +115,23 @@ class AddServicesDialog extends StatelessWidget {
                       ),
                       Expanded(
                           child: CustomTextField(
-                        controller: controller,
+                        controller: serviceController.priceController,
                         hintText: "Rs.",
                       )),
                     ],
                   ),
                   const SizedBox(height: 16),
 
-                  //buttons
+                  // Buttons
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const SizedBox(width: 16),
                       CustomButton(
-                        onPressedCallback: () {},
+                        onPressedCallback: () {
+                          serviceController.saveServiceRecord();
+                          Get.back();
+                        },
                         buttonText: "Add Service",
                         height: 42,
                         width: 0.38,
