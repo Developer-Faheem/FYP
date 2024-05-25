@@ -48,12 +48,37 @@ class AddPackageDialog extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   //image
-                  Container(
-                      height: 84,
-                      decoration: BoxDecoration(
+
+                  Stack(
+                    children: [
+                      // Container for the image
+                      Container(
+                        height: 84.0,
+                        decoration: BoxDecoration(
                           borderRadius:
-                              BorderRadius.circular(SSizes.radiusSmall)),
-                      child: Image.asset("assets/images/packagePicture.png")),
+                              BorderRadius.circular(SSizes.radiusSmall),
+                          image: DecorationImage(
+                            image:
+                                AssetImage("assets/images/packagePicture.png"),
+                            fit: BoxFit
+                                .cover, // Adjust fit as needed (cover, contain, etc.)
+                          ),
+                        ),
+                      ),
+                      // Positioned circular button with some adjustments
+                      Positioned(
+                        right: 18.0,
+                        top: 40.0,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: CircularButton(
+                            onPressedCallback: () {},
+                            iconPath: "assets/icons/profile/Edit.svg",
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
 
                   //add package field
                   const SizedBox(height: 16),
