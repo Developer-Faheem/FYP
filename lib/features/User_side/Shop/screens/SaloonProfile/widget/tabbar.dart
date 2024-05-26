@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar_options/Reviews_tabbar.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar_options/aboutus_tabbar.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar_options/gallery_tabbar.dart';
@@ -7,7 +8,9 @@ import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/t
 import 'package:stylesage/utils/constants/colors.dart';
 
 class Tabbar extends StatelessWidget {
+  final VendorModel? vendor;
   const Tabbar({
+    this.vendor,
     super.key,
   });
 
@@ -53,18 +56,18 @@ class Tabbar extends StatelessWidget {
               ),
             ],
           ),
-          const Expanded(
+          Expanded(
             child: TabBarView(
               children: [
-                Center(child: ServicesTab()),
-                Center(
+                const Center(child: ServicesTab()),
+                const Center(
                   child: Package(),
                 ),
-                Center(child: Gallery()),
-                Center(
+                const Center(child: Gallery()),
+                const Center(
                   child: Review(),
                 ),
-                Center(child: AboutUs()),
+                Center(child: AboutUs(vendor: vendor)),
               ],
             ),
           ),

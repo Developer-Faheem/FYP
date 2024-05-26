@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/workinghours_widget.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
 
 class AboutUs extends StatelessWidget {
-  const AboutUs({super.key});
+  final VendorModel? vendor;
+  const AboutUs({super.key, this.vendor});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class AboutUs extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             Text(
-              STextStrings.aboutus,
+              vendor?.aboutSection ?? STextStrings.aboutus,
               style:
                   Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 12),
             ),

@@ -115,7 +115,9 @@ class SaloonCard extends StatelessWidget {
                         Center(
                           child: CustomButton(
                               onPressedCallback: () {
-                                Get.to(() => const SalonProfileScreen());
+                                Get.to(() => SalonProfileScreen(
+                                      vendor: vendor,
+                                    ));
                               },
                               buttonText: "View",
                               height: 28,

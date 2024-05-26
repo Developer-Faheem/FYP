@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
+import 'package:stylesage/utils/device/device_utilities.dart';
 
 class MainContent extends StatelessWidget {
+  final VendorModel? vendor;
   const MainContent({
+    this.vendor,
     super.key,
   });
 
@@ -34,12 +38,16 @@ class MainContent extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  //salon name
                   Text(
-                    "Enclave Haven",
+                    //"Enclave Haven",
+                    vendor?.salonName ?? '',
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
+                  //salon tagline
                   Text(
-                    "Haircuts, Makeup , Manicure ,Hydra facial",
+                    vendor?.tagline ?? '',
+                    // "Haircuts, Makeup , Manicure ,Hydra facial",
                     style: Theme.of(context).textTheme.bodyLarge,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -65,7 +73,8 @@ class MainContent extends StatelessWidget {
                                 width: SSizes.defaultSpacemedium,
                               ),
                               Text(
-                                "0539 NYC, Street #98 ",
+                                vendor?.address ?? '',
+                                // "0539 NYC, Street #98 ",
                                 style: Theme.of(context).textTheme.labelSmall,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
@@ -86,7 +95,7 @@ class MainContent extends StatelessWidget {
                                 width: SSizes.defaultSpacemedium,
                               ),
                               Text(
-                                "15min . 1.5km  |  Mon - Sun   |  9am - 11pm",
+                                " Mon - Sun   |  9am - 11pm",
                                 style: Theme.of(context).textTheme.labelSmall,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
@@ -135,19 +144,23 @@ class MainContent extends StatelessWidget {
                           textStyle: Theme.of(context).textTheme.bodyLarge!,
                           onPressedCallback: () {}),
                       CustomOutlinedButton(
-                          buttonText: "Get Directions",
-                          height: 40,
-                          width: 0.32,
-                          gradient: SColors.smallOutlinedButtonGradient,
-                          textStyle: Theme.of(context).textTheme.bodyLarge!,
-                          onPressedCallback: () {})
+                        buttonText: "Get Directions",
+                        height: 40,
+                        width: 0.32,
+                        gradient: SColors.smallOutlinedButtonGradient,
+                        textStyle: Theme.of(context).textTheme.bodyLarge!,
+                        onPressedCallback: () async {
+                          Uri uri = Uri.parse(vendor?.mapLocation ?? '');
+                          await SDeviceUtils.launch(uri);
+                        },
+                      )
                     ],
                   ),
                 ],
               ),
             ),
             //Tab bar now
-            const Tabbar()
+            Tabbar(vendor: vendor)
           ],
         ),
       ),

@@ -50,7 +50,9 @@ class SalonProfileScreen extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: const MainContent(),
+                child: MainContent(
+                  vendor: vendor,
+                ),
               ),
 
               //Ratings Widget
@@ -58,7 +60,7 @@ class SalonProfileScreen extends StatelessWidget {
                 top: SDeviceUtils.getScreenHeight() * 0.2065,
                 left: SDeviceUtils.getScreenWidth() * 0.5 - 152 / 2,
                 child: const ReviewWidget(
-                  ratings: "14.5K (1K+ Reviews)",
+                  ratings: "5.0 (1 Reviews)",
                 ),
               ),
 
