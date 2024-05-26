@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
+import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar_options/Reviews_tabbar.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar_options/aboutus_tabbar.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar_options/gallery_tabbar.dart';
@@ -16,6 +18,7 @@ class Tabbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(DropDownController(vendor!.id));
     return Expanded(
       child: Column(
         children: [
@@ -26,13 +29,13 @@ class Tabbar extends StatelessWidget {
             tabs: [
               Tab(
                 child: Text(
-                  "Services",
+                  "Packages",
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
               Tab(
                 child: Text(
-                  "Packages",
+                  "Services",
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
@@ -59,10 +62,13 @@ class Tabbar extends StatelessWidget {
           Expanded(
             child: TabBarView(
               children: [
-                const Center(child: ServicesTab()),
                 const Center(
                   child: Package(),
                 ),
+                Center(
+                    child: ServicesTab(
+                  vendorId: vendor!.id,
+                )),
                 const Center(child: Gallery()),
                 const Center(
                   child: Review(),

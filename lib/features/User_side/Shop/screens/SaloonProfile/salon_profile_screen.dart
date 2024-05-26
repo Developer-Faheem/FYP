@@ -5,6 +5,7 @@ import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/booking_appointment_screen.dart';
+import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/main_content.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/reviews_widget.dart';
 import 'package:stylesage/utils/constants/colors.dart';
@@ -17,6 +18,9 @@ class SalonProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final DropDownController controller =
+    //     Get.put(DropDownController(vendor!.id));
+
     return Container(
       color: SColors.bgMainScreens,
       child: SafeArea(

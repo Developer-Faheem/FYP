@@ -1,41 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/service_selection_dropdown.dart';
+import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/controller.dart';
+import 'package:stylesage/utils/constants/sizes.dart';
+import 'package:stylesage/utils/device/device_utilities.dart';
 
 class ServicesTab extends StatelessWidget {
-  const ServicesTab({super.key});
+  final String vendorId;
+
+  const ServicesTab({super.key, required this.vendorId});
 
   @override
   Widget build(BuildContext context) {
-    final DropDownController controller = Get.put(DropDownController());
+    final DropDownController controller = DropDownController.instance;
 
-    return Column(
-      children: [
-        ServiceSelectionDropdown(
-          serviceName: "Hair services",
-          selectedItems: controller.selectedItems1,
-          items: const [
-            {'id': 'Cutting', 'label': 'Hair Cutting'},
-            {'id': 'Colouring', 'label': 'Hair Colouring'},
-            {'id': 'Perming', 'label': 'Hair Perming'},
-            {'id': 'Keritin Treatment', 'label': 'Keritin Treatment'},
-            {'id': 'Spa Treatment', 'label': 'Spa Treatment'},
-            {'id': 'Perms and Relaxers', 'label': 'Perms and Relaxers'},
-          ],
-        ),
-        ServiceSelectionDropdown(
-          selectedItems: controller.selectedItems2,
-          serviceName: "Nail services",
-          items: const [
-            {'id': 'Cutting', 'label': 'Hair Cutting'},
-            {'id': 'Colouring', 'label': 'Hair Colouring'},
-            {'id': 'Perming', 'label': 'Hair Perming'},
-            {'id': 'Keritin Treatment', 'label': 'Keritin Treatment'},
-            {'id': 'Spa Treatment', 'label': 'Spa Treatment'},
-            {'id': 'Perms and Relaxers', 'label': 'Perms and Relaxers'},
-          ],
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ServiceSelectionDropdown(
+            serviceName: "Hair Care",
+            selectedItems: controller.selectedItems1,
+            items: controller.hairServices,
+          ),
+
+          ServiceSelectionDropdown(
+            serviceName: "Nail Care",
+            selectedItems: controller.selectedItems2,
+            items: controller.nailServices,
+          ),
+
+          ServiceSelectionDropdown(
+            serviceName: "Skin Care",
+            selectedItems: controller.selectedItems3,
+            items: controller.skinServices,
+          ),
+
+          ServiceSelectionDropdown(
+            serviceName: "Beauty Services",
+            selectedItems: controller.selectedItems4,
+            items: controller.beautyServices,
+          ),
+
+          ServiceSelectionDropdown(
+            serviceName: "Mens Grooming",
+            selectedItems: controller.selectedItems5,
+            items: controller.mensServices,
+          ),
+          ServiceSelectionDropdown(
+            serviceName: "Body Treatment",
+            selectedItems: controller.selectedItems6,
+            items: controller.bodyServices,
+          ),
+          ServiceSelectionDropdown(
+            serviceName: "Other Services",
+            selectedItems: controller.selectedItems7,
+            items: controller.otherServices,
+          ),
+          SizedBox(
+            height: SDeviceUtils.getScreenHeight() * 0.1,
+          )
+          // Add other categories similarly if needed
+        ],
+      ),
     );
   }
 }

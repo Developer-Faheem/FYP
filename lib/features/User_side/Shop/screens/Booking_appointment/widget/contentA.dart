@@ -4,7 +4,7 @@ import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/wi
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/date_picker.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/payment_widget.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/time_slot.dart';
-import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/service_selection_dropdown.dart';
+import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
@@ -16,7 +16,7 @@ class MainContentBooking extends StatefulWidget {
 }
 
 class _MainContentBookingState extends State<MainContentBooking> {
-  final DropDownController controller = Get.put(DropDownController());
+  final DropDownController controller = DropDownController.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +49,34 @@ class _MainContentBookingState extends State<MainContentBooking> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Obx(() => ChipWidget(controller.selectedItems1
-                      .map((item) => item as Map<String, String>)
-                      .toList())),
-                  Obx(() => ChipWidget(controller.selectedItems2
-                      .map((item) => item as Map<String, String>)
-                      .toList())),
+
+                  Obx(() {
+                    return Column(
+                      children: [
+                        ChipWidget(controller.selectedItems1
+                            .map((item) => item as Map<String, String>)
+                            .toList()),
+                        ChipWidget(controller.selectedItems2
+                            .map((item) => item as Map<String, String>)
+                            .toList()),
+                        ChipWidget(controller.selectedItems3
+                            .map((item) => item as Map<String, String>)
+                            .toList()),
+                        ChipWidget(controller.selectedItems4
+                            .map((item) => item as Map<String, String>)
+                            .toList()),
+                        ChipWidget(controller.selectedItems5
+                            .map((item) => item as Map<String, String>)
+                            .toList()),
+                        ChipWidget(controller.selectedItems6
+                            .map((item) => item as Map<String, String>)
+                            .toList()),
+                        ChipWidget(controller.selectedItems7
+                            .map((item) => item as Map<String, String>)
+                            .toList()),
+                      ],
+                    );
+                  }),
                   const Divider(
                     color: SColors.dividersColor,
                   ),
