@@ -122,7 +122,7 @@ class FaviouriteCard extends StatelessWidget {
                             ),
                             CustomButton(
                                 onPressedCallback: () {
-                                  Get.to(() => const SalonProfileScreen());
+                                  //    Get.to(() => const SalonProfileScreen());
                                 },
                                 buttonText: "Book Now",
                                 height: 28,

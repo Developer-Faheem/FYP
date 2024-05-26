@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stylesage/commons/widgets/Loaders/shimmer_loader.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer/shimmer_loader.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/features/Authentication/controller/vendor_controller/vendor_controller.dart';
 import 'package:stylesage/features/User_side/Personalization/screens/help/help_screen.dart';

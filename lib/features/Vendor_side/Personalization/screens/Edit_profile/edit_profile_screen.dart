@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stylesage/commons/widgets/Loaders/shimmer_loader.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer/shimmer_loader.dart';
 import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
 import 'package:stylesage/features/Authentication/controller/vendor_controller/vendor_controller.dart';

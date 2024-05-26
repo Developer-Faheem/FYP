@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stylesage/commons/widgets/Loaders/shimmer_loader.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer/shimmer_loader.dart';
 import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/image_strings.dart';

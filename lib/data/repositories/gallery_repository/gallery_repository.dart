@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
-import 'package:stylesage/features/Vendor_side/Salon/models/services_model/services_model.dart';
 import 'package:stylesage/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:stylesage/utils/exceptions/firebase_exceptions.dart';
 import 'package:stylesage/utils/exceptions/firebase_plateform_exceptions.dart';

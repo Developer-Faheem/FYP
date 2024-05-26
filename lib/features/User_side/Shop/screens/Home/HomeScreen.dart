@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer/salonCard_shimmer.dart';
 import 'package:stylesage/commons/widgets/cards/saloon_card.dart';
 import 'package:stylesage/commons/widgets/dialog-box/filter_dialog/filterMain.dart';
 import 'package:stylesage/commons/widgets/services_rounded.dart';
@@ -147,13 +148,14 @@ class HomeScreen extends StatelessWidget {
                         //  const SaloonCard(),
                         Obx(() {
                           if (salonController.vendors.isEmpty) {
-                            return Center(
+                            return const Center(
                               child: Text(
                                 "No salon added yet",
                                 style: TextStyle(color: SColors.primary),
                               ),
                             );
                           }
+                          //return SaloonCardShimmer();
                           return SaloonCard(vendor: salonController.vendors[0]);
                         }),
                       ],

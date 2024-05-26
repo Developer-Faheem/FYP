@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/booking_appointment_screen.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/main_content.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/reviews_widget.dart';
@@ -11,7 +12,8 @@ import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class SalonProfileScreen extends StatelessWidget {
-  const SalonProfileScreen({super.key});
+  final VendorModel? vendor;
+  const SalonProfileScreen({super.key, this.vendor});
 
   @override
   Widget build(BuildContext context) {
