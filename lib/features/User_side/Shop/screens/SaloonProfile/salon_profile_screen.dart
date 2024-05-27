@@ -6,7 +6,7 @@ import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/features/User_side/Shop/controllers/package_controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/booking_appointment_screen.dart';
-import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/controller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/main_content.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/reviews_widget.dart';
 import 'package:stylesage/features/Vendor_side/Salon/controllers/package_controller/package_controller.dart';

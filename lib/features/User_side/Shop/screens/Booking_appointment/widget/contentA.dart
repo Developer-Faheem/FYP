@@ -4,7 +4,7 @@ import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/wi
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/date_picker.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/payment_widget.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/time_slot.dart';
-import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/controller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 

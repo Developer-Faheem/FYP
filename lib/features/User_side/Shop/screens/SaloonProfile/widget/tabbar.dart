@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
-import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/controller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar_options/Reviews_tabbar.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar_options/aboutus_tabbar.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/tabbar_options/gallery_tabbar.dart';

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/service_selection_dropdown.dart';
-import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/controller.dart';
-import 'package:stylesage/utils/constants/sizes.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/controller.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class ServicesTab extends StatelessWidget {

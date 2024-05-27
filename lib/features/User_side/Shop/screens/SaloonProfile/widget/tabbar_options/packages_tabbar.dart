@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer/salonCard_shimmer.dart';
 import 'package:stylesage/commons/widgets/cards/package_card.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/features/User_side/Shop/controllers/package_controller.dart';
@@ -32,6 +33,9 @@ class Package extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(bottom: 64),
             child: Obx(() {
+              if (packageController.isLoading.value)
+                return const SaloonCardShimmer();
+
               if (packageController.packages.isEmpty) {
                 return const Center(
                   child: Text(

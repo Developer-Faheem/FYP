@@ -18,8 +18,8 @@ class ServiceSelectionDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('--------------------printing the items ');
-    print(items);
+    // print('--------------------printing the items ');
+    // print(items);
     return Padding(
       padding: const EdgeInsets.only(
           left: SSizes.lg, right: SSizes.lg, top: SSizes.md),

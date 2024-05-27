@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/controller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 

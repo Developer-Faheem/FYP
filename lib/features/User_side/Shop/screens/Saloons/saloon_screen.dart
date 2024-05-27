@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/commons/widgets/Loaders/shimmer/salonCard_shimmer.dart';
 import 'package:stylesage/commons/widgets/cards/saloon_card.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
 import 'package:stylesage/features/User_side/Shop/controllers/salons_controller.dart';
@@ -29,6 +30,9 @@ class SalonScreen extends StatelessWidget {
                 },
               )),
           body: Obx(() {
+            if (salonController.isLoading.value)
+              return const SaloonCardShimmer();
+
             if (salonController.vendors.isEmpty) {
               return const Center(
                 child: Text(
