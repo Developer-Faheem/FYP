@@ -19,6 +19,26 @@ class VendorRepositories extends GetxController {
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
+  Future<List<VendorModel>> getFavoriteProducts(List<String> vendorIds) async {
+    try {
+      final snapshot = await _db
+          .collection('vendors')
+          .where(FieldPath.documentId, whereIn: vendorIds)
+          .get();
+      return snapshot.docs
+          .map((querySnapshot) => VendorModel.fromSnapshot(querySnapshot))
+          .toList();
+    } on FirebaseAuthException catch (e) {
+      throw SFirebaseAuthException(e.code).meassage;
+    } on FirebaseException catch (e) {
+      throw SFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw SPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong, Please try again!";
+    }
+  }
+
   //function to save the user data to firestore
 
   Future<void> saveVendorRecord(VendorModel user) async {

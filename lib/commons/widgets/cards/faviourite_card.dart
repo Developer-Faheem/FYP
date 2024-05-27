@@ -3,14 +3,19 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/Location_widget.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
+import 'package:stylesage/commons/widgets/buttons/faviourite_button.dart';
 import 'package:stylesage/commons/widgets/ratings_widget.dart';
 import 'package:stylesage/commons/widgets/time_distance_widget.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/salon_profile_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class FaviouriteCard extends StatelessWidget {
-  const FaviouriteCard({
+  VendorModel vendor;
+
+  FaviouriteCard({
+    required this.vendor,
     super.key,
   });
 
@@ -31,25 +36,12 @@ class FaviouriteCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Bell curls , Salon",
+                  vendor.salonName,
+                  //"Bell curls , Salon",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                Container(
-                  width: 25,
-                  height: 25,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: SColors.primary,
-                      width: 2, // Adjust the border width as needed
-                    ),
-                  ),
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'assets/icons/faviourite_outlined.svg',
-                      width: SSizes.iconXS,
-                    ),
-                  ),
+                FaviouriteButton(
+                  vendorId: vendor.id,
                 ),
               ],
             ),
@@ -77,7 +69,8 @@ class FaviouriteCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hair cutting and Stylit ddj dhhd dhdh",
+                        vendor.tagline,
+                        // "Hair cutting and Stylit ddj dhhd dhdh",
                         style: Theme.of(context).textTheme.headlineSmall,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -85,10 +78,11 @@ class FaviouriteCard extends StatelessWidget {
                       const SizedBox(
                         height: SSizes.defaultSpaceSmall,
                       ),
-                      const LocationWidget(
+                      LocationWidget(
                           iconPath: 'assets/icons/location.svg',
-                          address:
-                              "0539 NYC, Street #98 Maine# wood 04...Ingelroad"),
+                          address: vendor.address
+                          // "0539 NYC, Street #98 Maine# wood 04...Ingelroad"
+                          ),
 
                       const SizedBox(
                         height: SSizes.defaultSpaceSmall,
@@ -105,7 +99,7 @@ class FaviouriteCard extends StatelessWidget {
                       const TimeDistanceWidget(
                           iconPath: 'assets/icons/clock.svg',
                           text1: "MON-SAT",
-                          text2: "9:00 AM-3:30 PM jsjs shhs shsh"),
+                          text2: "9:00 AM-3:30 PM"),
 
                       const SizedBox(
                         height: SSizes.defaultSpacemedium,
@@ -114,15 +108,17 @@ class FaviouriteCard extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            const RatingsWidget(
-                              rating: "3.5k",
+                            RatingsWidget(
+                              rating: vendor.ratings.toString(),
+                              //"3.5k",
                             ),
                             const SizedBox(
                               width: SSizes.defaultSpaceLarge,
                             ),
                             CustomButton(
                                 onPressedCallback: () {
-                                  //    Get.to(() => const SalonProfileScreen());
+                                  Get.to(
+                                      () => SalonProfileScreen(vendor: vendor));
                                 },
                                 buttonText: "Book Now",
                                 height: 28,

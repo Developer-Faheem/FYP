@@ -1,35 +1,43 @@
-// import 'package:get_storage/get_storage.dart';
+import 'package:get_storage/get_storage.dart';
 
-// class SlocalStorage {
-//   static final SlocalStorage _instance = SlocalStorage._internal();
+class SlocalStorage {
+  late final GetStorage _storage;
 
-// // Private constructor
-//   SlocalStorage._internal();
+//singleton Instance
+  static SlocalStorage? _instance;
 
-//   // Factory method to get the instance
-//   factory SlocalStorage() {
-//     return _instance;
-//   }
+  // Private constructor
+  SlocalStorage._internal();
 
-//   final _storage = GetStorage();
+  // Factory method to get the instance
+  factory SlocalStorage.instance() {
+    _instance ??= SlocalStorage._internal();
+    return _instance!;
+  }
 
-//   //generic method to save the data
-//   Future<void> savedata<T>(String key, T value) async {
-//     await _storage.write(key, value);
-//   }
+  static Future<void> init(String bucketName) async {
+    await GetStorage.init(bucketName);
+    _instance = SlocalStorage._internal();
+    _instance!._storage = GetStorage(bucketName);
+  }
 
-//   //generic method to read data
-//   T? readData<T>(String key) {
-//     return _storage.read<T>(key);
-//   }
+  //generic method to save the data
+  Future<void> savedata<T>(String key, T value) async {
+    await _storage.write(key, value);
+  }
 
-//   // //generic method to remove data
-//   Future<void> removeData<T>(String key) async {
-//     await _storage.remove(key);
-//   }
+  //generic method to read data
+  T? readData<T>(String key) {
+    return _storage.read<T>(key);
+  }
 
-//   //clear all data in storage
-//   Future<void> claerAll<T>() async {
-//     await _storage.erase();
-//   }
-// }
+  // //generic method to remove data
+  Future<void> removeData<T>(String key) async {
+    await _storage.remove(key);
+  }
+
+  //clear all data in storage
+  Future<void> claerAll<T>() async {
+    await _storage.erase();
+  }
+}

@@ -3,10 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
+import 'package:stylesage/commons/widgets/buttons/faviourite_button.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
-import 'package:stylesage/features/User_side/Shop/controllers/package_controller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/salonProfile/package_controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/booking_appointment_screen.dart';
-import 'package:stylesage/features/User_side/Shop/controllers/controller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/salonProfile/controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/main_content.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/reviews_widget.dart';
 import 'package:stylesage/features/Vendor_side/Salon/controllers/package_controller/package_controller.dart';
@@ -87,9 +88,8 @@ class SalonProfileScreen extends StatelessWidget {
               Positioned(
                 right: SSizes.lg,
                 top: SDeviceUtils.getScreenHeight() * 0.1565,
-                child: CircularButton(
-                  onPressedCallback: () {},
-                  iconPath: "assets/icons/faviourite_outlined.svg",
+                child: FaviouriteButton(
+                  vendorId: vendor!.id,
                 ),
               ),
 

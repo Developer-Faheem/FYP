@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/Loaders/shimmer/shimmer_loader.dart';
-import 'package:stylesage/features/User_side/Shop/controllers/galleryController.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/salonProfile/galleryController.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class Gallery extends StatelessWidget {
@@ -88,7 +88,7 @@ class Gallery extends StatelessWidget {
         errorBuilder: (context, error, stackTrace) => Center(
           child: Column(
             children: [
-              Icon(
+              const Icon(
                 Icons.error,
                 color: Colors.red,
               ),

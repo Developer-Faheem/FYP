@@ -17,6 +17,7 @@ import 'package:stylesage/user_nav_menu.dart';
 import 'package:stylesage/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:stylesage/utils/exceptions/firebase_exceptions.dart';
 import 'package:stylesage/utils/exceptions/firebase_plateform_exceptions.dart';
+import 'package:stylesage/utils/local%20storage/storage_utility.dart';
 import 'package:stylesage/vendor_nav_menu.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -48,9 +49,14 @@ class AuthenticationRepository extends GetxController {
         if (roleData != null && roleData['isChoiceDone'] == true) {
           final role = roleData['role'];
 
-          role == 'user'
-              ? Get.offAll(() => UserNavigationMenu())
-              : Get.offAll(() => VendorNavigationMenu());
+          if (role == 'user') {
+            //initilize the user specific local Strorage (foviourite )
+            await SlocalStorage.init(user.uid);
+
+            Get.offAll(() => UserNavigationMenu());
+          } else {
+            Get.offAll(() => VendorNavigationMenu());
+          }
         } else {
           Get.offAll(() => const Choice());
         }

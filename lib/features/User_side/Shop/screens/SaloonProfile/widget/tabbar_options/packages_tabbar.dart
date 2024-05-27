@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/Loaders/shimmer/salonCard_shimmer.dart';
 import 'package:stylesage/commons/widgets/cards/package_card.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
-import 'package:stylesage/features/User_side/Shop/controllers/package_controller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/salonProfile/package_controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
