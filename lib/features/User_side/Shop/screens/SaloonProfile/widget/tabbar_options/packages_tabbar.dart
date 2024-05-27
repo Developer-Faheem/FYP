@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/cards/package_card.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/package_controller.dart';
+import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class Package extends StatelessWidget {
-  const Package({super.key});
+  final VendorModel? vendor;
+  const Package({super.key, this.vendor});
 
   @override
   Widget build(BuildContext context) {
+    final packageController = PackageController2.instance;
     return Column(
       children: [
         Padding(
@@ -18,13 +24,6 @@ class Package extends StatelessWidget {
                 "Packages",
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              const SizedBox(
-                width: SSizes.sm,
-              ),
-              Text(
-                "(08)",
-                style: Theme.of(context).textTheme.labelLarge,
-              ),
             ],
           ),
         ),
@@ -32,21 +31,33 @@ class Package extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 64),
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return const Padding(
-                  padding: EdgeInsets.only(
-                    top: SSizes.sm,
-                    bottom: SSizes.lg,
-                    left: SSizes.lg,
-                    right: SSizes.lg,
+            child: Obx(() {
+              if (packageController.packages.isEmpty) {
+                return const Center(
+                  child: Text(
+                    "No packages added yet",
+                    style: TextStyle(color: SColors.primary),
                   ),
-                  child: PackageCard(),
                 );
-              },
-            ),
+              }
+              return ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: packageController.packages.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(
+                      top: SSizes.md,
+                      bottom: SSizes.md,
+                      left: SSizes.lg,
+                      right: SSizes.lg,
+                    ),
+                    child: PackageCard(
+                        package: packageController.packages[index],
+                        vendor: vendor),
+                  );
+                },
+              );
+            }),
           ),
         ),
       ],

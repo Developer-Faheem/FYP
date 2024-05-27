@@ -2,23 +2,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PackageModel {
   String id;
-  String packageName;
   String packageImage;
+  String packageName;
   String packageServices;
   double servicePrice;
 
   PackageModel({
     required this.id,
-    required this.packageName,
-    required this.servicePrice,
     required this.packageImage,
+    required this.packageName,
     required this.packageServices,
+    required this.servicePrice,
   });
 
   static PackageModel empty() => PackageModel(
         id: '',
-        packageName: '',
         packageImage: '',
+        packageName: '',
         packageServices: '',
         servicePrice: 0.0,
       );
@@ -29,22 +29,23 @@ class PackageModel {
       final data = document.data()!;
       return PackageModel(
         id: data['id'] ?? '',
+        packageImage: data['packageImage'] ?? '',
         packageName: data['packageName'] ?? '',
         packageServices: data['packageServices'] ?? '',
-        packageImage: data['packageImage'] ?? '',
-        servicePrice: (data['servicePrice'] ?? 0).toDouble(),
+        servicePrice: (data['servicePrice'] ?? 0.0).toDouble(),
       );
     } else {
       return PackageModel.empty();
     }
   }
 
+  // Convert model to JSON structure to store data in Firebase
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'packageImage': packageImage,
       'packageName': packageName,
       'packageServices': packageServices,
-      'packageImage': packageImage,
       'servicePrice': servicePrice,
     };
   }

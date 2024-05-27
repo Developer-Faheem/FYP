@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:stylesage/commons/widgets/Loaders/shimmer/salonCard_shimmer.dart';
 import 'package:stylesage/commons/widgets/cards/saloon_card.dart';
 import 'package:stylesage/commons/widgets/dialog-box/filter_dialog/filterMain.dart';
 import 'package:stylesage/commons/widgets/services_rounded.dart';
@@ -156,6 +155,7 @@ class HomeScreen extends StatelessWidget {
                             );
                           }
                           //return SaloonCardShimmer();
+                          // return PackageCardShimmer();
                           return SaloonCard(vendor: salonController.vendors[0]);
                         }),
                       ],

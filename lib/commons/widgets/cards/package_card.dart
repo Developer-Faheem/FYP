@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:stylesage/commons/widgets/Location_widget.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
+import 'package:stylesage/features/Vendor_side/Salon/models/package_model/package_model.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class PackageCard extends StatelessWidget {
+  final PackageModel package;
+  final VendorModel? vendor;
   const PackageCard({
+    required this.package,
+    this.vendor,
     Key? key,
   }) : super(key: key);
 
@@ -27,11 +33,13 @@ class PackageCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Bell curls , Salon",
+                  vendor?.salonName ?? '',
+                  // "Bell curls , Salon",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 Text(
-                  "Rs 3,000",
+                  "Rs. ${package.servicePrice.toString()}",
+                  //"Rs 3,000",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ],
@@ -63,7 +71,8 @@ class PackageCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Hair cutting and Stylit ddj dhhd dhdh",
+                          vendor?.tagline ?? '',
+                          //  "Hair cutting and Stylit ddj dhhd dhdh",
                           style: Theme.of(context).textTheme.headlineSmall,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -71,10 +80,10 @@ class PackageCard extends StatelessWidget {
                         const SizedBox(
                           height: SSizes.defaultSpaceSmall,
                         ),
-                        const LocationWidget(
+                        LocationWidget(
                           iconPath: 'assets/icons/pin.svg',
-                          address:
-                              "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
+                          address: vendor?.address ?? '',
+                          // "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
                         ),
                         const SizedBox(
                           height: SSizes.defaultSpacemedium,
@@ -92,7 +101,8 @@ class PackageCard extends StatelessWidget {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 6.0),
                             child: Text(
-                              "Hair cutting, colouring , makeup , styling and hydra facial.",
+                              package.packageServices,
+                              // "Hair cutting, colouring , makeup , styling and hydra facial.",
                               style: Theme.of(context).textTheme.labelSmall,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,

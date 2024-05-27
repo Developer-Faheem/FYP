@@ -66,7 +66,7 @@ class PackageController extends GetxController {
           packageName: packageNameController.text.trim(),
           packageImage: imageUrl ?? '',
           packageServices: packageServicesController.text.trim(),
-          packagePrice: double.tryParse(packagePriceController.text) ?? 0);
+          servicePrice: double.tryParse(packagePriceController.text) ?? 0);
 
       // Save package data
       await packageRepository.savePackageData(packageData);
