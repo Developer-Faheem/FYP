@@ -33,8 +33,9 @@ class Package extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(bottom: 64),
             child: Obx(() {
-              if (packageController.isLoading.value)
+              if (packageController.isLoading.value) {
                 return const SaloonCardShimmer();
+              }
 
               if (packageController.packages.isEmpty) {
                 return const Center(

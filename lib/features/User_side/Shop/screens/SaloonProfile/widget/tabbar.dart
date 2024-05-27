@@ -71,7 +71,10 @@ class Tabbar extends StatelessWidget {
                     child: ServicesTab(
                   vendorId: vendor!.id,
                 )),
-                const Center(child: Gallery()),
+                Center(
+                    child: Gallery(
+                  vendorId: vendor!.id,
+                )),
                 const Center(
                   child: Review(),
                 ),

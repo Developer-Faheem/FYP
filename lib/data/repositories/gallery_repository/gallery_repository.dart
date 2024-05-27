@@ -17,6 +17,32 @@ class GalleryRepositories extends GetxController {
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
+//fetching the gallery images
+  Future<List<String>> getGalleryImages(String vendorId) async {
+    try {
+      // Access the document with the name equal to the vendorId in the "gallery" collection
+      DocumentSnapshot<Map<String, dynamic>> snapshot =
+          await _db.collection('gallery').doc(vendorId).get();
+
+      // Check if the document exists and contains the "galleryImages" field
+      if (snapshot.exists && snapshot.data() != null) {
+        List<String> galleryImages =
+            List<String>.from(snapshot.data()!['galleryImages'] ?? []);
+        return galleryImages;
+      } else {
+        return [];
+      }
+    } on FirebaseAuthException catch (e) {
+      throw SFirebaseAuthException(e.code).meassage;
+    } on FirebaseException catch (e) {
+      throw SFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw SPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong, Please try again!";
+    }
+  }
+
 //upload image in storage
   Future<String> uploadImage(String path, XFile image) async {
     try {
