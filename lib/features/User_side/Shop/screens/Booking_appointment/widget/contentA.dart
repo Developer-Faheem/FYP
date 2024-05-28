@@ -20,6 +20,23 @@ class _MainContentBookingState extends State<MainContentBooking> {
   final DropDownController controller = DropDownController.instance;
   final bookingController = Get.put(BookingController());
 
+  List<double> _extractPrices(List<RxList<dynamic>> selectedItemsLists) {
+    List<double> prices = [];
+    for (var list in selectedItemsLists) {
+      for (var item in list) {
+        var mapItem = item as Map<String, String>;
+        var priceString =
+            mapItem.values.firstWhere((value) => value.contains('Rs.'));
+        var parts = priceString.split('Rs.');
+        if (parts.length > 1) {
+          var pricePart = parts[1].trim().split(' ')[0];
+          prices.add(double.parse(pricePart));
+        }
+      }
+    }
+    return prices;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -33,7 +50,6 @@ class _MainContentBookingState extends State<MainContentBooking> {
         ),
         child: Column(
           children: [
-            // Content other than the tab bar
             Padding(
               padding: const EdgeInsets.all(SSizes.lg),
               child: Column(
@@ -43,16 +59,27 @@ class _MainContentBookingState extends State<MainContentBooking> {
                     "Enclave Haven",
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
-
-                  // Booked services
                   Text(
                     "Booked Services : ",
                     style: Theme.of(context).textTheme.bodySmall,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-
                   Obx(() {
+                    var selectedItemsLists = [
+                      controller.selectedItems1,
+                      controller.selectedItems2,
+                      controller.selectedItems3,
+                      controller.selectedItems4,
+                      controller.selectedItems5,
+                      controller.selectedItems6,
+                      controller.selectedItems7,
+                    ];
+
+                    var prices = _extractPrices(selectedItemsLists);
+                    var totalPrice =
+                        prices.fold(0.0, (sum, price) => sum + price);
+
                     return Column(
                       children: [
                         ChipWidget(controller.selectedItems1
@@ -82,8 +109,6 @@ class _MainContentBookingState extends State<MainContentBooking> {
                   const Divider(
                     color: SColors.dividersColor,
                   ),
-
-                  // Date selection / calendar
                   Text(
                     "BOOK APPOINTMENT",
                     style: Theme.of(context)
@@ -123,7 +148,6 @@ class _MainContentBookingState extends State<MainContentBooking> {
                   Center(
                     child: TimeSelectionButton(),
                   ),
-                  //Total price
                   const SizedBox(
                     height: SSizes.md,
                   ),
@@ -131,22 +155,34 @@ class _MainContentBookingState extends State<MainContentBooking> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Total Boooking Price:",
+                        "Total Booking Price:",
                         style: Theme.of(context)
                             .textTheme
                             .headlineSmall!
                             .copyWith(letterSpacing: 2),
                       ),
-                      Text(
-                        "Rs 3500/-",
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
+                      Obx(() {
+                        var selectedItemsLists = [
+                          controller.selectedItems1,
+                          controller.selectedItems2,
+                          controller.selectedItems3,
+                          controller.selectedItems4,
+                          controller.selectedItems5,
+                          controller.selectedItems6,
+                          controller.selectedItems7,
+                        ];
+
+                        var prices = _extractPrices(selectedItemsLists);
+                        var totalPrice =
+                            prices.fold(0.0, (sum, price) => sum + price);
+
+                        return Text(
+                          "Rs ${totalPrice.toStringAsFixed(2)}/-",
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        );
+                      }),
                     ],
                   ),
-                  const SizedBox(
-                    height: SSizes.md,
-                  ),
-                  //Payement method
                   const SizedBox(
                     height: SSizes.md,
                   ),
@@ -166,7 +202,6 @@ class _MainContentBookingState extends State<MainContentBooking> {
                   const SizedBox(
                     height: SSizes.md,
                   ),
-
                   const PaymentWidget(
                       leading: "assets/images/payment/jazzcash.png",
                       title: "Jazz Cash"),
@@ -176,7 +211,6 @@ class _MainContentBookingState extends State<MainContentBooking> {
                   const PaymentWidget(
                       leading: "assets/images/payment/jazzcash.png",
                       title: "Jazz Cash"),
-
                   const SizedBox(
                     height: SSizes.lg,
                   ),
