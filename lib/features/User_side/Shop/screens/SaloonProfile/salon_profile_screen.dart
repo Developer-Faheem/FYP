@@ -5,6 +5,7 @@ import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/faviourite_button.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/booking_controller/booking_controller.dart';
 import 'package:stylesage/features/User_side/Shop/controllers/salonProfile/package_controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/booking_appointment_screen.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/main_content.dart';
@@ -20,6 +21,7 @@ class SalonProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(PackageController2(vendor!.id));
+    final bookingController = Get.put(BookingController());
 
     return Container(
       color: SColors.bgMainScreens,
@@ -120,7 +122,9 @@ class SalonProfileScreen extends StatelessWidget {
                         width: 0.909,
                         height: 44,
                         onPressedCallback: () {
-                          Get.to(() => const BookingAppointmentScreen());
+                          Get.to(() => BookingAppointmentScreen(
+                                vendor: vendor,
+                              ));
                         }),
                   ),
                 ),

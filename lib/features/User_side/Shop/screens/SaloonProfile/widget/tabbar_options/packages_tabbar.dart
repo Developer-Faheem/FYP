@@ -34,7 +34,15 @@ class Package extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 64),
             child: Obx(() {
               if (packageController.isLoading.value) {
-                return const SaloonCardShimmer();
+                return const Padding(
+                  padding: EdgeInsets.only(
+                    top: SSizes.md,
+                    bottom: SSizes.md,
+                    left: SSizes.lg,
+                    right: SSizes.lg,
+                  ),
+                  child: SaloonCardShimmer(),
+                );
               }
 
               if (packageController.packages.isEmpty) {

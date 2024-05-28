@@ -20,6 +20,7 @@ class ProfileDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final updateDataController = Get.put(UpdateUserProfileController());
     final userController = Get.put(UserController());
+
     return Container(
       color: SColors.bgMainScreens,
       child: SafeArea(

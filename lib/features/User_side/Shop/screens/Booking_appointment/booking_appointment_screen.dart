@@ -3,6 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/circular_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
+import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/appointment/appointment_contrroller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/booking_controller/booking_controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/contentA.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/widget/reviews_widget.dart';
 import 'package:stylesage/features/User_side/Shop/screens/success/success_screen.dart';
@@ -11,10 +15,21 @@ import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class BookingAppointmentScreen extends StatelessWidget {
-  const BookingAppointmentScreen({super.key});
+  final VendorModel? vendor;
+
+  const BookingAppointmentScreen({super.key, this.vendor});
 
   @override
   Widget build(BuildContext context) {
+    final appointmentController = Get.put(AppointmentController());
+    // final controller = UserController.instance;
+    // final controller1 = Get.put(BookingController());
+    // print('-----------------------------------------------------------');
+    // print(vendor?.city);
+    // print(controller.user.value.email);
+    // print(controller1.formattedSelectedTime);
+    // print(controller1.selectedDate);
+
     return Container(
       color: SColors.bgMainScreens,
       child: SafeArea(
@@ -112,7 +127,9 @@ class BookingAppointmentScreen extends StatelessWidget {
                         textStyle: Theme.of(context).textTheme.titleLarge!,
                         width: 0.909,
                         height: 44,
-                        onPressedCallback: () {
+                        onPressedCallback: () async {
+                          await appointmentController
+                              .saveAppointmentRecord(vendor!);
                           Get.off(() => const SuccessScreen());
                         }),
                   ),

@@ -20,23 +20,6 @@ class _MainContentBookingState extends State<MainContentBooking> {
   final DropDownController controller = DropDownController.instance;
   final bookingController = Get.put(BookingController());
 
-  List<double> _extractPrices(List<RxList<dynamic>> selectedItemsLists) {
-    List<double> prices = [];
-    for (var list in selectedItemsLists) {
-      for (var item in list) {
-        var mapItem = item as Map<String, String>;
-        var priceString =
-            mapItem.values.firstWhere((value) => value.contains('Rs.'));
-        var parts = priceString.split('Rs.');
-        if (parts.length > 1) {
-          var pricePart = parts[1].trim().split(' ')[0];
-          prices.add(double.parse(pricePart));
-        }
-      }
-    }
-    return prices;
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -76,9 +59,8 @@ class _MainContentBookingState extends State<MainContentBooking> {
                       controller.selectedItems7,
                     ];
 
-                    var prices = _extractPrices(selectedItemsLists);
                     var totalPrice =
-                        prices.fold(0.0, (sum, price) => sum + price);
+                        bookingController.extractPrices2(selectedItemsLists);
 
                     return Column(
                       children: [
@@ -172,9 +154,12 @@ class _MainContentBookingState extends State<MainContentBooking> {
                           controller.selectedItems7,
                         ];
 
-                        var prices = _extractPrices(selectedItemsLists);
-                        var totalPrice =
-                            prices.fold(0.0, (sum, price) => sum + price);
+                        //  var prices = _extractPrices(selectedItemsLists);
+                        var totalPrice = bookingController
+                            .extractPrices2(selectedItemsLists);
+                        bookingController
+                            .extractNamesBeforePrice(selectedItemsLists);
+                        //     prices.fold(0.0, (sum, price) => sum + price);
 
                         return Text(
                           "Rs ${totalPrice.toStringAsFixed(2)}/-",
