@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({
-    super.key,
-  });
+  final Function(String) onChanged;
+  const SearchField({required this.onChanged, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +11,7 @@ class SearchField extends StatelessWidget {
       width: SDeviceUtils.getScreenWidth() * 0.77,
       height: 33,
       child: TextFormField(
+        onChanged: onChanged,
         decoration: InputDecoration(
           hintText: "Search service",
           hintStyle: Theme.of(context).textTheme.labelMedium,
@@ -22,8 +22,7 @@ class SearchField extends StatelessWidget {
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Color(0XFFA9A7A7)),
           ),
-          contentPadding: const EdgeInsets.symmetric(
-              vertical: 8.0), // Adjust the value based on your preference
+          contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
         ),
         style: Theme.of(context).textTheme.displaySmall,
       ),

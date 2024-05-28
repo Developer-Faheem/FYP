@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stylesage/data/repositories/repositories.authentication/authentication_repository.dart';
-import 'package:stylesage/features/Authentication/models/user_model/user_model.dart';
 import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
 import 'package:stylesage/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:stylesage/utils/exceptions/firebase_exceptions.dart';
@@ -19,6 +18,37 @@ class VendorRepositories extends GetxController {
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
+  //here we will be search for the salons based on city and name .
+  Future<List<VendorModel>> fetchAndFilterSalons(String query) async {
+    try {
+      var snapshot =
+          await FirebaseFirestore.instance.collection('vendors').get();
+
+      var salonsList = snapshot.docs
+          .map((doc) {
+            var salon = VendorModel.fromSnapshot(doc);
+            if ((salon.salonName?.toLowerCase().contains(query) ?? false) ||
+                (salon.city?.toLowerCase().contains(query) ?? false)) {
+              return salon;
+            }
+            return null;
+          })
+          .where((salon) => salon != null)
+          .toList();
+
+      return salonsList.cast<VendorModel>();
+    } on FirebaseAuthException catch (e) {
+      throw SFirebaseAuthException(e.code).meassage;
+    } on FirebaseException catch (e) {
+      throw SFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw SPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong, Please try again!";
+    }
+  }
+
+  //getting the faviourite salons
   Future<List<VendorModel>> getFavoriteProducts(List<String> vendorIds) async {
     try {
       final snapshot = await _db

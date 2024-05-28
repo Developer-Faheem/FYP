@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/Loaders/shimmer/salonCard_shimmer.dart';
 import 'package:stylesage/commons/widgets/cards/saloon_card.dart';
 import 'package:stylesage/commons/widgets/dialog-box/filter_dialog/filterMain.dart';
 import 'package:stylesage/commons/widgets/services_rounded.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/home_controllers/salon_search_controller.dart';
 import 'package:stylesage/features/User_side/Shop/controllers/salons_controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Home/widgets/carousel.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Home/widgets/data.dart';
@@ -22,6 +23,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = NavigationController.instance;
     final SalonController salonController = Get.put(SalonController());
+    final SalonSearchController salonSearchController =
+        Get.put(SalonSearchController());
 
     return Container(
       color: SColors.bgMainScreens,
@@ -37,19 +40,23 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  //header
                   const Header(),
                   const SizedBox(
                     height: SSizes.defaultSpaceLarge,
                   ),
-
-                  //search bar
                   Padding(
                     padding: const EdgeInsets.only(right: SSizes.lg),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const SearchField(),
+                        Expanded(
+                          child: SearchField(
+                            onChanged: (value) {
+                              salonSearchController.searchSalons(value);
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: SSizes.defaultSpaceSmall),
                         GestureDetector(
                           onTap: () {
                             showDialog(
@@ -66,105 +73,142 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: SSizes.spaceBtwItems,
-                  ),
-                  //Carousel slider
-                  Text(
-                    "#SpecialForYou",
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  const Carousel(),
-                  const SizedBox(
-                    height: SSizes.sm,
-                  ),
-                  //services
-                  Padding(
-                    padding: const EdgeInsets.only(right: SSizes.lg),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Obx(() {
+                    if (salonSearchController.isSearching.value) {
+                      if (salonSearchController.isLoading.value) {
+                        return const Padding(
+                          padding:
+                              EdgeInsets.only(top: SSizes.lg, right: SSizes.lg),
+                          child: SaloonCardShimmer(),
+                        );
+                      }
+
+                      if (salonSearchController.searchResults.isEmpty) {
+                        return const Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                top: SSizes.lg, right: SSizes.lg),
+                            child: Text(
+                              "No salons found",
+                              style: TextStyle(color: SColors.primary),
+                            ),
+                          ),
+                        );
+                      }
+
+                      return Column(
+                        children: salonSearchController.searchResults
+                            .map((vendor) => Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: SSizes.lg, right: SSizes.lg),
+                                  child: SaloonCard(vendor: vendor),
+                                ))
+                            .toList(),
+                      );
+                    }
+
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(height: SSizes.spaceBtwItems),
                         Text(
-                          "Services",
+                          "#SpecialForYou",
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => const ServicesScreen());
-                          },
-                          child: Text(
-                            "See All",
-                            style: Theme.of(context).textTheme.bodySmall,
+                        const Carousel(),
+                        const SizedBox(height: SSizes.sm),
+                        Padding(
+                          padding: const EdgeInsets.only(right: SSizes.lg),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Services",
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(() => const ServicesScreen());
+                                },
+                                child: Text(
+                                  "See All",
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: SSizes.sm),
+                        SizedBox(
+                          height: 120,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: dataList.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 20.0),
+                                child: ServicesRoundedWidget(
+                                  service: dataList[index]["service"],
+                                  imagePath: dataList[index]["logo"],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: SSizes.spaceBtwItems),
+                        Padding(
+                          padding: const EdgeInsets.only(right: SSizes.lg),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Salons",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () => controller.updateIndex(1),
+                                    child: Text(
+                                      "See All",
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: SSizes.sm),
+                              Obx(() {
+                                if (salonController.isLoading.value) {
+                                  return const SaloonCardShimmer();
+                                }
+
+                                if (salonController.vendors.isEmpty) {
+                                  return const Center(
+                                    child: Text(
+                                      "No salon added yet",
+                                      style: TextStyle(color: SColors.primary),
+                                    ),
+                                  );
+                                }
+
+                                return Column(
+                                  children: salonController.vendors
+                                      .map((vendor) =>
+                                          SaloonCard(vendor: vendor))
+                                      .toList(),
+                                );
+                              }),
+                            ],
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: SSizes.sm,
-                  ),
-                  SizedBox(
-                    height: 120,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: dataList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: ServicesRoundedWidget(
-                              service: dataList[index]["service"],
-                              imagePath: dataList[index]["logo"]),
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(
-                    height: SSizes.spaceBtwItems,
-                  ),
-                  //salons
-                  Padding(
-                    padding: const EdgeInsets.only(right: SSizes.lg),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Salons",
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
-                            GestureDetector(
-                              onTap: () => controller.updateIndex(1),
-                              child: Text(
-                                "See All",
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: SSizes.sm,
-                        ),
-                        //  const SaloonCard(),
-                        Obx(() {
-                          if (salonController.isLoading.value)
-                            return const SaloonCardShimmer();
-
-                          if (salonController.vendors.isEmpty) {
-                            return const Center(
-                              child: Text(
-                                "No salon added yet",
-                                style: TextStyle(color: SColors.primary),
-                              ),
-                            );
-                          }
-                          //return SaloonCardShimmer();
-                          // return PackageCardShimmer();
-                          return SaloonCard(vendor: salonController.vendors[0]);
-                        }),
-                      ],
-                    ),
-                  )
+                    );
+                  }),
                 ],
               ),
             ),

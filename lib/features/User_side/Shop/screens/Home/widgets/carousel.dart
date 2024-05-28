@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stylesage/features/User_side/Shop/controllers/home_controller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/home_controllers/home_controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Home/widgets/banner.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';

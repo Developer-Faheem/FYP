@@ -53,7 +53,7 @@ class FavouriteScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           SizedBox(height: SSizes.lg),
-                          Text('Error fetching favorite salons'),
+                          Text('No favorite salons found'),
                         ],
                       ),
                     );
