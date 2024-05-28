@@ -13,7 +13,7 @@ class SearchField extends StatelessWidget {
       child: TextFormField(
         onChanged: onChanged,
         decoration: InputDecoration(
-          hintText: "Search service",
+          hintText: "Search by Salon name or City",
           hintStyle: Theme.of(context).textTheme.labelMedium,
           prefixIcon: const Icon(Icons.search, size: 20),
           enabledBorder: const OutlineInputBorder(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/booking_controller/booking_controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/chip_widget.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/date_picker.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/payment_widget.dart';
-import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/time_slot.dart';
+import 'package:stylesage/features/User_side/Shop/screens/Booking_appointment/widget/selectTime.dart';
 import 'package:stylesage/features/User_side/Shop/controllers/salonProfile/controller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
@@ -17,6 +18,7 @@ class MainContentBooking extends StatefulWidget {
 
 class _MainContentBookingState extends State<MainContentBooking> {
   final DropDownController controller = DropDownController.instance;
+  final bookingController = Get.put(BookingController());
 
   @override
   Widget build(BuildContext context) {
@@ -92,15 +94,8 @@ class _MainContentBookingState extends State<MainContentBooking> {
                   const SizedBox(
                     height: SSizes.md,
                   ),
-                  Center(
-                    child: DateSelectionButton(),
-                  ),
-                  const SizedBox(
-                    height: SSizes.md,
-                  ),
-                  //Time slot selection
                   Text(
-                    "Available Slots",
+                    "Select Date for Appointment",
                     style: Theme.of(context)
                         .textTheme
                         .headlineSmall!
@@ -109,8 +104,25 @@ class _MainContentBookingState extends State<MainContentBooking> {
                   const SizedBox(
                     height: SSizes.md,
                   ),
-                  TimeSlotWrap(),
-
+                  Center(
+                    child: DateSelectionButton(),
+                  ),
+                  const SizedBox(
+                    height: SSizes.md,
+                  ),
+                  Text(
+                    "Select Time Slot for Appointment",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .copyWith(letterSpacing: 2),
+                  ),
+                  const SizedBox(
+                    height: SSizes.md,
+                  ),
+                  Center(
+                    child: TimeSelectionButton(),
+                  ),
                   //Total price
                   const SizedBox(
                     height: SSizes.md,

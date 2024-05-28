@@ -4,17 +4,17 @@ import 'package:stylesage/features/User_side/Shop/controllers/booking_controller
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
-class DateSelectionButton extends StatelessWidget {
-  final BookingController bookingController = Get.put(BookingController());
+class TimeSelectionButton extends StatelessWidget {
+  final BookingController bookingController = BookingController.instance;
 
-  DateSelectionButton({Key? key}) : super(key: key);
+  TimeSelectionButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         GestureDetector(
-          onTap: () => bookingController.selectDate(),
+          onTap: bookingController.selectTime,
           child: Container(
             decoration: BoxDecoration(
               color: SColors.primary,
@@ -23,19 +23,19 @@ class DateSelectionButton extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Select Date',
+                'Select Time',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
           ),
         ),
-        const SizedBox(
-          width: SSizes.md,
+        const SizedBox(width: SSizes.md),
+        Obx(
+          () => Text(
+            bookingController.formattedSelectedTime.value,
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
         ),
-        Obx(() => Text(
-              bookingController.selectedDate.toString().substring(0, 11),
-              style: Theme.of(context).textTheme.titleSmall,
-            )),
       ],
     );
   }
