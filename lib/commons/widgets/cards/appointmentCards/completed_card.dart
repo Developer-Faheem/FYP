@@ -3,13 +3,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/shadow_button.dart';
+import 'package:stylesage/features/User_side/Shop/models/appointment.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Summary_Appointment/appointment_summary.dart';
 import 'package:stylesage/features/User_side/Shop/screens/add_review/add_review_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class CompletedCard extends StatelessWidget {
+  final AppointmentModel appointment;
+
   const CompletedCard({
+    required this.appointment,
     super.key,
   });
 
@@ -30,7 +34,8 @@ class CompletedCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Bell curls , Salon",
+                  appointment.salonName,
+                  // "Bell curls , Salon",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 SvgPicture.asset(
@@ -63,7 +68,8 @@ class CompletedCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hair cutting and Stylit ddj dhhd dhdh",
+                        appointment.vendorTagline,
+                        //"Hair cutting and Stylit ddj dhhd dhdh",
                         style: Theme.of(context).textTheme.headlineSmall,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -83,7 +89,8 @@ class CompletedCard extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
+                              appointment.vendorAddress,
+                              // "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
                               style: Theme.of(context).textTheme.labelSmall,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
@@ -117,7 +124,8 @@ class CompletedCard extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    "Mon-Sun",
+                                    appointment.bookingDate,
+                                    // "Mon-Sun",
                                     style:
                                         Theme.of(context).textTheme.labelSmall,
                                     maxLines: 1,
@@ -130,7 +138,8 @@ class CompletedCard extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    "9am-11pm",
+                                    appointment.bookingTime,
+                                    // "9am-11pm",
                                     style:
                                         Theme.of(context).textTheme.labelSmall,
                                     maxLines: 1,
@@ -162,7 +171,9 @@ class CompletedCard extends StatelessWidget {
                           ),
                           CustomButton(
                               onPressedCallback: () {
-                                Get.to(() => const AppointmentSummaryScreen());
+                                Get.to(() => AppointmentSummaryScreen(
+                                      appointment: appointment,
+                                    ));
                               },
                               buttonText: "Summary",
                               height: 28,

@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
+import 'package:stylesage/features/Authentication/models/vendor_model/vendor_model.dart';
+import 'package:stylesage/features/User_side/Shop/models/appointment.dart';
 import 'package:stylesage/features/User_side/Shop/screens/Summary_Appointment/appointment_summary.dart';
 import 'package:stylesage/user_nav_menu.dart';
 import 'package:stylesage/utils/constants/colors.dart';
@@ -11,7 +13,8 @@ import 'package:stylesage/utils/constants/text_strings.dart';
 import 'package:stylesage/utils/device/device_utilities.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key});
+  final VendorModel vendor;
+  const SuccessScreen({super.key, required this.vendor});
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +36,13 @@ class SuccessScreen extends StatelessWidget {
               const SizedBox(
                 height: SSizes.md,
               ),
-              Text(
-                STextStrings.success,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium!
-                    .copyWith(letterSpacing: 2),
-              ),
+              // Text(
+              //   STextStrings.success,
+              //   style: Theme.of(context)
+              //       .textTheme
+              //       .headlineMedium!
+              //       .copyWith(letterSpacing: 2),
+              // ),
               Text(
                 STextStrings.successmsg,
                 style: Theme.of(context).textTheme.bodySmall,
@@ -49,7 +52,9 @@ class SuccessScreen extends StatelessWidget {
               ),
               CustomButton(
                 onPressedCallback: () {
-                  Get.to(const AppointmentSummaryScreen());
+                  Get.to(AppointmentSummaryScreen(
+                    appointment: AppointmentModel.empty(),
+                  ));
                 },
                 buttonText: "Review Summary",
                 textStyle: Theme.of(context).textTheme.titleLarge!,

@@ -96,10 +96,11 @@ class SaloonCard extends StatelessWidget {
                           height: SSizes.defaultSpaceSmall,
                         ),
                         //time and distance
-                        const TimeDistanceWidget(
+                        TimeDistanceWidget(
                             iconPath: 'assets/icons/distance_time.svg',
-                            text1: "15 min",
-                            text2: "2 Km"),
+                            text1: vendor.easypaisaNumber,
+                            //"15 min",
+                            text2: ""),
 
                         const SizedBox(
                           height: SSizes.defaultSpaceSmall,

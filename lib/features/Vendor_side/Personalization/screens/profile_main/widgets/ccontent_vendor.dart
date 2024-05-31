@@ -79,17 +79,17 @@ class ContentVendorProfile extends StatelessWidget {
                 ),
 
                 //preview profile button
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CustomButton(
-                        onPressedCallback: () {},
-                        buttonText: "Preview Profile",
-                        height: 28,
-                        width: 0.28,
-                        textStyle: Theme.of(context).textTheme.titleMedium!),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: [
+                //     CustomButton(
+                //         onPressedCallback: () {},
+                //         buttonText: "Preview Profile",
+                //         height: 28,
+                //         width: 0.28,
+                //         textStyle: Theme.of(context).textTheme.titleMedium!),
+                //   ],
+                // ),
 
                 //more profile option buttons
                 Column(

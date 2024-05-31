@@ -168,34 +168,34 @@ class _MainContentBookingState extends State<MainContentBooking> {
                       }),
                     ],
                   ),
-                  const SizedBox(
-                    height: SSizes.md,
-                  ),
+                  // const SizedBox(
+                  //   height: SSizes.md,
+                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Payment Method",
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(letterSpacing: 2),
-                      ),
+                      // Text(
+                      //   "Payment Method",
+                      //   textAlign: TextAlign.center,
+                      //   style: Theme.of(context)
+                      //       .textTheme
+                      //       .headlineSmall!
+                      //       .copyWith(letterSpacing: 2),
+                      // ),
                     ],
                   ),
                   const SizedBox(
                     height: SSizes.md,
                   ),
-                  const PaymentWidget(
-                      leading: "assets/images/payment/jazzcash.png",
-                      title: "Jazz Cash"),
-                  const PaymentWidget(
-                      leading: "assets/images/payment/jazzcash.png",
-                      title: "Jazz Cash"),
-                  const PaymentWidget(
-                      leading: "assets/images/payment/jazzcash.png",
-                      title: "Jazz Cash"),
+                  // const PaymentWidget(
+                  //     leading: "assets/images/payment/jazzcash.png",
+                  //     title: "Jazz Cash"),
+                  // const PaymentWidget(
+                  //     leading: "assets/images/payment/jazzcash.png",
+                  //     title: "Jazz Cash"),
+                  // const PaymentWidget(
+                  //     leading: "assets/images/payment/jazzcash.png",
+                  //     title: "Jazz Cash"),
                   const SizedBox(
                     height: SSizes.lg,
                   ),

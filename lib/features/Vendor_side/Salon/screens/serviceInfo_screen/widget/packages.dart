@@ -13,7 +13,7 @@ class VendorPackages extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: TemporaryWidget(
-          msg: "No packages added yet",
+          msg: '', // "No packages added yet",
           image: SImages.package,
         ),
       ),

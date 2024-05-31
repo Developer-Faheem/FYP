@@ -14,7 +14,7 @@ class VendorServices extends StatelessWidget {
       body: SingleChildScrollView(
         // Wrap content in SingleChildScrollView
         child: TemporaryWidget(
-          msg: "No services added yet",
+          msg: '', // "No services added yet",
           image: SImages.service,
         ),
       ),

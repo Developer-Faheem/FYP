@@ -3,19 +3,22 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/ratings_widget.dart';
+import 'package:stylesage/features/User_side/Shop/models/appointment.dart';
 import 'package:stylesage/features/User_side/Shop/screens/SaloonProfile/salon_profile_screen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class CancelCard extends StatelessWidget {
+  final AppointmentModel appointment;
   const CancelCard({
+    required this.appointment,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 195,
+      height: 170,
       decoration: BoxDecoration(
           color: SColors.bgMainScreens,
           borderRadius: BorderRadius.circular(12),
@@ -29,11 +32,13 @@ class CancelCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "04 June, 2023- 11:00AM ",
+                  //"04 June, 2023- 11:00AM ",
+                  appointment.salonName,
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                const RatingsWidget(
-                  rating: "3.5k",
+                RatingsWidget(
+                  rating: appointment.rating.toString(),
+                  //"3.5k",
                 ),
               ],
             ),
@@ -61,7 +66,8 @@ class CancelCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "MakeUp stylist",
+                        appointment.vendorTagline,
+                        // "MakeUp stylist",
                         style: Theme.of(context).textTheme.headlineSmall,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -81,7 +87,8 @@ class CancelCard extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
+                              appointment.vendorAddress,
+                              //"0539 NYC, Street #98 Maine# wood 04...Ingelroad",
                               style: Theme.of(context).textTheme.labelSmall,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
@@ -103,7 +110,8 @@ class CancelCard extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "Service ID# 093736381",
+                              appointment.appointmentId,
+                              // "Service ID# 093736381",
                               style: Theme.of(context).textTheme.labelSmall,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -114,18 +122,18 @@ class CancelCard extends StatelessWidget {
                       const SizedBox(
                         height: SSizes.defaultSpaceLarge,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          CustomButton(
-                              onPressedCallback: () {
-                                Get.to(() => const SalonProfileScreen());
-                              },
-                              buttonText: "Re-book",
-                              height: 28,
-                              width: 0.23,
-                              textStyle:
-                                  Theme.of(context).textTheme.titleMedium!),
+                          // CustomButton(
+                          //     onPressedCallback: () {
+                          //       Get.to(() => const SalonProfileScreen());
+                          //     },
+                          //     buttonText: "Re-book",
+                          //     height: 28,
+                          //     width: 0.23,
+                          //     textStyle:
+                          //         Theme.of(context).textTheme.titleMedium!),
                         ],
                       ),
                     ],

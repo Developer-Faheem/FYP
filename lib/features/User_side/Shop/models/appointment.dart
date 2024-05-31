@@ -1,20 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class AppointmentModel {
-  final String appointmentId;
-  final String userId;
-  final String vendorId;
-  final String salonProfileUrl;
-  final String userProfileUrl;
-  final String services; // Changed to String
-  final String userName;
-  final String bookingTime;
-  final String bookingDate;
-  final String vendorAddress;
-  final String vendorTagline;
-  final String salonName;
-  final String userSideStatus;
-  final String vendorSideStatus;
-  final double totalPrice;
-  final String rating;
+  String appointmentId;
+  String userId;
+  String vendorId;
+  String salonProfileUrl;
+  String userProfileUrl;
+  String services; // Changed to String
+  String userName;
+  String bookingTime;
+  String bookingDate;
+  String vendorAddress;
+  String vendorTagline;
+  String salonName;
+  String userSideStatus;
+  String vendorSideStatus;
+  double totalPrice;
+  double rating;
 
   AppointmentModel({
     required this.appointmentId,
@@ -35,27 +37,55 @@ class AppointmentModel {
     required this.rating,
   });
 
-  factory AppointmentModel.fromJson(Map<String, dynamic> json) {
-    return AppointmentModel(
-      appointmentId: json['appointmentId'],
-      userId: json['userId'],
-      vendorId: json['vendorId'],
-      salonProfileUrl: json['salonProfileUrl'],
-      userProfileUrl: json['userProfileUrl'],
-      services: json['services'], // Changed to String
-      userName: json['userName'],
-      bookingTime: json['bookingTime'],
-      bookingDate: json['bookingDate'],
-      vendorAddress: json['vendorAddress'],
-      vendorTagline: json['vendorTagline'],
-      salonName: json['salonName'],
-      userSideStatus: json['userSideStatus'],
-      vendorSideStatus: json['vendorSideStatus'],
-      totalPrice: json['totalPrice'].toDouble(),
-      rating: json['rating'],
-    );
+  // Default values for an empty AppointmentModel
+  static AppointmentModel empty() => AppointmentModel(
+        appointmentId: '',
+        userId: '',
+        vendorId: '',
+        salonProfileUrl: '',
+        userProfileUrl: '',
+        services: '',
+        userName: '',
+        bookingTime: '',
+        bookingDate: '',
+        vendorAddress: '',
+        vendorTagline: '',
+        salonName: '',
+        userSideStatus: '',
+        vendorSideStatus: '',
+        totalPrice: 0.0,
+        rating: 0.0,
+      );
+
+  // Factory method to create AppointmentModel from Firestore snapshot
+  factory AppointmentModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    final data = document.data();
+    if (data != null) {
+      return AppointmentModel(
+        appointmentId: data['appointmentId'] ?? '',
+        userId: data['userId'] ?? '',
+        vendorId: data['vendorId'] ?? '',
+        salonProfileUrl: data['salonProfileUrl'] ?? '',
+        userProfileUrl: data['userProfileUrl'] ?? '',
+        services: data['services'] ?? '', // Changed to String
+        userName: data['userName'] ?? '',
+        bookingTime: data['bookingTime'] ?? '',
+        bookingDate: data['bookingDate'] ?? '',
+        vendorAddress: data['vendorAddress'] ?? '',
+        vendorTagline: data['vendorTagline'] ?? '',
+        salonName: data['salonName'] ?? '',
+        userSideStatus: data['userSideStatus'] ?? '',
+        vendorSideStatus: data['vendorSideStatus'] ?? '',
+        totalPrice: (data['totalPrice'] ?? 0.0).toDouble(),
+        rating: (data['rating'] ?? 0.0).toDouble(),
+      );
+    } else {
+      return AppointmentModel.empty();
+    }
   }
 
+  // Convert AppointmentModel to JSON
   Map<String, dynamic> toJson() {
     return {
       'appointmentId': appointmentId,

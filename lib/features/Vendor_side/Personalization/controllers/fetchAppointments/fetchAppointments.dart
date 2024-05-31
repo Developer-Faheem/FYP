@@ -10,8 +10,8 @@ import 'package:stylesage/features/User_side/Shop/screens/success/success_screen
 import 'package:stylesage/features/Vendor_side/Salon/models/package_model/package_model.dart';
 import 'package:uuid/uuid.dart';
 
-class AppointmentController extends GetxController {
-  static AppointmentController get instance => Get.find();
+class AppointmentControllerVendor extends GetxController {
+  static AppointmentControllerVendor get instance => Get.find();
 
   final userController = UserController.instance;
   final bookingController = BookingController.instance;
@@ -19,29 +19,24 @@ class AppointmentController extends GetxController {
   final profileLoading = false.obs;
   var abc;
   final RxList<AppointmentModel> appointment = <AppointmentModel>[].obs;
-  final RxList<AppointmentModel> appointment1 = <AppointmentModel>[].obs;
-  final RxList<AppointmentModel> appointment2 = <AppointmentModel>[].obs;
 
-  AppointmentController();
+  AppointmentControllerVendor();
 
   final isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    fetchupUpomingPending();
-    fetchCancelled();
-    fetchCompleted();
+    fetchupAllVendor();
   }
 
-  void fetchupUpomingPending() async {
+  void fetchupAllVendor() async {
     try {
       //start the loader
       isLoading.value = true;
 
       //fetch the categories
-      final appointmentsList =
-          await appointmentRepository.fetchAllAppointments();
+      final appointmentsList = await appointmentRepository.fetchAll();
 
       //update the category list
       appointment.assignAll(appointmentsList);
@@ -54,52 +49,12 @@ class AppointmentController extends GetxController {
     }
   }
 
-  void fetchCancelled() async {
-    try {
-      //start the loader
-      isLoading.value = true;
-
-      //fetch the categories
-      final appointmentsList = await appointmentRepository.fetchCancelled();
-
-      //update the category list
-      appointment1.assignAll(appointmentsList);
-    } catch (e) {
-      SLoaders.errorSnackbar(
-          Title: 'oh Snap!',
-          message:
-              "something went wrong while fetching the  cancelled appointmentdata");
-    } finally {
-      isLoading.value = false;
-    }
-  }
-
-  void fetchCompleted() async {
-    try {
-      //start the loader
-      isLoading.value = true;
-
-      //fetch the categories
-      final appointmentsList = await appointmentRepository.fetchCompleted1();
-
-      //update the category list
-      appointment2.assignAll(appointmentsList);
-    } catch (e) {
-      SLoaders.errorSnackbar(
-          Title: 'oh Snap!',
-          message:
-              "something went wrong while fetching the  cancelled appointmentdata");
-    } finally {
-      isLoading.value = false;
-    }
-  }
-
-  Future<void> updateAppointmentData() async {
+  Future<void> updateAppointmentDataVndor() async {
     try {
       //update user name ,gender,and the phone number
       Map<String, dynamic> data = {
-        'userSideStatus': 'cancel',
-        'vendorSideStatus': 'cancel'
+        'userSideStatus': 'completed',
+        'vendorSideStatus': 'completed'
       };
 
       //send eamil to reset the password
@@ -110,7 +65,7 @@ class AppointmentController extends GetxController {
       // userController.user.value.gender = gender.text.trim();
       // userController.user.value.phoneNumber = phoneNumber.text.trim();
 
-      fetchupUpomingPending();
+      fetchupAllVendor();
       // //remove the loader
       // //FullScreenLoader.stopLoading();
 

@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_outlined_button.dart';
+import 'package:stylesage/features/User_side/Shop/models/appointment.dart';
+import 'package:stylesage/features/Vendor_side/Personalization/controllers/fetchAppointments/fetchAppointments.dart';
 import 'package:stylesage/features/Vendor_side/Salon/screens/appointments/widgets/bookingInfoRow_widget.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/image_strings.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
 class AppointmentCard extends StatelessWidget {
-  const AppointmentCard({super.key});
+  final AppointmentModel appointment;
+  const AppointmentCard({super.key, required this.appointment});
 
   @override
   Widget build(BuildContext context) {
+    final appointmentController = AppointmentControllerVendor.instance;
+    // Function to get the first 11 characters of a string safely
+    String getFirst11Chars(String input) {
+      return input.length > 11 ? input.substring(0, 11) : input;
+    }
+
     return Container(
-      height: 235,
+      height: appointment.userSideStatus == 'upcoming' ? 235 : 210,
       decoration: BoxDecoration(
           color: SColors.bgMainScreens,
           boxShadow: [
@@ -47,11 +56,13 @@ class AppointmentCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Jessica Wilson",
+                          appointment.userName ?? 'faheem',
+                          // "Jessica Wilson",
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         Text(
-                          "Rs 3,200",
+                          appointment.totalPrice.toString() ?? "Rs. 1200",
+                          //"Rs 3,200",
                           style: Theme.of(context).textTheme.bodyMedium,
                         )
                       ],
@@ -61,13 +72,17 @@ class AppointmentCard extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(SSizes.radiusLarge),
-                    color: Colors.red,
+                    color: Colors.grey,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12.0, vertical: 6),
                     child: Text(
-                      "Pending",
+                      appointment.userSideStatus == 'upcoming'
+                          ? "Pending"
+                          : appointment.userSideStatus == 'cancel'
+                              ? "cancelled"
+                              : "completed",
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
@@ -78,38 +93,44 @@ class AppointmentCard extends StatelessWidget {
               height: SSizes.md,
             ),
             //booking info
-            const BookingInfoRowWidget(
-              data: "Hair colouring, Hair cutting , Make Up",
+            BookingInfoRowWidget(
+              data: appointment.services,
+              // "Hair colouring, Hair cutting , Make Up",
               iconPath: "assets/icons/appointmentCardVendor/pade.svg",
             ),
-            const BookingInfoRowWidget(
-              data: "02 Febuary, 2022 at 8:30 AM",
+            BookingInfoRowWidget(
+              data:
+                  "${getFirst11Chars(appointment.bookingDate)} at ${appointment.bookingTime}",
               iconPath: "assets/icons/appointmentCardVendor/Calendar.svg",
             ),
-            const BookingInfoRowWidget(
-              data: "Service ID: #037485",
+            BookingInfoRowWidget(
+              data: "Service ID: ${getFirst11Chars(appointment.appointmentId)}",
               iconPath: "assets/icons/appointmentCardVendor/serviceId.svg",
             ),
             //buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                CustomOutlinedButton(
-                    buttonText: "Cancel",
-                    height: 28,
-                    width: 0.23,
-                    gradient: SColors.MainOutlinedButtonGradient,
-                    textStyle: Theme.of(context).textTheme.headlineMedium!,
-                    onPressedCallback: () {}),
+                // CustomOutlinedButton(
+                //     buttonText: "Cancel",
+                //     height: 28,
+                //     width: 0.23,
+                //     gradient: SColors.MainOutlinedButtonGradient,
+                //     textStyle: Theme.of(context).textTheme.headlineMedium!,
+                //     onPressedCallback: () {}),
                 const SizedBox(
                   width: SSizes.md,
                 ),
-                CustomButton(
-                    onPressedCallback: () {},
-                    buttonText: "Approve",
-                    height: 28,
-                    width: 0.23,
-                    textStyle: Theme.of(context).textTheme.titleMedium!),
+                appointment.userSideStatus == 'upcoming'
+                    ? CustomButton(
+                        onPressedCallback: () {
+                          appointmentController.updateAppointmentDataVndor();
+                        },
+                        buttonText: "Mark as Complete",
+                        height: 28,
+                        width: 0.34,
+                        textStyle: Theme.of(context).textTheme.titleMedium!)
+                    : SizedBox(),
               ],
             ),
           ],

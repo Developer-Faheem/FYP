@@ -198,8 +198,11 @@ class HomeScreen extends StatelessWidget {
 
                                 return Column(
                                   children: salonController.vendors
-                                      .map((vendor) =>
-                                          SaloonCard(vendor: vendor))
+                                      .map((vendor) => Padding(
+                                            padding: const EdgeInsets.only(
+                                                bottom: SSizes.md),
+                                            child: SaloonCard(vendor: vendor),
+                                          ))
                                       .toList(),
                                 );
                               }),

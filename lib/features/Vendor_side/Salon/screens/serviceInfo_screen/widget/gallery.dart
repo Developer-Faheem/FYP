@@ -11,7 +11,7 @@ class VendorGallery extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: TemporaryWidget(
-        msg: "No photos added yet",
+        msg: '', //"No photos added yet",
         image: SImages.gallery,
       ),
       floatingActionButton: FloatingActionButton(

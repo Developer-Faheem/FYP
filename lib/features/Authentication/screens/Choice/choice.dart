@@ -27,7 +27,20 @@ class Choice extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: SDeviceUtils.getScreenHeight() * 0.35,
+                  height: SDeviceUtils.getScreenHeight() * 0.15,
+                ),
+                Image(
+                  image: AssetImage("assets/images/onboarding/choice.jpg"),
+                  height: 300,
+                  width: 500,
+                ),
+                SizedBox(
+                  height: SDeviceUtils.getScreenHeight() * 0.04,
+                ),
+                Text("Choose to become a User or a Vendor"),
+                Text("This is one time operation"),
+                SizedBox(
+                  height: SDeviceUtils.getScreenHeight() * 0.04,
                 ),
                 CustomOutlinedButton(
                   onPressedCallback: () async {
@@ -42,7 +55,7 @@ class Choice extends StatelessWidget {
                   gradient: SColors.MainOutlinedButtonGradient,
                 ),
                 SizedBox(
-                  height: SDeviceUtils.getScreenHeight() * 0.05,
+                  height: SDeviceUtils.getScreenHeight() * 0.02,
                 ),
                 CustomOutlinedButton(
                   onPressedCallback: () async {

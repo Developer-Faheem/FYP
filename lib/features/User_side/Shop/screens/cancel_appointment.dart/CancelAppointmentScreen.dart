@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/custom_appbar1.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/appointment/appointment_contrroller.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 import 'package:stylesage/utils/constants/text_strings.dart';
@@ -17,6 +18,7 @@ class RadioController extends GetxController {
 
 class CancelAppointmentScreen extends StatelessWidget {
   final RadioController controller = Get.put(RadioController());
+  final controllerAppointment = AppointmentController.instance;
 
   // List of options
   final List<String> options = [
@@ -95,6 +97,7 @@ class CancelAppointmentScreen extends StatelessWidget {
                 SizedBox(height: SDeviceUtils.getScreenHeight() * 0.13),
                 CustomButton(
                   onPressedCallback: () {
+                    controllerAppointment.updateAppointmentData();
                     Get.back();
                   },
                   buttonText: "Cancel Appointment",

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:stylesage/features/Authentication/controller/user_controller/user_controller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/appointment/appointment_contrroller.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/booking_controller/booking_controller.dart';
 import 'package:stylesage/features/User_side/Shop/screens/appointment/widgets/cancelled.dart';
 import 'package:stylesage/features/User_side/Shop/screens/appointment/widgets/completed.dart';
 import 'package:stylesage/features/User_side/Shop/screens/appointment/widgets/upcoming.dart';
@@ -12,6 +16,9 @@ class AppointmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(UserController());
+    final bookingController = Get.put(BookingController());
+    final appointmentController = Get.put(AppointmentController());
     final controller = NavigationController.instance;
 
     return DefaultTabController(

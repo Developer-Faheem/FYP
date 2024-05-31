@@ -3,24 +3,23 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:stylesage/commons/widgets/buttons/custom_button.dart';
 import 'package:stylesage/commons/widgets/toggle_button_widget.dart';
+import 'package:stylesage/features/User_side/Shop/controllers/appointment/appointment_contrroller.dart';
+import 'package:stylesage/features/User_side/Shop/models/appointment.dart';
 import 'package:stylesage/features/User_side/Shop/screens/cancel_appointment.dart/CancelAppointmentScreen.dart';
 import 'package:stylesage/utils/constants/colors.dart';
 import 'package:stylesage/utils/constants/sizes.dart';
 
-class UpcomingCard extends StatefulWidget {
+class UpcomingCard extends StatelessWidget {
+  final AppointmentModel appointmentdata;
   const UpcomingCard({
+    required this.appointmentdata,
     super.key,
   });
 
   @override
-  State<UpcomingCard> createState() => _UpcomingCardState();
-}
-
-class _UpcomingCardState extends State<UpcomingCard> {
-  final toggleController = Get.put(ToggleController());
-
-  @override
   Widget build(BuildContext context) {
+    final toggleController = Get.put(ToggleController());
+    final controller = AppointmentController.instance;
     return Container(
       height: 195,
       decoration: BoxDecoration(
@@ -37,7 +36,8 @@ class _UpcomingCardState extends State<UpcomingCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Bell curls , Salon",
+                  appointmentdata.salonName,
+                  //"Bell curls , Salon",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 Column(
@@ -86,7 +86,8 @@ class _UpcomingCardState extends State<UpcomingCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hair cutting and Stylit ddj dhhd dhdh",
+                        appointmentdata.vendorTagline,
+                        //"Hair cutting and Stylit ddj dhhd dhdh",
                         style: Theme.of(context).textTheme.headlineSmall,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -106,7 +107,8 @@ class _UpcomingCardState extends State<UpcomingCard> {
                           ),
                           Expanded(
                             child: Text(
-                              "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
+                              appointmentdata.vendorAddress,
+                              // "0539 NYC, Street #98 Maine# wood 04...Ingelroad",
                               style: Theme.of(context).textTheme.labelSmall,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
@@ -131,7 +133,8 @@ class _UpcomingCardState extends State<UpcomingCard> {
                             child: Row(
                               children: [
                                 Text(
-                                  "15min .1.7km",
+                                  '29/05/2024',
+                                  //"15min .1.7km",
                                   style: Theme.of(context).textTheme.labelSmall,
                                 ),
                                 Text(
@@ -140,7 +143,8 @@ class _UpcomingCardState extends State<UpcomingCard> {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    "Mon-Sun",
+                                    appointmentdata.bookingTime,
+                                    //"Mon-Sun",
                                     style:
                                         Theme.of(context).textTheme.labelSmall,
                                     maxLines: 1,

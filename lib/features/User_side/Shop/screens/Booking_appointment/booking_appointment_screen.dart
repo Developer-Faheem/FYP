@@ -130,7 +130,6 @@ class BookingAppointmentScreen extends StatelessWidget {
                         onPressedCallback: () async {
                           await appointmentController
                               .saveAppointmentRecord(vendor!);
-                          Get.off(() => const SuccessScreen());
                         }),
                   ),
                 ),

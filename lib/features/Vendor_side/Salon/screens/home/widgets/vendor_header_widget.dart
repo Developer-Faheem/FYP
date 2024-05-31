@@ -41,22 +41,22 @@ class VendorHeader extends StatelessWidget {
           ],
         ),
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(
-            right: SSizes.lg,
-          ),
-          child: GestureDetector(
-            onTap: () {
-              Get.to(() => const NotificationScreen());
-            },
-            child: SvgPicture.asset(
-              'assets/icons/bell.svg',
-              height: 30.5,
-            ),
-          ),
-        ),
-      ],
+      // actions: [
+      //   Padding(
+      //     padding: const EdgeInsets.only(
+      //       right: SSizes.lg,
+      //     ),
+      //     child: GestureDetector(
+      //       onTap: () {
+      //         Get.to(() => const NotificationScreen());
+      //       },
+      //       child: SvgPicture.asset(
+      //         'assets/icons/bell.svg',
+      //         height: 30.5,
+      //       ),
+      //     ),
+      //   ),
+      // ],
     );
   }
 }
